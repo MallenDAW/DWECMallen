@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <img id="img" src="imagen1.jpg"> <!-- Identificamos la imagen con Id="" para acceder a ella luego-->
+  <p id="lore">Lorem ipsum dolor, sit amet consectetur adipisicing elit. <!--identificamos <p> con el id para poder llamarlo luego-->
+     Nesciunt delectus nihil voluptatibus provident ducimus necessitatibus animi 
+     repellendus incidunt expedita repudiandae. Sequi quasi ea dolorum officiis
+     suscipit commodi cumque culpa incidunt.
+  </p>
+  <script>
+     document.getElementById("lore").innerHTML = "Hello Javascript!"; //Accedemos al id y le cambiamos el texto que contiene
+     document.getElementById("lore").style.color = "Red"; //Accedemos al id del párrafo y le cambiamos el color
+     document.getElementById("img").src="monja.jpg"; //Accedemos al id de la imagen y la cambiamos por otra
+  </script>  
+</body>
+</html>

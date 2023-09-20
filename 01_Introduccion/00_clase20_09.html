@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primera práctica</title>  
+</head>
+
+
+<!--Invocamos la funcion en el bloque de codigo <script> donde la definimos -->
+
+<!--<body>
+  <h1>Este es el primer html con javascript incrustado</h1>
+  <script>   // Dependiendo de donde pongamos el script saldra antes o despues en el navegador 
+    function hola(){
+      alert("Hola"); // Mensaje de alerta 
+    }
+
+    hola(); //Se llama a la funcion
+  </script>
+  <h1>Esto sale después del script</h1>
+</body> -->
+
+
+
+
+
+<!--Invocamos la funcion en otro bloque de codigo <script> -->
+
+<!--<body>
+  <h1>Este es el primer html con javascript incrustado</h1>
+  <script>   
+    function hola(){
+      alert("Hola"); 
+    }
+  </script>
+  <h1>Esto sale después del script</h1>
+  <script>
+    hola(); //Llamamos la funcion en otro bloque <script>
+  </script>
+</body>-->
+
+
+
+
+
+
+<!--Para invocar desde fuera el javascript se usa <script src="nombre del archivo"> 
+    Esta es la manera correcta de programar con JS -->
+  <body>
+    <script src="00_hola.js"></script> <!-- Enlazamos el fichero js con el html// Se suele meter entre etiquetas <head> -->
+    <h1>Este es el primer html con javascript incrustado</h1>
+    <h1>Esto sale después del script</h1>
+    <script>
+      hola(); //Llamamos la funcion en otro bloque <script>
+    </script>
+  </body>
+</html>
