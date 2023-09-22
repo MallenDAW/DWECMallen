@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*SOMBREAR VARIABLES
+
+    Dentro de un bloque de códiog podemos nombrar a la misma variable con diferente valor.
+    Dentro del codigo tendrá un valor distinto al de fuera
+    */
+
+    let precio=100; //declarada fuera del bloque
+    {
+      let precio=200; //declarada dentro del bloque 
+      console.log(precio); //aqui vale 200
+    }
+
+    console.log(altura); //aqui vale 100
+  </script>
+</body>
+</html>

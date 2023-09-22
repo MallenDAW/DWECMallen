@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variables</title>
+</head>
+<body>
+  <script>
+  
+   {
+    var primeraVariable="Visible fuera de bloque"; //Variable global para todo el programa
+    let segundaVariable="No visible fuera de bloque"; //Variable local
+    }
+
+    console.log(primeraVariable); //La primera variable al ser VAR la conoce incluso fuera del {}
+    console.log(segundaVariable); //La segunda variable como es LET no existe fuera del bloque {}
+
+
+    var variableUno="Declarada fuera del bloque"; 
+
+    function miFuncion(){
+      var variableUno="declarada dentro de la funcion con el mismo nombre";
+      //console.log(variableUno);
+      return 0;
+    }
+    console.log(variableUno);
+
+  </script>
+</body>
+</html>
