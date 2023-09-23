@@ -3,30 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejercicio 1</title>
+  <title>101CMS_1</title>
 </head>
 <body>
   <script>
 
+    // Declaramos e inicializamos 2 variables para las Rosas
     let precioUnidadRosa=8; 
     let cantidadRosas=70;
     
+    // Declaramos e inicializamos 2 variables para los Lirios
     let precioUnidadLirio=10;
     let cantidadLirio=50;
     
+    // Declaramos e inicializamos 2 variables para los Tulipanes
     let precioUnidadTulipan=2;
     let cantidadTulipan=120;
 
+
+    /*
+      Declaramos 3 variables nuevas para cada total de cada flor.
+      Inicializamos operando con las variables anteriores correspondientes a cada flor.
+    */
     let totalRosas=precioUnidadRosa*cantidadRosas;
     let totalLirio=precioUnidadLirio*cantidadLirio;
     let totalTulipan=precioUnidadTulipan*cantidadTulipan;
 
+
+    /*
+      Declaramos una variable para almacenar el total de todas las flores.
+      Inicializamos operando con las 3 variables anteriores
+    */
     let precioTotal=totalLirio+totalRosas+totalTulipan;
 
-    console.log(`Rosa: precio unitario: ${precioUnidadRosa} , cantidad: ${cantidadRosas} , valor: ${totalRosas}
+
+    /*
+      Usamos console.log() para mostrar por consola la información como la piden.
+      Aprovechando las comillas invertidas ` ` podemos incluir las variables con ${variable}.
+    */
+    console.log(`
+    Rosa: precio unitario: ${precioUnidadRosa} , cantidad: ${cantidadRosas} , valor: ${totalRosas}
     Lirio: precio unitario: ${precioUnidadLirio} , cantidad: ${cantidadLirio} , valor: ${totalLirio}
     Tulipán: precio unitario: ${precioUnidadTulipan} , cantidad: ${cantidadTulipan} , valor: ${totalTulipan}
-    Total: ${precioTotal}`);
+    Total:   ${precioTotal}
+    `);
 
   </script>
 </body>
