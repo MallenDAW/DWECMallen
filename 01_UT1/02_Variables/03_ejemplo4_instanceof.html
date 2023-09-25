@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="parrafo1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel quasi illum illo repellendus, accusamus quis fuga iusto provident a? Vero aspernatur consequuntur ad neque quod, odio aperiam animi eligendi eum.</p>
+  <p id="parrafo2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel quasi illum illo repellendus, accusamus quis fuga iusto provident a? Vero aspernatur consequuntur ad neque quod, odio aperiam animi eligendi eum.</p>
+  <p id="parrafo3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel quasi illum illo repellendus, accusamus quis fuga iusto provident a? Vero aspernatur consequuntur ad neque quod, odio aperiam animi eligendi eum.</p>
+  <script>
+  
+  
+  //TYPEOF------------------------
+  
+  var nombre; //definimos una variable con var
+
+    document.getElementById("parrafo1").innerHTML= nombre; //en el parrafo1 asignale lo que hay en nombre
+
+    nombre="Belen";
+    //document.getElementById("parrafo1").innerHTML= nombre;
+
+
+    
+
+    var nombnreAppellido = "Carlos "+"Mallén";
+    var nacimiento= 1990;
+    var fallecimiento=nacimiento+66;
+
+    document.getElementById("parrafo2").innerHTML= nombnreAppellido;
+    document.getElementById("parrafo3").innerHTML= fallecimiento; 
+
+
+    alert(typeof(nombre)); //Typeof de un string : stirng
+    alert(typeof(fallecimiento)); 
+
+
+  //Typeof de un array : object
+    let lista=[1,2,3,4]; //Cuando no es un tipo básico es object (es un array)
+    alert(typeof(lista));
+
+  //Typeof de un tipo null : object
+    var a=null;
+    alert(typeof(a));
+
+
+//INSTANCEOF------------------------
+
+let animal = [perro,gato,leon];
+alert(animal instanceof object); //Miramos si la variable animal es una instancia de objeto: sale TRUE
+
+
+  </script>
+</body>
+</html>
