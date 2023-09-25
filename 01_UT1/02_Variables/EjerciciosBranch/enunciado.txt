@@ -1,4 +1,0 @@
-Elaborar una lista de contactos que:
-
-  -Declarar variables para almacenar la info (9 en total)
-  -Mostrar por consola la info sobre el 1º y ultimo contacto en el formulario: nombre / tlf / correo
