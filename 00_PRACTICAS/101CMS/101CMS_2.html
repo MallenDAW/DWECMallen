@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-    /*
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
     Uso de  “var” en JavaScript
     1. Define una variable saludo=”Hola” como variable local dentro de una función saludar() que muestre una ventana emergente con el valor de la variable saludo
       • Invoca la función
@@ -26,46 +26,47 @@
     
     */
 
-    //Apartado 1:
-    function saludar(){        //Creamos la funcion saludar
-      let saludo= "Hola";      //Declaramos la variable saludo localmente dentro de la funcion
-      alert(saludo);           //Mostramos la ventana emergente con la variable
-    }
-    saludar();                 //Invocamos la funcion
-    window.alert(saludo);      //Mostramos la ventana emergente fuera de la funcion de la variable saludo
-    //...
+      //Apartado 1:
+      function saludar() {
+        //Creamos la funcion saludar
+        let saludo = "Hola"; //Declaramos la variable saludo localmente dentro de la funcion
+        alert(saludo); //Mostramos la ventana emergente con la variable
+      }
+      saludar(); //Invocamos la funcion
+      window.alert(saludo); //Mostramos la ventana emergente fuera de la funcion de la variable saludo
+      //...
 
-    //Apartado 2:
-    var despedida="Adiós";     //Declaramos la variable global despedida
-    function despedir(){       //Creamos la funcion despedir
-      alert(despedida);        //Mostramos en una ventana la variable global depedida
-    }
-    despedir();                //Invocamos la funcion despedir
-    window.alert(despedida);   //Mostramos en una ventana la variable global despedida
-    //...
+      //Apartado 2:
+      var despedida = "Adiós"; //Declaramos la variable global despedida
+      function despedir() {
+        //Creamos la funcion despedir
+        alert(despedida); //Mostramos en una ventana la variable global depedida
+      }
+      despedir(); //Invocamos la funcion despedir
+      window.alert(despedida); //Mostramos en una ventana la variable global despedida
+      //...
 
-    //Apartado 3:
-    let variable =3;           //Declaramos la variable
-    function ambito(){         //Creamos la función
-      let variable=4;         
+      //Apartado 3:
+      let variable = 3; //Declaramos la variable
+      function ambito() {
+        //Creamos la función
+        let variable = 4;
+        alert(variable);
+      }
+      ambito();
       alert(variable);
-    }
-    ambito();
-    alert(variable);
-    //...
+      //...
 
-    //Apartado 4:
-    var a =3;           //Declaramos la variable
-    function ambito(){         //Creamos la función
-      
-    }
-    ambito();
-    alert(variable);
-    //...
-
-
-
-
-  </script>
-</body>
+      //Apartado 4:
+      var nota = 9; //Declaramos la variable
+      function global() {
+        //Creamos la función
+        var nota = 10;
+        window.alert(nota);
+      }
+      global();
+      alert(nota);
+      //...
+    </script>
+  </body>
 </html>
