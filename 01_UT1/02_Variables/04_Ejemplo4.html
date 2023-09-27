@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let x=1; //Operador unario, solo le afecta a una vasriable
+    let y=++x;
+    let z=y++ +x; //Operador binario, tiene 2 variables
+
+
+    //Operador ternario
+    let edad=20;
+    let mayor = (edad>18)?"Mayor de edad":"Menor de edad"; 
+    console.log(mayor);
+
+
+    //Precedencia
+    let year=2050;
+    let newYear=year=2051;
+
+
+    //CONVERSIONES IMPLICITAS----------
+
+    const STR1=42+"1"; //esto junta 42 y 1 y da como resultado 421
+    console.log("STR1: "+STR1); 
+    console.log("Tipo de STR1: "+typeof STR1);
+
+
+    const STR2=42-"1"; //esto resta 42 - 1 y da como resultado 41
+    console.log("STR2: "+STR2); 
+    console.log("Tipo de STR2: "+typeof STR2);
+
+
+    const V1="5";
+    const V2=9;
+    let suma = V1+V2;
+    console.log("Suma de \"5\" + 9: "+suma+"\n");
+
+
+    console.log("1 == \"1\": " +(1 =="1"));
+    console.log("1 == \"one\": "+(1 =="one"));
+    console.log("true == 1: "+(true ==1));
+    console.log("false ==\"cero\": "+(false =="cero"));
+    console.log("\"test\" =={x:\"test\"}: "+("test" =={x:"test"}));
+
+    console.log("1+1: "+(1+1));
+    console.log("1+\"1\": "+(1+"1"));
+    console.log("\"Hello\"+\" World\": "+("Hello"+" World"));
+    console.log("\"It\´s\"+true: "+("It\´s"+true));
+    console.log("\"Pizza\"+{cheese:\"extra\"}: "+("Pizza"+{cheese:"extra"}));
+
+    console.log("3-2: "+(3-2));
+    console.log("\"3\"-2: "+("3"-2));
+    console.log("3-true: "+(3-true));
+    console.log("1-{x:3}: "+(1-{x:3}));
+    console.log("\"fun\"-2: "+("fun"-2));
+
+
+  </script>
+</body>
+</html>
