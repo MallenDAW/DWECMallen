@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script>
-      /*
-    Uso de  “var” en JavaScript
+<!--
+  Uso de  “var” en JavaScript
+
     1. Define una variable saludo=”Hola” como variable local dentro de una función saludar() que muestre una ventana emergente con el valor de la variable saludo
       • Invoca la función
       • Muestra la variable desde fuera de la función mediante un window.alert
@@ -18,55 +10,95 @@
       • Muestra la variable desde fuera de la función
 
     3. Define dos variables con el mismo nombre y distinto valor: una fuera y otra dentro de una función ámbito() que muestre un window.alert de la misma. 
-       Muestra el valor de las dos mediante window.alert e invocando a la función.
+        Muestra el valor de las dos mediante window.alert e invocando a la función.
 
     4. Declara y define una variable global. Redefínela dentro de una función que la muestre mediante un window.alert. Muestra el valor de la variable mediante window.alert e invocando a la función.
 
     5. Averigua qué son las variables automáticamente globales. Pon un ejemplo
-    
-    */
 
-      //Apartado 1:
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+
+      //Apartado 1: ----------------------
       function saludar() {
         //Creamos la funcion saludar
-        let saludo = "Hola"; //Declaramos la variable saludo localmente dentro de la funcion
-        alert(saludo); //Mostramos la ventana emergente con la variable
+        let saludo = "Hola";          //Declaramos la variable saludo localmente dentro de la funcion
+        alert(saludo);                //Mostramos la ventana emergente con la variable
       }
-      saludar(); //Invocamos la funcion
-      window.alert(saludo); //Mostramos la ventana emergente fuera de la funcion de la variable saludo
-      //...
+      
+      saludar();
+      //Al invocar la funcion nos dice Hola sin problema                     
 
-      //Apartado 2:
-      var despedida = "Adiós"; //Declaramos la variable global despedida
+      //window.alert(saludo);           
+      /* Al intentar mostrar saludo nos da el error "saludo is not defined" 
+         No conoce saludo porque esta declarada dentro de la función.
+      */
+      
+      //Apartado 2: ----------------------
+      var despedida = "Adiós";        //Declaramos la variable global despedida
       function despedir() {
         //Creamos la funcion despedir
-        alert(despedida); //Mostramos en una ventana la variable global depedida
+        alert(despedida);             //Mostramos en una ventana la variable global depedida
       }
-      despedir(); //Invocamos la funcion despedir
-      window.alert(despedida); //Mostramos en una ventana la variable global despedida
-      //...
+      despedir();     
+      /* Al invocar la funcion nos dice Adiós sin problema
+         Esta declarada como var (variable global) y la funcion la conoce también.
+      */
+                      
+      window.alert(despedida);        
+      /* Nos dice Adiós sin ningún problema.
+         La variable despedida la conoce por declararla como var 
+         y estar en el mismo ámbito (fuera de la función) 
+      */
 
-      //Apartado 3:
-      let variable = 3; //Declaramos la variable
+      //Apartado 3: ----------------------
+      let variable = 3;               //Declaramos la variable
       function ambito() {
         //Creamos la función
-        let variable = 4;
-        alert(variable);
+        let variable = 4;             //sdgfsdf
+        alert(variable);              //sdfsdfsd
       }
       ambito();
+      /* La funcion nos imprime el 4
+         Nos muestra la variable local de la función y
+         aunque la de fuera se llame igual, no la conoce
+      
+      */
       alert(variable);
-      //...
+      /* Se imprime el 3
+         La variable que conoce es la de fuera de la función
+         aunque en una función haya otra variable con el mismo nombre.
+      
+      */
 
-      //Apartado 4:
+      //Apartado 4: ----------------------
       var nota = 9; //Declaramos la variable
       function global() {
-        //Creamos la función
+        //Creamos la función global
         var nota = 10;
         window.alert(nota);
       }
       global();
+      /* La funcion imprime 10, pero es la misma variable
+         A la variable var nota se le reasigna el 10 y luego lo imprime
+
+      */
+
       alert(nota);
-      //...
+      /* Nos da como resultado 9
+         El valor que tiene fuera de la función
+      
+      */
+      
     </script>
   </body>
 </html>
