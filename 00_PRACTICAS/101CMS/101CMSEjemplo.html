@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo apartado 5</title>
+  </head>
+  <body>
+    <script>
+
+      
+      global = 3; 
+      //Declaramos un variable global
+      
+
+      function scope() {
+        local = 4;  //Declaramos una variable local dentro de la funcion
+        console.log(global);
+        console.log(local);
+      }
+
+      scope();
+
+      console.log(global); 
+      console.log(local);
+
+    </script>
+  </body>
+</html>
