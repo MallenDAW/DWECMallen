@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- Pedir nombre
+     Mostrarlo por consola dentro de un saludo
+     Repetir utilizando template literals
+     Mostrar el tipo de varible
+     Mostrar su longitud
+     Preguntar si es alumno de nuestra clase (usar confirm)
+     Contestar con una frase con alert
+     -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    let nombre=prompt("¿Cual es tu nombre?","Nombre");
+
+    console.log("Hola "+nombre+" , buenso dias");
+    console.log(`Hola ${nombre} , buenso dias.`);
+    console.log(typeof(nombre));
+    console.log(nombre.length);
+
+    (confirm("¿Eres alumno de esta clase?")) ? alert("Bienvenido de nuevo."):alert("Esta no es tu clase");                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+  </script>
+  
+</body>
+</html>
