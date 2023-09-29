@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let a = 3.99;
+    console.log(a.toString);
+
+    /*---------PARA REDONDEAR CON DECIMALES --------*/
+    console.log(a.toFixed(0)) //redondea a 4
+    console.log(a.toFixed(1)) //redondea a 4.0 - agrega un decimal
+    console.log(a.toFixed(2)) //redondea a 3.99 - agrega un decimal
+    console.log(a.toFixed(3)) //redondea a 3.990 - agrega 0 si no existen mas decimales
+
+
+
+
+    /*------ PARA PRECISIONES CON DECIMALES --------*/
+    let b =9.99;
+    console.log(b.toPrecision(0)); //Nivel 0 de precision escribe el numero
+    console.log(b.toPrecision(1)); //Nivel 1 de precision devuelve 10 en formato 1e+1
+    console.log(b.toPrecision(2)); //Nivel 2 de precision devuelve 10 
+    console.log(b.toPrecision(3)); //Nivel 2 de precision devuelve 9.99 
+
+
+  </script>
+</body>
+</html>
