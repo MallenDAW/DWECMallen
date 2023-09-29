@@ -38,7 +38,7 @@
       saludar();
       //Al invocar la funcion nos dice Hola sin problema                     
 
-      //window.alert(saludo);           
+      //window.alert(saludo);   //Esta linea la dejaremos comentada, ya que da un error y no se ejecuta lo demás        
       /* Al intentar mostrar saludo nos da el error "saludo is not defined" 
          No conoce saludo porque esta declarada dentro de la función.
       */
@@ -64,8 +64,8 @@
       let variable = 3;               //Declaramos la variable
       function ambito() {
         //Creamos la función
-        let variable = 4;             //sdgfsdf
-        alert(variable);              //sdfsdfsd
+        let variable = 4;             
+        alert(variable);              
       }
       ambito();
       /* La funcion nos imprime el 4
@@ -84,7 +84,7 @@
       var nota = 9; //Declaramos la variable
       function global() {
         //Creamos la función global
-        var nota = 10;
+        nota = 10;   //Redefinimos la variable nota
         window.alert(nota);
       }
       global();
@@ -94,8 +94,8 @@
       */
 
       alert(nota);
-      /* Nos da como resultado 9
-         El valor que tiene fuera de la función
+      /* Nos da como resultado 10
+         El valor que le dimos al reescribirla en la función
       
       */
       
