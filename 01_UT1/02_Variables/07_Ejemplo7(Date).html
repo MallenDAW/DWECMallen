@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var v1= new Date("11/23/2022"); //Formato corto
+    var v2= new Date("Ago 17 2022"); //Formato largo
+    var v3= new Date("Mon, Jun 20 2022 13:42:32 GMT +0100(W.Euro standard Time)"); //Formato completo
+    var v4= new Date("2022/08/18");  //Formato ISO
+
+    document.getElementById('Hora').innerHTML = Date(); 
+
+    let miFecha = new Date();
+    let texto = document.getElementById('Hora');
+    texto.innerHTML=miFecha;
+
+/*--------- MÉTODOS DE FECHA ----------*/
+getHours(miFecha);        //Para las horas
+getMinutes(miFecha);      //Para los minutos
+getSeconds(miFecha);      //Para los segndos
+
+
+  </script>
+</body>
+</html>
