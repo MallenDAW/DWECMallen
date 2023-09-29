@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    /*-------- EJEMPLO TABLA ---------*/
+
+    function tablaMultiplicar(tabla,fin=10){
+      for(let i =0;i<=fin;i++){
+        console.log(tabla,"x",i,"=",tabla*i);  //si se usan , dejan un espacio
+      }
+    }
+
+    tablaMultiplicar(3);
+    
+
+    function sumaNumeros(){
+      let suma=0;
+      for(let i=0;i<=(arguments.length-1);i++){
+        suma+=arguments[i];
+      }
+      return suma;
+    }
+
+    console.log(sumaNumeros(2,20));
+
+  </script>
+</body>
+</html>
