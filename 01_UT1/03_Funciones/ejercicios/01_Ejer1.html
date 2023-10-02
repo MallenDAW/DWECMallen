@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let res = (base, exponente) => {
+      //   if (exponente == 0) return 1;
+
+      //   else if (exponente < 0) {
+      //     let res = base;
+      //     for (let i = 1; i < exponente; i++) {
+      //       res = 1/res;
+      //     }
+      //     return res;
+
+      //   } else {
+      //     let res = base;
+      //     for (i = 1; i < exponente; i++) {
+      //       res *= base;
+      //     }
+      //     return res;
+      //   }
+      // };
+
+      let res1 = base;
+          for (i = 1; i < exponente; i++) {
+            res1 *= base;
+          }
+
+      let res2 = base;
+          for (let i = 1; i < exponente; i++) {
+            res2 = 1/res2;
+          }
+      return (exponente==0) ?  1 : ((exponente<0)?  res2 : res1 );
+        }
+
+        
+      alert("Resultado:"+res(prompt("Indica la base:"), prompt("Indica el exponente:")));
+    </script>
+  </body>
+</html>
