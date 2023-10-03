@@ -13,7 +13,11 @@
           for (i = 1; i < exponente; i++) {
             res1 *= base;
           }
-      return (exponente==0) ?  1 : ((exponente<0)?  1/base : res1 );
+      let res2 = base;
+      for (i = 1; i < (exponente * (-1)); i++) {
+            res2 *= base;
+          }
+      return (exponente==0) ?  1 : ((exponente<0)?  1/res2 : res1 );
         }
 
         
