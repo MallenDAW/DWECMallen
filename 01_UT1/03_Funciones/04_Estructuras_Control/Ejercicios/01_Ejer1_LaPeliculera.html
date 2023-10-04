@@ -34,21 +34,37 @@
     <p id="comida"></p>
     <p id="total"></p>
     <script>
-
+       //Funcion para validar pelicula
       function comprobarPelicula(numero) {
-        while (parseInt(numero) <= 0 || parseInt(numero) > pelis.length) {
+        while (parseInt(numero) <= 0 || parseInt(numero) > pelis.length || isNaN(parseInt(numero))) {
           alert("ERROR - Película no válida");
-          prompt(
+          numero = prompt(
             "Selecciona una pelicula:\n1 - Spider Man \n2 - Superman\n3 - Dragon Ball Super\n4 - La era del hielo\n5 - 18videos"
           );
         }
+        return parseInt(numero);
       }
 
-      function descuento(porcentaje){
-        return PRECIO/2;
-      }      
+      //Funcion que aplica descuento
+      function descuento(porcentaje) {
+        descuento = (porcentaje / 100) * PRECIO;
+        return PRECIO - descuento;
+      }
 
-      pelis = [
+      function imprimir(nombre,descuento,inice){
+        document.getElementById("nombre").innerHTML = "Nombre: " + nombre;
+        document.getElementById("pelicula").innerHTML = "Pelicula: " + pelis[numeroPeli - 1];
+        document.getElementById("comida").innerHTML = "Regalos: "+ regalos[0][1] +" y "+regalos[1][0];
+        document.getElementById("total").innerHTML = "Total a pagar: " + descuento(50);
+      }
+      //array de regalos
+      let regalos = [
+        ["perrito", "caramelo", "palomitas"],
+        ["refresco", "agua"]
+      ];
+
+      //array de peliculas
+      let pelis = [
         "1 - Spider Man",
         "2 - Superman",
         "3 - Dragon Ball Super",
@@ -56,44 +72,68 @@
         "5 - 18videos",
       ];
 
-      for (let i = 0; i < pelis.length - 1; i++) {
-        console.log(pelis[i]);
-      }
+      
+      // for (let i = 0; i < pelis.length; i++) {
+      //   console.log(pelis[i]);
+      // }
 
+      //constante para el precio de la entrada
       const PRECIO = 8.5;
 
+
+      //validamos el nombre
       let nombre = prompt("Dime tu nombre: ");
       while (!isNaN(nombre) || nombre === null) {
         alert("ERROR");
         nombre = prompt("Introduce un nombre válido: ");
       }
 
+
+      //validamos la edad
       let edad = prompt("Dime tu edad: ");
       edad = parseInt(edad);
+
       while (isNaN(parseInt(edad)) || edad === null) {
         alert("ERROR");
         edad = prompt("Introduce una edad válida: ");
       }
 
-      // console.log(nombre, edad);
-
+      //validamos la pelicula con la funcion comporbarPelicula()
       let numeroPeli = prompt(
         "Selecciona una pelicula:\n1 - Spider Man \n2 - Superman\n3 - Dragon Ball Super\n4 - La era del hielo\n5 - 18videos"
       );
+      console.log("aaaaaaaa"+numeroPeli);
+      numeroPeli = comprobarPelicula(numeroPeli);
 
-      numeroPeli=comprobarPelicula(numeroPeli);
-
-      while(edad<=17 && numeroPeli==4){
-        numeroPeli=comprobarPelicula(numeroPeli);
+      while (edad <= 17 && numeroPeli === 5) {
+        numeroPeli = comprobarPelicula(numeroPeli);
       }
+      console.log(numeroPeli);
 
-      if(edad<=17){
-        document.getElementById("nombre").innerHTML= "Nombre: "+nombre;
-        document.getElementById("pelicula").innerHTML="Pelicula: "+ pelis[numeroPeli-1];
-        document.getElementById("comida").innerHTML= "Regalos: caramelos y refresco";
-        document.getElementById("total").innerHTML= "Tu descuento es del 50%: "+descuento(50);
+      if (edad <= 17) {
+        document.getElementById("nombre").innerHTML = "Nombre: " + nombre;
+        document.getElementById("pelicula").innerHTML = "Pelicula: " + pelis[numeroPeli - 1];
+        document.getElementById("comida").innerHTML = "Regalos: "+ regalos[0][1] +" y "+regalos[1][0];
+        document.getElementById("total").innerHTML = "Total a pagar: " + descuento(50);
+
+      } else if (edad > 18 && edad <= 25) {
+        document.getElementById("nombre").innerHTML = "Nombre: " + nombre;
+        document.getElementById("pelicula").innerHTML = "Pelicula: " + pelis[numeroPeli - 1];
+        document.getElementById("comida").innerHTML= "Regalos: "+regalos[0][2]+","+regalos[0][0]+" y "+regalos[1][0];
+        document.getElementById("total").innerHTML = "Total a pagar: " + PRECIO;
+
+      } else if (edad >= 26 && edad <= 35) {
+        document.getElementById("nombre").innerHTML = "Nombre: " + nombre;
+        document.getElementById("pelicula").innerHTML = "Pelicula: " + pelis[numeroPeli - 1];
+        document.getElementById("comida").innerHTML ="Regalos: "+regalos[0][2]+" y "+regalos[1][0];
+        document.getElementById("total").innerHTML ="Total a pagar: " + descuento(10);
+
+      } else {
+        document.getElementById("nombre").innerHTML = "Nombre: " + nombre;
+        document.getElementById("pelicula").innerHTML = "Pelicula: " + pelis[numeroPeli - 1];
+        document.getElementById("comida").innerHTML ="Regalos: "+regalos[1][1];
+        document.getElementById("total").innerHTML ="Total a pagar: " + descuento(20);
       }
-
     </script>
   </body>
 </html>
