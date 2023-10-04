@@ -1,14 +1,99 @@
 <!DOCTYPE html>
-<!--  -->
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La peliculera</title>
-</head>
-<body>
-  <script>
+<!-- Hacer un programa de generación de entradas de cine que incluya los datos del cliente y permita aplicar descuentos y ofertas especiales, según las siguientes especificaciones:
+ 
+        1. Pide el nombre del cliente. Si el nombre no es un tipo String o es nulo, debe producir un mensaje de error e insistir.
+        
+        2. Pide la edad del cliente. Si la edad no es dato numérico o es nulo, debe producir un mensaje de error e insistir.
+        
+        3. Pide escoger el nombre de la película que está en cartelera de un listado que aparece en pantalla ('Spider Man', 'Superman', 'Dragon Ball Super', 'La era del hielo', '18videos').
+        Si el cliente escoge una película que no está en la cartelera o es nulo, debe producir un mensaje de error e insistir.
+        
+        4. Si la edad del cliente es menor o igual a 17 y la película que escogió es "18videos", deberá mostrarle un mensaje de que no tiene permiso para ver esa película e insistir. Caso contrario, se realizará lo siguiente:
+        
+        5. Si la edad del cliente es menor o igual a 17, tendrá un descuento del 50% y además tendrá de regalo incluido con la entrada: Caramelos y Refresco.
+        
+        6. Si la edad del cliente es mayor o igual a 18 y menor o igual a 25, no tendrá descuento alguno pero si tendrá de regalo incluido con la entrada: Palomitas, perrito y refresco.
+        
+        7. Si la edad del cliente es mayor o igual a 26 y menor o igual a 35, tendrá un descuento del 10% y además tendrá de regalo incluido con la entrada: Perrito y refresco.
+        
+        8. Si la edad del cliente es mayor o igual a 36, tendrá un descuento del 20% y así mismo tendrá de regalo incluido con la entrada: Agua.
+ 
+*La lista de películas, comidas y bebidas deben estar en Arrays
+* Imprimir por consola y en el HTML en líneas distintas: el nombre del cliente, nombre de la película, lista de comidas y bebidas a la que accede, y el total a pagar dependiendo del descuento.
+*El precio de la entrada es de 8,5 euros  -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La peliculera</title>
+  </head>
+  <body>
+    <h1>INFO ENTRADAS</h1>
+    <p id="nombre"></p>
+    <p id="pelicula"></p>
+    <p id="comida"></p>
+    <p id="total"></p>
+    <script>
 
-  </script>
-</body>
+      function comprobarPelicula(numero) {
+        while (parseInt(numero) <= 0 || parseInt(numero) > pelis.length) {
+          alert("ERROR - Película no válida");
+          prompt(
+            "Selecciona una pelicula:\n1 - Spider Man \n2 - Superman\n3 - Dragon Ball Super\n4 - La era del hielo\n5 - 18videos"
+          );
+        }
+      }
+
+      function descuento(porcentaje){
+        return PRECIO/2;
+      }      
+
+      pelis = [
+        "1 - Spider Man",
+        "2 - Superman",
+        "3 - Dragon Ball Super",
+        "4 - La era del hielo",
+        "5 - 18videos",
+      ];
+
+      for (let i = 0; i < pelis.length - 1; i++) {
+        console.log(pelis[i]);
+      }
+
+      const PRECIO = 8.5;
+
+      let nombre = prompt("Dime tu nombre: ");
+      while (!isNaN(nombre) || nombre === null) {
+        alert("ERROR");
+        nombre = prompt("Introduce un nombre válido: ");
+      }
+
+      let edad = prompt("Dime tu edad: ");
+      edad = parseInt(edad);
+      while (isNaN(parseInt(edad)) || edad === null) {
+        alert("ERROR");
+        edad = prompt("Introduce una edad válida: ");
+      }
+
+      // console.log(nombre, edad);
+
+      let numeroPeli = prompt(
+        "Selecciona una pelicula:\n1 - Spider Man \n2 - Superman\n3 - Dragon Ball Super\n4 - La era del hielo\n5 - 18videos"
+      );
+
+      numeroPeli=comprobarPelicula(numeroPeli);
+
+      while(edad<=17 && numeroPeli==4){
+        numeroPeli=comprobarPelicula(numeroPeli);
+      }
+
+      if(edad<=17){
+        document.getElementById("nombre").innerHTML= "Nombre: "+nombre;
+        document.getElementById("pelicula").innerHTML="Pelicula: "+ pelis[numeroPeli-1];
+        document.getElementById("comida").innerHTML= "Regalos: caramelos y refresco";
+        document.getElementById("total").innerHTML= "Tu descuento es del 50%: "+descuento(50);
+      }
+
+    </script>
+  </body>
 </html>
