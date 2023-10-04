@@ -7,6 +7,13 @@
   </head>
   <body>
     <script>
+      /*
+        Calcular la potencia de un número sin if
+        (hacer uso de ternarias)
+      */
+
+
+      //Usando ternarias-------------------------------------- 
       let res = (base, exponente) => {
         let res1 = base;
         for (i = 1; i < ((exponente < 0) ? (exponente * (-1)) : exponente); i++) {
@@ -15,8 +22,11 @@
         return (exponente == 0) ? 1 : (exponente < 0) ? 1/res1 : res1;
       };
 
-      alert("Resultado: " +res(prompt("Indica la base:"), prompt("Indica el exponente:"))
-      );
+      alert("Resultado: " +res(prompt("Indica la base:"), prompt("Indica el exponente:")));
+
+
+
+
     </script>
   </body>
 </html>
