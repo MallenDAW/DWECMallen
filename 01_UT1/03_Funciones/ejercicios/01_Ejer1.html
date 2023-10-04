@@ -8,20 +8,15 @@
   <body>
     <script>
       let res = (base, exponente) => {
-      
-      let res1 = base;
-          for (i = 1; i < exponente; i++) {
-            res1 *= base;
-          }
-      let res2 = base;
-      for (i = 1; i < (exponente * (-1)); i++) {
-            res2 *= base;
-          }
-      return (exponente==0) ?  1 : ((exponente<0)?  1/res2 : res1 );
+        let res1 = base;
+        for (i = 1; i < ((exponente < 0) ? (exponente * (-1)) : exponente); i++) {
+          res1 *= base;
         }
+        return (exponente == 0) ? 1 : (exponente < 0) ? 1/res1 : res1;
+      };
 
-        
-      alert("Resultado: "+res(prompt("Indica la base:"), prompt("Indica el exponente:")));
+      alert("Resultado: " +res(prompt("Indica la base:"), prompt("Indica el exponente:"))
+      );
     </script>
   </body>
 </html>
