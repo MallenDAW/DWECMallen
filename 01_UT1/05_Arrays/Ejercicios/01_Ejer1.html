@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicios con arrays (métodos)</title>
+</head>
+<body>
+  <h1>Ejercicio 1 - join()</h1>
+  <p id="id1"></p>
+  <p id="array"></p>
+  <script>
+    let a=["Lunes","martes",2,4,6];
+    let cadena=a.join(' / ');
+    document.getElementById('array').innerHTML="Array: "+a;
+    document.getElementById('id1').innerHTML="Cadena: "+cadena;
+  </script>
+
+  <h1>Ejercicio 2 - split()</h1>
+  <p id="id2"></p>
+  <p id="array2"></p>
+  <script>
+    let notas="5-7.5-6-4-8";
+    let b=notas.split('-');
+    console.log(b);
+    document.getElementById('array2').innerHTML="Array: "+b;
+    document.getElementById('id2').innerHTML=b;
+  </script>
+</body>
+</html>
+
+<!--  -->

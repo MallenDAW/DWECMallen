@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Ejercicio Arrays</h1>
+  <p id="socios"></p>
+  <p id="numero"></p>
+  <p id="asc"></p>
+  <p id="desc"></p>
+  <script>
+    let socios=[];
+    
+    for(let i=0;i<10;i++){
+      socios[i]=prompt(`Nombre del socio ${i+1}`);
+    }
+
+    document.getElementById("socios").innerHTML="Orden de inserción: "+socios;
+    document.getElementById("numero").innerHTML="Número de socios: "+socios.length;
+    document.getElementById("asc").innerHTML="Orden ascendente: "+socios.sort();
+    document.getElementById("desc").innerHTML="Orden descendente: "+socios.reverse();
+
+  </script>
+</body>
+</html>
+
+<!-- Programa que introduzca 10 nombres de socios (usar Array) 
+
+      -Se llenara el array con prompt()
+      -Mostra la información por pantalla
+        *Mostrar tal como se han introducido
+        *Indicar el numero de socios
+        *Nombre de los socios alfabeticamente
+        *Nombre de los socios de manera inversa
+-->
