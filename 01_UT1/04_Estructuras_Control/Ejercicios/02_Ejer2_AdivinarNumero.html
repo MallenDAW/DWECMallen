@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adivinar número</title>
+</head>
+<body>
+  <script>
+    let numeroAleatorio=Math.ceil(Math.random()*100);
+    let intentos=1;
+    let numeroAdivinar=(parseInt(prompt("Que número crees que es?")));
+    
+    while(numeroAdivinar!=numeroAleatorio){
+      intentos++;
+      (numeroAdivinar > numeroAleatorio)? alert(`El numero que buscas es menor a ${numeroAdivinar}`):alert(`El numero que buscas es mayor a ${numeroAdivinar}`);
+      numeroAdivinar=(parseInt(prompt("Que número crees que es?")));
+      
+    }
+    alert(`El numero ${numeroAleatorio} era el correcto!\nHas usado ${intentos} intentos`);
+  </script>
+</body>
+</html>
+
+
+<!-- Usar Math.ceil(Math.random()*100) para generar numeros aleatorios:      
+     El usuario introducirá numeros hasta que adivine el número
+     Se contarán los intentos totales
+     Usar estructuras while
+-->
