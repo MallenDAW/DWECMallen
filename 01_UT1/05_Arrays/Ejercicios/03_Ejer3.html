@@ -3,12 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Ordenar array SORT() </title>
 </head>
 <body>
   <script>
+
+    let personas= [persona1={nombre:"Pepe",edad:12},persona2={nombre:"Juan",edad:15},persona3={nombre:"Maria",edad:55}];
+
+    let personasOrdenado = personas.sort(function(persona1,persona2){
+      return persona1.edad - persona2.edad;
+    });
+
+    let ordenarPersona= personas.sort((persona1,persona2) => console.log(persona1.edad - persona2.edad));
+    console.log(personas);
+    console.log(ordenarPersona);
+
+    // let ordenarNombre= personas.sort((persona1,persona2) => console.log(persona1.nombre.toLocaleCompare(persona2.nombre)));
     
-  </script>
+
+    function ordenar(){
+      let array;
+      for (let i = 0; i < arguments.length-1; i++) {
+        array=push(arguments[i]);
+        
+      }
+      return array.sort();
+    }
+
+    console.log(ordenar(5,45,12,40));
+    // let ordenar= ((array)=> console.log(array.sort()) );
+    
+    </script>
 
 </body>
 </html>
