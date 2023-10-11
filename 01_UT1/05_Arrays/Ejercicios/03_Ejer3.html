@@ -8,13 +8,13 @@
 <body>
   <script>
 
-    let personas= [persona1={nombre:"Pepe",edad:12},persona2={nombre:"Juan",edad:15},persona3={nombre:"Maria",edad:55}];
+    let personas= [persona1={nombre:"Pepe",edad:200},persona2={nombre:"Juan",edad:15},persona3={nombre:"Maria",edad:55}];
 
     let personasOrdenado = personas.sort(function(persona1,persona2){
       return persona1.edad - persona2.edad;
     });
 
-    let ordenarPersona= personas.sort((persona1,persona2) => console.log(persona1.edad - persona2.edad));
+    let ordenarPersona= personas.sort((persona1,persona2) => persona1.edad - persona2.edad);
     console.log(personas);
     console.log(ordenarPersona);
 
@@ -24,7 +24,7 @@
     function ordenar(){
       let array;
       for (let i = 0; i < arguments.length-1; i++) {
-        array=push(arguments[i]);
+        array=arguments[i];
         
       }
       return array.sort();
