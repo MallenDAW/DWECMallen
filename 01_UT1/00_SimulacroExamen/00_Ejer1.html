@@ -21,26 +21,26 @@
     <div id="contenedor2"></div>
 
     <script>
+
       let numeroFilas = parseInt(prompt("Cuantas filas?")); //Ponemos el limite
-      
 
       //Piramide de pie
-      for (let i = 0; i < numeroFilas; i++) {
+      for (let i = 1; i < numeroFilas+1; i++) {
         for (let j = 0; j < numeroFilas - i; j++) {
-          document.getElementById("contenedor").innerHTML += "&nbsp";
+          document.getElementById("contenedor").innerHTML += "&nbsp&nbsp";
         }
 
-        llenar(i);
-        document.getElementById("contenedor").innerHTML += "*<br>";
+        llenar((i*2)-1);
+        document.getElementById("contenedor").innerHTML += "<br>";
       }
 
       //Piramide tumbada
       for (let i = numeroFilas-1; i > 0; i--) {
-        for (let j = numeroFilas/2; j < 0; j++) {
-          document.getElementById("contenedor").innerHTML += "&nbsp";
+        for (let j = numeroFilas -i; j > 0; j--) {
+          document.getElementById("contenedor").innerHTML += "&nbsp&nbsp";
           
         }
-        llenar(i);
+        llenar((i*2)-1);
         document.getElementById("contenedor").innerHTML += "<br>";
       }
 
@@ -52,7 +52,7 @@
         
       }
     </script>
-    <script>
+    <!-- <script>
       //Solucion Juanjo
       let caja=document.getElementById("contenedor2");
 
@@ -88,7 +88,7 @@
         caja.innerHTML=caja.innerHTML+asterisoc+espacio;
       }
 
-    </script>
+    </script> -->
     <script>
       //Solucion Andrea
       
