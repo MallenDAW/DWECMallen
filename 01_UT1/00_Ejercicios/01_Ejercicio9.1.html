@@ -7,9 +7,19 @@
 </head>
 <body>
   <script>
-    let frase=prompt("dime una frase:");
+    let frase=prompt("Dime una frase:"); 
 
-    
+    console.log(frase);
+    frase=frase.replace(/,/g,"");
+
+    let miArray=frase.split(" ");
+
+    console.log(frase);
+    console.log(miArray);
+
+    console.log("Primera palabra: "+miArray[0]);
+    console.log("Última palabra: "+miArray[miArray.length-1]);
+    console.log("Número de palabras: "+miArray.length);
 
   </script>
 </body>
