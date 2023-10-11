@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spread y Rest</title>
-</head>
-<body>
-  <script>
-    //si ponemos los 3 puntos '...' estamos recogiendo todos los elementos que pasen
-    //sin necesidad de poner cada elemento individualmente
-    const debug =(param) => console.log(...param); //al ponerlo en el log salen elementos individuales (desagrupa)
-    const debug2 =(...param) => console.log(param); //al ponerlo en el argumento el log devuelve un array (agrupa)
-    const matriz=[1,2,3,4,5];
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spread y Rest</title>
+  </head>
+  <body>
+    <script>
+      //SPREAD--------------
+      //si ponemos los 3 puntos '...' estamos recogiendo todos los elementos que pasen
+      //sin necesidad de poner cada elemento individualmente
+      const debug = (param) => console.log(...param); //al ponerlo en el log salen elementos individuales (desagrupa)
+      const debug2 = (...param) => console.log(param); //al ponerlo en el argumento el log devuelve un array (agrupa)
+      const matriz = [1, 2, 3, 4, 5];
 
-    debug(matriz);
-    debug2(matriz);
+      debug(matriz);
+      debug2(matriz);
 
-  </script>
-</body>
+      //REST--------------
+      const elements = [5, 4, 3, 2];
+      const [first, ...rest] = elements; //cogemos el 5 en first y en rest con '...' guardamos un array con [4,3,2]
+
+      console.log(first);
+      console.log(rest);
+    </script>
+  </body>
 </html>
