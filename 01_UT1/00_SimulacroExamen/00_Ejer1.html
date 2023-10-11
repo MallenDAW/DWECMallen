@@ -17,82 +17,36 @@
     <title>Ejercicio</title>
   </head>
   <body>
-    <div id="contenedor"></div><br>
-    <div id="contenedor2"></div>
+    <div id="contenedor"></div>
 
     <script>
-
       let numeroFilas = parseInt(prompt("Cuantas filas?")); //Ponemos el limite
 
       //Piramide de pie
-      for (let i = 1; i < numeroFilas+1; i++) {
+      for (let i = 1; i < numeroFilas + 1; i++) {
         for (let j = 0; j < numeroFilas - i; j++) {
           document.getElementById("contenedor").innerHTML += "&nbsp&nbsp";
         }
 
-        llenar((i*2)-1);
+        llenar(i * 2 - 1);
         document.getElementById("contenedor").innerHTML += "<br>";
       }
 
       //Piramide tumbada
-      for (let i = numeroFilas-1; i > 0; i--) {
-        for (let j = numeroFilas -i; j > 0; j--) {
+      for (let i = numeroFilas - 1; i > 0; i--) {
+        for (let j = numeroFilas - i; j > 0; j--) {
           document.getElementById("contenedor").innerHTML += "&nbsp&nbsp";
-          
         }
-        llenar((i*2)-1);
+        llenar(i * 2 - 1);
         document.getElementById("contenedor").innerHTML += "<br>";
       }
 
+      //Funcion para imprimir *
       function llenar(cantidad) {
-           
         for (let i = 0; i < cantidad; i++) {
           document.getElementById("contenedor").innerHTML += "*";
         }
-        
       }
-    </script>
-    <!-- <script>
-      //Solucion Juanjo
-      let caja=document.getElementById("contenedor2");
-
-      //ascendiente
-      let limite=4;
-      for (let i = 0; i < limite; i++) {
-        let asterisoc="";
-        let espacio="";
-        for (let j = 0; j < limite-i-1; j++) {
-          espacio+="&nbsp&nbsp";
-          
-        }
-        for (let k = 1; k < (2*i)+1; k++) {
-          asterisoc+="*";
-          
-        }
-        caja.innerHTML=caja.innerHTML+espacio+asterisoc+"<br>";
-      }
-
-
-      //Descendiente
-      for (let i = limite-2; i >=0; i--) {
-        let asterisoc="";
-        let espacio="";
-        for (let j = 0; j < limite-i-1; j++) {
-          espacio+="&nbsp";
-          
-        }
-        for (let k = 1; k < 2*i+1; k++) {
-          asterisoc+="*";
-          
-        }
-        caja.innerHTML=caja.innerHTML+asterisoc+espacio;
-      }
-
-    </script> -->
-    <script>
-      //Solucion Andrea
-      
-
     </script>
   </body>
 </html>
