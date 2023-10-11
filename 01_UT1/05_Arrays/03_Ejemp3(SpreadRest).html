@@ -9,13 +9,13 @@
   <script>
     //si ponemos los 3 puntos '...' estamos recogiendo todos los elementos que pasen
     //sin necesidad de poner cada elemento individualmente
-    const debug =(param) => console.log(...param); 
+    const debug =(param) => console.log(...param); //al ponerlo en el log salen elementos individuales (desagrupa)
+    const debug2 =(...param) => console.log(param); //al ponerlo en el argumento el log devuelve un array (agrupa)
     const matriz=[1,2,3,4,5];
 
     debug(matriz);
+    debug2(matriz);
 
-
-    
   </script>
 </body>
 </html>
