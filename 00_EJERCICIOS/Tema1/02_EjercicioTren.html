@@ -23,7 +23,7 @@
         numero = prompt("Introduce un número válido: ");
 
 
-      /*Idea:
+      /*Idea 1:
       funcion recursiva que se le pase un array:
 
         +usar reverse() para dar la vuelta
@@ -32,7 +32,16 @@
         +la condicion de parada será la longitud del array, si es 0 deja de llamarse a si misma 
       */
 
+      /*Idea 2:
+      Recorrer el array de pasajeros y extraer:
+      Las posiciones pares del array son los pasajeros que suben (se acumula en 'suben')
+      Las posiciones impares del array son los pasajeros que se bajan (se acumula en 'bajan')
 
+        +Si la diferencia entre ('suben'-'bajan') es negativa, no pueden bajarse más de los que han subido
+        +Si la diferencia es positiva, son los pasajeros que quedan en el tren en la última estacion.
+      */
+
+      
       //Conmprobaciones de variables ()  
       console.log("Array: " + pasarArray(numero));
       console.log("Numero introducido: " + numero);
