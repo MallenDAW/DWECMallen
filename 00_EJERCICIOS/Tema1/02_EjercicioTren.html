@@ -8,7 +8,7 @@
   <body>
     <script>
       //Funciones
-      function pasarArray(cantidad) {
+      function pasarArray(cantidad) {  //Le pasamos el numero en formato string
         let array = [];
         for (let i = 0; i < cantidad.length; i++) {
           array[i] = cantidad[i];
@@ -17,13 +17,21 @@
       }
       //...
 
-      //Pedimos el número y no aseguramos que sea un valor válido (que no sea null o string)
+      //Pedimos el número y nos aseguramos que sea un valor válido (que no sea null o string)
       let numero = prompt("Dime un número: ");
       while (isNaN(parseInt(numero)) || numero === null)
         numero = prompt("Introduce un número válido: ");
 
 
-      
+      /*Idea:
+      funcion recursiva que se le pase un array:
+
+        +usar reverse() para dar la vuelta
+        +usar desestructuracion [uno, dos,...rest] y usar las 2 variables para operar viajeros (habrá que pasarlas a number)
+        +pasarle a la funcion el array de rest
+        +la condicion de parada será la longitud del array, si es 0 deja de llamarse a si misma 
+      */
+
 
       //Conmprobaciones de variables ()  
       console.log("Array: " + pasarArray(numero));
