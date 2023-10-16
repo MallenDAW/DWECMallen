@@ -23,6 +23,14 @@
         numero = prompt("Introduce un número válido: ");
 
 
+
+      let viajeros=pasarArray(numero);
+      viajeros=viajeros.reverse();
+      
+      let pasajerosSuben=0;
+      let pasajerosBajan=0;
+      
+
       /*Idea 1:
       funcion recursiva que se le pase un array:
 
@@ -40,6 +48,14 @@
         +Si la diferencia entre ('suben'-'bajan') es negativa, no pueden bajarse más de los que han subido
         +Si la diferencia es positiva, son los pasajeros que quedan en el tren en la última estacion.
       */
+
+      //---------------Segundo método -----------------
+       for (let i = 0; i < viajeros.length; i++) {
+        (i%2==0||i==0)?pasajerosSuben+=parseInt(viajeros[i]):pasajerosBajan+=parseInt(viajeros[i]);
+      }
+      let total=pasajerosSuben-pasajerosBajan;
+      console.log((total< 0)? "Número incorrecto: no se pueden bajar pasajeros que no han subido":`Quedan ${total} pasajeros en la última estación`);
+      
 
       
       //Conmprobaciones de variables ()  
