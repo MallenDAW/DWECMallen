@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const HOY=[3,4,7,,{nombre:"Juan",apellidos:"garcia"}];
+
+    //Imprimir el array a pelo
+    console.log("Console log del array: "+HOY);
+    
+    //Usando un for normal
+    console.log(" -------------- For normal -------------- ");
+    for (let indice = 0; indice < HOY.length; indice++) {
+      console.log("Posicion "+indice+": "+HOY[indice]);
+      
+    }
+
+
+    //Usando un for in
+    console.log(" -------------- For in --------------  ");
+    for (const clave in HOY) {
+      console.log(HOY[clave]);
+    }
+
+    //Usando un for of
+    console.log(" -------------- For of --------------  ");
+    for (const iterator of HOY) {
+      console.log(HOY[iterator]);
+    }
+
+    //Usando un foreach
+    console.log(" -------------- For each --------------  ");
+    HOY.forEach(element => {
+      console.log(HOY[element]);
+    });
+  </script>
+</body>
+</html>
