@@ -7,10 +7,8 @@
   </head>
   <body>
     <script>
-      /*2. Crea la lista de contactos en un array, de tal manera que cada uno de sus elementos será un objeto que describa a un solo usuario (tres propiedades). 
-         Al final de la lista declarada de esta manera, agrega un nuevo contacto usando un método de array, apropiado. 
-                    *El nuevo contacto es: Maisie Haley / 0913 531 3030 / risus.Quisque@urna.ca.
-                    *Muestra el primer y último contacto, de nuevo en el formato: nombre / teléfono / correo electrónico. (length)
+      /*3.- Modifica el programa para agregar, al final de la lista, el contacto que el usuario introducirá durante la ejecución del programa. (prompt).
+            Al final, muestra el primer y último contacto de la lista.
     */
 
       //Definimos el array con la lista de contactos (estos serán objetos)
@@ -32,11 +30,11 @@
         },
       ];
 
-      //Introducimos un contacto nuevo utilizando push()
+      //Introducimos un contacto nuevo utilizando push() y prompt() para que introduzca los datos el usuario
       contactos.push({
-        nombre: "Maisie Haley",
-        telefono: "0913 531 3030",
-        correo: "risus.Quisque@urna.ca",
+        nombre: prompt("Nombre:"),
+        telefono: prompt("Teléfono:"),
+        correo: prompt("Correo:"),
       });
 
       //Creamos una función para imprimir, pasandole el array y la posición que queremos que muestre
