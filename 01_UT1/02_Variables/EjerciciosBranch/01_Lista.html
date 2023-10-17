@@ -3,12 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Apartado 4</title>
   </head>
   <body>
     <script>
-      /*3.- Modifica el programa para agregar, al final de la lista, el contacto que el usuario introducirá durante la ejecución del programa. (prompt).
-            Al final, muestra el primer y último contacto de la lista.
+      /*4. Modifica el programa para que el usuario pueda elegir lo que quiere hacer con la lista. Las opciones serán:
+                • Mostrar el primer contacto (primero)
+                • Mostrar el último contacto (último)
+                • Añadir un nuevo contacto (nuevo)
+        Al agregar un nuevo contacto, verifica si el usuario ha ingresado todos los datos necesarios. 
+        Si falta al menos uno de los tres valores (nombre, teléfono o correo electrónico), no se agrega el contacto.
     */
 
       //Definimos el array con la lista de contactos (estos serán objetos)
@@ -30,23 +34,52 @@
         },
       ];
 
-      //Introducimos un contacto nuevo utilizando push() y prompt() para que introduzca los datos el usuario
-      contactos.push({
-        nombre: prompt("Nombre:"),
-        telefono: prompt("Teléfono:"),
-        correo: prompt("Correo:"),
-      });
+      //Preguntamos al usuario la opción y usamos un switch para las opciones
+      let opcion = parseInt(prompt("ELIGE UNA OPCION\n1-Mostrar primer contacto\n2-Mostrar último contacto\n3-agragar nuevo contacto"));
 
+      switch (opcion) {
+        case 1:
+          mostrarContacto(contactos, 0);
+          break;
+        case 2:
+          mostrarContacto(contactos, contactos.length - 1);
+          break;
+        case 3:
+          agregarContacto(contactos);
+          break;
+      }
+      mostrarContacto(contactos, contactos.length - 1);
+
+      //Creamos una función para crear contactos nuevos
+      function agregarContacto(array) {
+
+        let nombre = prompt("Nombre:");
+        let telefono = prompt("Telefono:");
+        let correo = prompt("Correo:");
+
+        if (nombre === "" || telefono === "" || correo === "") {
+          alert("No pudo añadrise el contacto, no se admiten campos vacíos.")
+        } else {
+          array.push({
+            nombre: nombre,
+            telefono: telefono,
+            correo: correo,
+          });
+        }
+      }
+
+      //Creamos una función para validar
+      function validarUsuario(array) {}
       //Creamos una función para imprimir, pasandole el array y la posición que queremos que muestre
       function mostrarContacto(array, posicion) {
-        console.log(`${array[posicion].nombre} / ${array[posicion].telefono} / ${array[posicion].correo}`);
+        console.log(
+          `${array[posicion].nombre} / ${array[posicion].telefono} / ${array[posicion].correo}`
+        );
       }
 
       //Mostramos el primer contacto
-      mostrarContacto(contactos, 0);
+
       //Mostramos el último contacto
-      mostrarContacto(contactos, contactos.length - 1);
-      
     </script>
   </body>
 </html>
