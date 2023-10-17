@@ -1,46 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-
-    /*2.- Crea la lista de contactos en un array, de tal manera que cada uno de sus elementos 
-          será un objeto que describa a un solo usuario (tres propiedades). 
-
-          Al final de la lista declarada de esta manera, agrega un nuevo contacto usando un método de array, apropiado. 
-          El nuevo contacto es: Maisie Haley / 0913 531 3030 / risus.Quisque@urna.ca.
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*2. Crea la lista de contactos en un array, de tal manera que cada uno de sus elementos será un objeto que describa a un solo usuario (tres propiedades). 
+         Al final de la lista declarada de esta manera, agrega un nuevo contacto usando un método de array, apropiado. 
+                    *El nuevo contacto es: Maisie Haley / 0913 531 3030 / risus.Quisque@urna.ca.
+                    *Muestra el primer y último contacto, de nuevo en el formato: nombre / teléfono / correo electrónico. (length)
     */
 
-    let contactos=[
-      {                             //Objeto
-        nombre:"Maxwell",                     
-        telefono:"(0191) 719 6495",
-        correo:"correofalso@nonummyac.co.uk"
-      },
-      {
-        nombre:"Raja",
-        telefono:"0866 398 2895",
-        correo:"correofalso@sed.com"
-      },
-      {
-        nombre:"Helen",
-        telefono:"0800 1111",
-        correo:"correofalso@sed.com"
-      },
-      {
-        nombre:"Maisie Haley",
-        telefono:"0913 531 3030",
-        correo:"risus.Quisque@urna.ca"
+      //Definimos el array con la lista de contactos (estos serán objetos)
+      let contactos = [
+        {
+          nombre: "Maxwell",
+          telefono: "(0191) 719 6495",
+          correo: "correofalso@nonummyac.co.uk",
+        },
+        {
+          nombre: "Raja",
+          telefono: "0866 398 2895",
+          correo: "correofalso@sed.com",
+        },
+        {
+          nombre: "Helen",
+          telefono: "0800 1111",
+          correo: "correofalso@sed.com",
+        },
+      ];
+
+      //Introducimos un contacto nuevo utilizando push()
+      contactos.push({
+        nombre: "Maisie Haley",
+        telefono: "0913 531 3030",
+        correo: "risus.Quisque@urna.ca",
+      });
+
+      function mostrarContacto(array, posicion) {
+        console.log(`${array[posicion].nombre} / ${array[posicion].telefono} / ${array[posicion].correo}`);
       }
 
-    ];
-
-
-
-  </script>
-</body>
+      //Mostramos el primer contacto
+      mostrarContacto(contactos, 0);
+      //Mostramos el último contacto
+      mostrarContacto(contactos, contactos.length - 1);
+      
+    </script>
+  </body>
 </html>
