@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maps</title>
+</head>
+<body>
+  <script>
+    //Para organizar clave:valor. Mezcla el set y el array.
+    //Se recorre con un for of y se usa la conversion con spread '...'
+
+    const fruta= new Map([
+      ["manzana",500], //La clave es manzana y el valor 500
+      ["platano",300],
+      ["mandarina",200],
+    ]);
+
+    fruta.set("naranja",100); //con el .set(key,value) añadimos un elemento más al mapa
+
+    console.log(fruta);
+    //Métodos de Map: SET,KEY,VALUE,GET,DELETE,HAS
+  </script>
+</body>
+</html>

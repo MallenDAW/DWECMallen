@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Crear un array a partir de 3 arrays sin que contenga elementos duplicados
+    let miArray1=[1,2,3,4,5,6,7,8];
+    let miArray2=[1,2,3,8,9,0,43,45,65];
+    let miArray3=[12,32,87,45];
+
+
+    let miSet=new Set(miArray1.concat(miArray2.concat(miArray3)));
+    let arrayFinal=[...miSet];
+    console.log("Usando concat ------");
+    console.log(arrayFinal);
+
+    let miSet2=new Set([...miArray1,...miArray2,...miArray3])
+    let arrayFinal2=[...miSet2];
+    console.log("Usando spread ------");
+    console.log(arrayFinal2);
+
+  </script>
+</body>
+</html>
