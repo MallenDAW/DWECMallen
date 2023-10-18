@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 6</title>
+  </head>
+  <body>
+    <script>
+      let numero = parseInt(prompt("Introduce un número"));
+
+      //Comprobamos que el dato que introduce el usuario es correcto
+      while (isNaN(numero) || numero === null || numero === 0) {
+        numero = parseInt(prompt("Introduce un número válido:"));
+      }
+
+      //Usando una ternaria comprobamos si el resto es 0 al dividir entre 2
+      console.log(numero % 2 === 0 ? `El número ${numero} es par` : `El número ${numero} es impar`);
+    </script>
+  </body>
+</html>
+<!-- 6. Averiguar si un número es par o impar -->

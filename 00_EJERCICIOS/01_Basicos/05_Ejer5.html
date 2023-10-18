@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejerecicio 5</title>
+</head>
+<body>
+  <script>
+    let numero=parseInt(prompt("Introduce un número"));
+
+    //Comprobamos que el dato que introduce el usuario es correcto
+    while (isNaN(numero) || numero === null) {
+          numero = parseInt(prompt("Introduce un número válido:"));
+    }
+
+    console.log(`Los números divisbles de ${numero} son:`);
+    for (let i = 0; i <= numero ; i++) {
+      if(numero%i===0) console.log(i);  //Sólo imprimimos los números que den como resto 0
+    }
+
+
+  </script>
+</body>
+</html>
+<!-- 5. Mostrar todos los divisores de un número -->

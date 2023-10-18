@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 9</title>
+  </head>
+  <body>
+    <div id="calculadora"></div>
+    <script>
+
+      //Funciones
+      function pedirNumero(n) {
+        while (isNaN(n) || n === null) {
+          n = parseInt(prompt("Introduce un número válido:"));
+        }
+        return n;
+      }
+
+      let suma = (a, b) => `${a} + ${b} = ${a + b}`;
+      let resta = (a, b) =>  `${a} - ${b} = ${a - b}`;
+      let multiplicacion = (a, b) =>  `${a} x ${b} = ${a * b}`;
+      let division = (a, b) => (b!==0)?  `${a} / ${b} = ${a / b}`: `${a} / ${b}  IMPOSIBLE -- no se puede dividir ${a} entre ${b}`;
+
+      //funcion para imprimir de las 3 formas
+      function imprimir(res,operacion){
+        alert(`${operacion} de ${res}`);
+        console.log(`${operacion} de ${res}`);
+        document.getElementById("calculadora").innerHTML+=`${operacion} de ${res} <br/>`;
+      }
+      //.....fin funciones
+
+      //Variables
+      let numero1 = pedirNumero(parseInt(prompt("Introduce un número:")));
+      let numero2 = pedirNumero(parseInt(prompt("Introduce un número:")));
+      //......fin de variables
+
+      //Llamamos a la función imprimir haciendo callback de cada operación
+      imprimir(suma(numero1,numero2),"Suma");
+      imprimir(resta(numero1,numero2),"Resta");
+      imprimir(multiplicacion(numero1,numero2),"Multiplicación");
+      imprimir(division(numero1,numero2),"División");
+      
+
+
+    </script>
+  </body>
+</html>
+<!-- 9. calculadora que pida dos números.Si uno está mal que lo vuelva a pedir
+En el cuerpo, en una alerta y por la consola enseñar suma, resta, producto y división -->
