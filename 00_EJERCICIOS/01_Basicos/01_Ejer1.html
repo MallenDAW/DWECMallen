@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 1</title>
+</head>
+<body>
+  <script>
+    
+    function pedirNumero(n){
+      while (isNaN(n)||n===null||n<0) {
+      n=parseInt(prompt("Introduce un número válido:"));
+    }
+      return n;
+    }
+
+    let numero1=pedirNumero(parseInt(prompt("Introduce un número:")));
+    let numero2=pedirNumero(parseInt(prompt("Introduce un número:")));
+    
+    console.log((numero1>numero2)?`${numero1} es mayor a ${numero2}`: (numero1<numero2)?`${numero2} es mayor a ${numero1}`:`${numero1} y ${numero2} son iguales`);
+    
+  </script>
+</body>
+</html>
+
+<!-- 1. Programa que pida dos números y nos diga cuál es el mayor, el menor o si son iguales. 
+        Si no son números o son menores que cero, que lo vuelva a pedir.
+ -->

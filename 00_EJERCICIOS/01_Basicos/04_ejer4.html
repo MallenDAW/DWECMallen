@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 4</title>
+  </head>
+  <body>
+    <script>
+      //Funciones
+      function pedirNumero(n) {
+        while (isNaN(n) || n === null) {
+          n = parseInt(prompt("Introduce un número válido:"));
+        }
+        return n;
+      }
+
+      function imprimir(a, b) {
+        for (a; a <= b; a++) {
+          console.log(a);
+        }
+      }
+      //......fin de funciones
+
+      //Variables
+      let numero1 = pedirNumero(parseInt(prompt("Introduce un número:")));
+      let numero2 = pedirNumero(parseInt(prompt("Introduce un número:")));
+      //......fin de variables
+
+      //Usamos el numero más pequeño para contar hasta el más grande.Si se introducen al revés se ordenana con la ternaria
+      numero1 > numero2
+        ? imprimir(numero2, numero1)
+        : imprimir(numero1, numero2);
+    </script>
+  </body>
+</html>
+
+<!-- 4. Mostrar todos los impares que estén entre dos números introducidos por el usuario -->

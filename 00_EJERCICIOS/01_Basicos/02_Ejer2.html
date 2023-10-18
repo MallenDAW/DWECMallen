@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 2</title>
+  </head>
+  <body>
+    <script>
+      //Funciones
+      function pedirNumero(n) {
+        while (isNaN(n) || n === null) {
+          n = parseInt(prompt("Introduce un número válido:"));
+        }
+        return n;
+      }
+
+      let media = (a, b) => (a + b) / 2;
+      let suma = (a, b) => a + b;
+      //......fin de funciones
+
+      //Variables
+      let numero1 = pedirNumero(parseInt(prompt("Introduce un número:")));
+      let numero2 = pedirNumero(parseInt(prompt("Introduce un número:")));
+      //......fin de variables
+
+      //Bucle
+      while (numero1 >= 0 ) {
+        if(numero2<0) break;
+        console.log(`Media de ${numero1} y ${numero2}: `+media(numero1, numero2));
+        console.log(`Suma de ${numero1} y ${numero2}: `+suma(numero1, numero2));
+        numero1 = pedirNumero(parseInt(prompt("Introduce un número:")));
+        numero2 = pedirNumero(parseInt(prompt("Introduce un número:")));
+      }
+      //......fin de bucle
+
+      console.log("Salir");
+    </script>
+  </body>
+</html>
+<!-- 2. Media y suma hasta meter número negativo -->
