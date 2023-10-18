@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funciones 1</title>
+</head>
+<body>
+  <script>
+
+
+    //-----------DECLARANDO LA FUNCIÓN---------- (se pueden usar antes de definirlas)
+    let resultado=multiplicar(2,3);
+
+    //Definimos la función
+    function multiplicar(a,b){
+      return a*b;
+    }
+    console.log(resultado);
+
+
+    //----------FUNCIÓN POR EXPRESIÓN---------- (NO se pueden usar antes de definirlas)
+
+    //Metemos en una variable una función
+    let saludo=function hola(){
+      console.log("Buenso dias!");
+    }
+    //Para invocar la función se escribe el nombre de la variable con los () al final
+    saludo();
+
+
+    //----------FUNCIONES ANÓNIMAS---------- (se pueden usar antes de definirlas)
+
+    //Funciones que no tiene nombre
+    let producto= function(a,b) {
+      return a*b;
+    }
+    let res=producto(4,12);
+    console.log(res);
+
+
+    //---------FUNCION CALLBACK----------
+    //Utilizar como parámetro de una función otra función
+    const funcion2=function(){
+      return("Hola otra vez");
+    }
+    const usuario=function(callback){
+      console.log(callback()+" Pepe");
+    }
+    usuario(funcion2); //al pasarla como parámetro no es neceasrio poner () al final
+
+
+    //-----------FUNCION AUTEJECUTABLE
+    //Funcion anónima que se autoinvoca: se pone entre paréntesis (function)
+
+    (function(user){
+      console.log("Hola " + user);
+    })("pepe");
+    //Con la estructura (funcion)(parametro) usará el segundo paréntesis para pasar parámetros
+
+    (function () { alert ("¡Hola!");}());
+    
+  </script>
+</body>
+</html>
