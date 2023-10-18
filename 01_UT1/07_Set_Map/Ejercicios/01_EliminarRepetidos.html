@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elementos repetidos</title>
+</head>
+<body>
+  <script>
+    // conseguir una matriz que no contenga elementos repetidos
+    let miArray=[1,1,1,3,7,4,3,5];
+    let arraySet=new Set(miArray); //convertimos el array en conjunto para eliminar repetidos
+    let arrayfinal=[...arraySet];  //convertimnos el conjunto a un array
+
+    console.log(arrayfinal);
+  </script>
+</body>
+</html>

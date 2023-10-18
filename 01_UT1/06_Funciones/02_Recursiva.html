@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursivas</title>
+</head>
+<body>
+  <script>
+
+    //---------FUNCION RECURSIVA
+
+
+    //Funciones que se llaman a si mismas. Tendriamos que indicar una condición de parada  
+    function factorial(numero) {
+      if(numero<=1) return 1;
+      else return numero*factorial(numero-1);
+    }
+
+    console.log(factorial(5));
+
+    
+
+  </script>
+</body>
+</html>

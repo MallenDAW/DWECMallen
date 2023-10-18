@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set</title>
+</head>
+<body>
+  <script>
+    // new Set(xxxx) donde xxx es un iterable(array,map,string)
+    const miSet= new Set("pamplinas"); //el set no admite elementos rpetidos
+    console.log(miSet);
+
+
+    //Los set se recorren con un for of
+    let conjunto = new Set([2,3,4,3,2,7])
+    for (let element of conjunto) {
+      console.log(element);
+    }
+
+    //Métodos a usar : ADD, DELETE , CLEAR, SIZE, HAS
+
+
+    const miarray=[...miSet];
+    console.log(miarray);
+  </script>
+</body>
+</html>
