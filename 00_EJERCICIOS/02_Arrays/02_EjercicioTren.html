@@ -8,7 +8,8 @@
   <body>
     <script>
       //Funciones
-      function pasarArray(cantidad) {  //Le pasamos el numero en formato string
+      function pasarArray(cantidad) {
+        //Le pasamos el numero en formato string
         let array = [];
         for (let i = 0; i < cantidad.length; i++) {
           array[i] = cantidad[i];
@@ -22,14 +23,18 @@
       while (isNaN(parseInt(numero)) || numero === null)
         numero = prompt("Introduce un número válido: ");
 
+      let viajeros = pasarArray(numero);
+      viajeros = viajeros.reverse();
 
+      //Conmprobaciones de variables ()
+      console.log("Array: " + viajeros);
+      console.log("Numero introducido: " + numero);
+      //.....
 
-      let viajeros=pasarArray(numero);
-      viajeros=viajeros.reverse();
-      
-      let pasajerosSuben=0;
-      let pasajerosBajan=0;
-      
+      let pasajerosSuben = 0;
+      let pasajerosBajan = 0;
+      let parada = 0;
+      let flag = true;
 
       /*Idea 1:
       funcion recursiva que se le pase un array:
@@ -39,6 +44,31 @@
         +pasarle a la funcion el array de rest
         +la condicion de parada será la longitud del array, si es 0 deja de llamarse a si misma 
       */
+
+      //---------------Primer método -----------------
+
+      function calcularViajeros(array) {
+        if (array.length !== 0) {
+          parada++;
+          const [suben, bajan, ...resto] = array;
+          pasajerosSuben += parseInt(suben);
+          pasajerosBajan += parseInt(bajan);
+
+          
+          if (parseInt(pasajerosSuben) - parseInt(bajan) < 0) {
+            console.log(`En la parada ${parada} quieren bajar ${bajan} viajeros pero solo hay ${pasajerosSuben}`);
+            array = [];
+            flag = false;
+          } else {
+            pasajerosSuben = parseInt(pasajerosSuben) - parseInt(bajan);
+            console.log("PARADA - "+parada+" | suben " + suben +" bajan " +bajan+" | TOTAL " + pasajerosSuben);
+            calcularViajeros(resto);
+          }
+        }
+      }
+
+      calcularViajeros(viajeros);
+      (flag) ? console.log(`Han llegado ${pasajerosSuben} pasajeros a la última parada, la ${parada}`):console.log("Prueba a introducir un número correcto");
 
       /*Idea 2:
       Recorrer el array de pasajeros y extraer:
@@ -50,17 +80,13 @@
       */
 
       //---------------Segundo método -----------------
+      /*
        for (let i = 0; i < viajeros.length; i++) {
         (i%2==0||i==0)?pasajerosSuben+=parseInt(viajeros[i]):pasajerosBajan+=parseInt(viajeros[i]);
       }
       let total=pasajerosSuben-pasajerosBajan;
       console.log((total< 0)? "Número incorrecto: no se pueden bajar pasajeros que no han subido":`Quedan ${total} pasajeros en la última estación`);
-      
-
-      
-      //Conmprobaciones de variables ()  
-      console.log("Array: " + pasarArray(numero));
-      console.log("Numero introducido: " + numero);
+      */
     </script>
   </body>
 </html>
