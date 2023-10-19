@@ -48,26 +48,32 @@
       //---------------Primer método -----------------
 
       function calcularViajeros(array) {
+
+        //CONDICIÓN DE PARADA - mientras el array no esté vacío sigue quitando los 2 primeros digitos
         if (array.length !== 0) {
-          parada++;
-          const [suben, bajan, ...resto] = array;
-          pasajerosSuben += parseInt(suben);
+          parada++; //Conteo de las paradas del tren
+          /*
+            El primer número del array son los pasajeros que suben y el segundo los que bajan
+            Usamos el spread '...' para almacenar el array sin las 2 primeras posiciones
+          */
+          const [suben, bajan, ...resto] = array; 
+          pasajerosSuben += parseInt(suben);  //Calculamos el total de pasajeros que van en el tren
           pasajerosBajan += parseInt(bajan);
 
-          
+          //Si se quieren bajar mas pasajeros de los que hay se para la recursividad
           if (parseInt(pasajerosSuben) - parseInt(bajan) < 0) {
             console.log(`En la parada ${parada} quieren bajar ${bajan} viajeros pero solo hay ${pasajerosSuben}`);
-            array = [];
-            flag = false;
+            array = []; //El array se vacía para que no cumpla la condición y salga de la recursividad
+            flag = false; //Marcamos que ha pasado por aquí para el mensaje de error
           } else {
             pasajerosSuben = parseInt(pasajerosSuben) - parseInt(bajan);
-            console.log("PARADA - "+parada+" | suben " + suben +" bajan " +bajan+" | TOTAL " + pasajerosSuben);
-            calcularViajeros(resto);
+            console.log("PARADA - "+parada+" | suben " + suben +" bajan " +bajan+" | TOTAL " + pasajerosSuben); 
+            calcularViajeros(resto); //La función se llama a sí misma pasándole el array 'resto' - al que previamente le quitamos 2 elementos
           }
         }
       }
 
-      calcularViajeros(viajeros);
+      calcularViajeros(viajeros); //Llamada a la función por primera vez
       (flag) ? console.log(`Han llegado ${pasajerosSuben} pasajeros a la última parada, la ${parada}`):console.log("Prueba a introducir un número correcto");
 
       /*Idea 2:
