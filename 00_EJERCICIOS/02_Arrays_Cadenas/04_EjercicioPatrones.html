@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patrones</title>
+  </head>
+  <body>
+    <script>
+      //Declaración de constantes y variables
+      const PATRONES = ["00", "101", "ABC", "H0"];
+      let apariciones=0;
+      let miTexto="";
+      //....fin variables
+
+      //Funciones
+      function pedirCadena(cadena) {
+        while (cadena === "") {
+          cadena = prompt("Introduce una cadena válida: ");
+        }
+        return cadena;
+      }
+
+      function numeroPatrones(cadena) {
+        for (let i = 0; i < PATRONES.length; i++) {
+          
+            for (let j = 0; j < cadena.length; j++) {
+              
+              if(cadena.includes(PATRONES[i])){
+                //
+
+              }
+              alert(`La cadena "${cadena}" contiene el patron ${PATRONES[i]} ${apariciones} veces.`);
+              //cadena.substring(cadena.search(PATRONES[i]),PATRONES[i].length);
+            }
+            
+            
+            
+          } 
+        }
+      
+      //.....fin funciones
+      
+      miTexto = pedirCadena(prompt("Introduce una cadena: "));
+      numeroPatrones(miTexto);
+
+    </script>
+  </body>
+</html>
+<!-- 
+	Realiza una aplicación web que solicite una cadena de texto. 
+  El programa debe decir cuántas veces ocurre cada uno de estos patrones sin distinguir mayúsculas y minúsculas: “00” “101”, “ABC”, “H0”.
+  Un carácter puede formar parte de más de un patrón encontrado. Por ejemplo:
+  En la cadena “000” el patrón “00” aparece dos veces (una empieza en la posición 0 y otra empieza en la posición 1).
+  Internamente el programa realizará la cuenta de patrones con una función definida como function numeroPatrones(texto) 
+  que devolverá un número entero con el número de patrones encontrados. 
+
+          Ejemplo:
+          1110101000ABCHO	
+
+ -->
