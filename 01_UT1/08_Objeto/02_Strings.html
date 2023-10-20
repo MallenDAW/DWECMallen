@@ -46,10 +46,21 @@
     //slice(posicion inicial, posicion final) - si solo hay 1 parametro es hasta el final
     alert(ciclos.slice(10));
 
-
     //substring
 
     //substr
+
+    const miTexto="Mano";
+    alert("caracter de la posicion 0: "+miTexto[0]); //La posicion de una cadena se puede tratar como un array
+
+    //codePointAt() para saber el tipo de caracter en fomrato unicode
+    alert(miTexto.codePointAt(0));
+    alert(String.fromCodePoint(77)); //se puede pedir al revés también con String.fromcodePoint()
+    alert(miTexto.codePointAt(0).toString(16)); //con toString(16) convertimos el fomrato a hexadecimal
+    
+    //Si la posicion buscada no existe será 'undefined'
+    alert(miTexto.codePointAt(6));
+
   </script>
 </body>
 </html>
