@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const miLibro={
+      titulo:"Teo va al Zoo",
+      autor:"Pepe",
+      formatos:["pdf","mobi","epub"],
+      precio:30,
+      editorial:"Anaya",
+      leer:function() {
+        console.log("Es un buen libro");
+      }
+    }
+
+    miLibro.leer;
+    console.log(miLibro.precio);
+   console.log(miLibro['editorial']);
+  </script>
+</body>
+</html>

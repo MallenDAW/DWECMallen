@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Métodos de String</title>
+</head>
+<body>
+  <script>
+		//INSTANCIACIÓN:
+		//Varias formas de instanciar
+		var daw = "Desarrollo de aplicaciones web";
+		var dam = 'Desarrollo de aplicaciones multiplataforma';
+		var asir = "Administración de 'Sistemas Informáticos' en Red"; //También al revés
+		var smr = "Sistemas \"Microinformáticos\" y Redes"; //pintar comillas en un texto
+		var ciclos = new String(""); // no recomendable ??
+
+		//CONCATENACIÓN DE CADENAS (Para trabajar con cadenas largas)
+		ciclos += "Hay 3 ciclos de Grado Superior: \n"; // n salto de línea
+		ciclos += daw + ", " + dam + " y " + asir + "\n";
+		ciclos += " y 1 ciclo de Grado Medio: \n";
+		ciclos += smr;
+
+		alert (ciclos);
+
+    //Longitud de una cadena
+		alert("La longitud de la cadena es "+ciclos.length);
+
+    //Búsqueda con chartAt
+    alert("La posición 7 de la cadena es: "+ciclos.charAt(7));
+
+    //Indexof - donde aparece por primera vez
+    //Last indexof - donde aparece por ultima vez
+    alert("La primera W aparece en: "+ciclos.indexOf("W"));
+
+    //Search() para buscar cadenas o expresiones regulares
+    //match() para buscar expresiones regulares
+    alert("La cadena 'Ciclo' aparece en la posición "+ciclos.search("ciclo"));
+
+    //localcompare() : decuelve -1(antes) | 0(igual) | 1 después
+    alert("comparamos las cadenas DAW y DAM: "+daw.localeCompare(dam)); //DAW está detras de DAM | ordena alfabeticamente
+
+    //includes(parametro) - devuelve verdadero si la cadena contiene el parámetro
+    alert("La cadena incluye 'Desarrollo' ? "+ciclos.includes("Desarrollo"));
+
+    //slice(posicion inicial, posicion final) - si solo hay 1 parametro es hasta el final
+    alert(ciclos.slice(10));
+
+
+    //substring
+
+    //substr
+  </script>
+</body>
+</html>
