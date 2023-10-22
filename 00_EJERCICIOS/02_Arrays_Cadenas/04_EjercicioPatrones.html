@@ -20,22 +20,22 @@
         }
         return cadena;
       }
-
+//                                                    1110101000ABCH0     CARLOS
       function numeroPatrones(cadena) {
+        let temp;
         for (let i = 0; i < PATRONES.length; i++) {
-          
-            for (let j = 0; j < cadena.length; j++) {
-              
-              if(cadena.includes(PATRONES[i])){
-                //
+          apariciones=0;
+          console.log(`-------- Patron ${PATRONES[i]} --------`);
+            for (let j = 0; j < cadena.length; j++) {   
 
+              temp=cadena.slice(j);
+              console.log(`${j} - ${temp}`);
+              if(temp.startsWith(PATRONES[i])){
+                apariciones++;
               }
-              alert(`La cadena "${cadena}" contiene el patron ${PATRONES[i]} ${apariciones} veces.`);
-              //cadena.substring(cadena.search(PATRONES[i]),PATRONES[i].length);
             }
-            
-            
-            
+          console.log(`Apariciones ${apariciones} `);
+          alert(`La cadena "${cadena}" contiene el patron ${PATRONES[i]} ${apariciones} veces.`);           
           } 
         }
       
