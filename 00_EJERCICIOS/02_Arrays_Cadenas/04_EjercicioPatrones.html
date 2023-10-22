@@ -16,7 +16,7 @@
       //Funciones
       function pedirCadena(cadena) {
         while (cadena === "") {
-          cadena = prompt("Introduce una cadena válida: ");
+          cadena = prompt("Introduce una cadena válida: ").toUpperCase();
         }
         return cadena;
       }
@@ -38,13 +38,13 @@
               if(temp.startsWith(PATRONES[i]))apariciones++; //comprobamos si coincide el patrón con el principo de la cadena
             }
           console.log(`Apariciones ${apariciones} `); 
-          alert(`La cadena "${cadena}" contiene el patron ${PATRONES[i]} ${apariciones} veces.`);           
+          alert(`La cadena "${cadena}" contiene el patron '${PATRONES[i]}' ${apariciones} veces.`);           
           } 
         }
       //.....fin funciones
       
       //Llamada a funciones
-      miTexto = pedirCadena(prompt("Introduce una cadena: "));
+      miTexto = pedirCadena(prompt("Introduce una cadena: ").toUpperCase());
       numeroPatrones(miTexto);
 
     </script>
