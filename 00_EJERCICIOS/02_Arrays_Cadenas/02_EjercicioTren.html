@@ -20,7 +20,7 @@
 
       //Pedimos el número y nos aseguramos que sea un valor válido (que no sea null o string)
       let numero = prompt("Dime un número: ");
-      while (isNaN(parseInt(numero)) || numero === null)
+      while (isNaN(parseInt(numero)) || numero === null || numero.length%2!=0)
         numero = prompt("Introduce un número válido: ");
 
       let viajeros = pasarArray(numero);
