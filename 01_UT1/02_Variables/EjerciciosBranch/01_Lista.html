@@ -20,7 +20,6 @@
             El programa debe finalizar las acciones solo después de que el usuario dé un comando específico (salir).
     */
 
-
       //INICIO FUNCIONES---------
       //Creamos una función para crear contactos nuevos
       function agregarContacto(array) {
@@ -48,6 +47,7 @@
         alert(ver);
       }
 
+      //Funcion que itera el array para mostrar todo
       function mostrarTodo(array) {
         let ver="";
         array.forEach(element => {
@@ -57,6 +57,7 @@
       }
       //...FIN FUNCIONES ----------------
 
+      
       //Definimos el array con la lista de contactos (estos serán objetos)
       let contactos = [
         {
@@ -76,14 +77,18 @@
         },
       ];
 
+      //Declaramos la variable opcion inicianizándola a cualquier numero EXCEPTO 0
       let opcion=30;
 
+      //Mientras no le de a 0-SALIR seguirá en bucle 
       while (opcion!==0) {
         
-      opcion = parseInt(
-        prompt("ELIGE UNA OPCION\n1-Mostrar primer contacto\n2-Mostrar último contacto\n3-Mostrar todos los contactos\n4-Agragar nuevo contacto\n\n 0-SALIR"
-        )
-      );
+      opcion = parseInt(prompt("ELIGE UNA OPCION\n"+
+                                "1-Mostrar primer contacto\n"+
+                                "2-Mostrar último contacto\n"+
+                                "3-Mostrar todos los contactos\n"+
+                                "4-Agragar nuevo contacto\n\n"+
+                                "0-SALIR"));
 
       switch (opcion) {
         case 1:
@@ -93,7 +98,6 @@
           mostrarContacto(contactos, contactos.length - 1);
           break;
         case 3:
-
           mostrarTodo(contactos);
           break;
         case 4:
@@ -108,7 +112,6 @@
         break;
       }
     }
-      //mostrarContacto(contactos, contactos.length - 1);
     </script>
   </body>
 </html>
