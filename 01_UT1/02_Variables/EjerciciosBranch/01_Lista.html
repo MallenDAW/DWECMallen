@@ -15,6 +15,35 @@
         Si falta al menos uno de los tres valores (nombre, teléfono o correo electrónico), no se agrega el contacto.
     */
 
+
+      //INICIO FUNCIONES---------
+      //Creamos una función para crear contactos nuevos
+      function agregarContacto(array) {
+        let nombre = prompt("Nombre:");
+        let telefono = prompt("Telefono:");
+        let correo = prompt("Correo:");
+
+        //si algun campo esta vacío, no se agrega el uauario
+        if (nombre === "" || telefono === "" || correo === "") {
+          alert("No pudo añadrise el contacto, no se admiten campos vacíos.");
+        } else {
+          //Si los datos son validos se intorduce al array en la última posición
+          array.push({
+            nombre: nombre,
+            telefono: telefono,
+            correo: correo,
+          });
+        }
+      }
+
+      //Creamos una función para imprimir, pasandole el array y la posición que queremos que muestre
+      function mostrarContacto(array, posicion) {
+        console.log(
+          `${array[posicion].nombre} / ${array[posicion].telefono} / ${array[posicion].correo}`
+        );
+      }
+      //...FIN FUNCIONES ----------------
+
       //Definimos el array con la lista de contactos (estos serán objetos)
       let contactos = [
         {
@@ -35,7 +64,11 @@
       ];
 
       //Preguntamos al usuario la opción y usamos un switch para las opciones
-      let opcion = parseInt(prompt("ELIGE UNA OPCION\n1-Mostrar primer contacto\n2-Mostrar último contacto\n3-agragar nuevo contacto"));
+      let opcion = parseInt(
+        prompt(
+          "ELIGE UNA OPCION\n1-Mostrar primer contacto\n2-Mostrar último contacto\n3-agragar nuevo contacto"
+        )
+      );
 
       switch (opcion) {
         case 1:
@@ -48,38 +81,7 @@
           agregarContacto(contactos);
           break;
       }
-      mostrarContacto(contactos, contactos.length - 1);
-
-      //Creamos una función para crear contactos nuevos
-      function agregarContacto(array) {
-
-        let nombre = prompt("Nombre:");
-        let telefono = prompt("Telefono:");
-        let correo = prompt("Correo:");
-
-        if (nombre === "" || telefono === "" || correo === "") {
-          alert("No pudo añadrise el contacto, no se admiten campos vacíos.")
-        } else {
-          array.push({
-            nombre: nombre,
-            telefono: telefono,
-            correo: correo,
-          });
-        }
-      }
-
-      //Creamos una función para validar
-      function validarUsuario(array) {}
-      //Creamos una función para imprimir, pasandole el array y la posición que queremos que muestre
-      function mostrarContacto(array, posicion) {
-        console.log(
-          `${array[posicion].nombre} / ${array[posicion].telefono} / ${array[posicion].correo}`
-        );
-      }
-
-      //Mostramos el primer contacto
-
-      //Mostramos el último contacto
+      //mostrarContacto(contactos, contactos.length - 1);
     </script>
   </body>
 </html>
