@@ -7,23 +7,13 @@
   </head>
   <body>
     <script>
-      //Funciones
-      function pasarArray(cantidad) {
-        //Le pasamos el numero en formato string
-        let array = [];
-        for (let i = 0; i < cantidad.length; i++) {
-          array[i] = cantidad[i];
-        }
-        return array;
-      }
-      //...
-
+      
       //Pedimos el número y nos aseguramos que sea un valor válido (que no sea null o string)
       let numero = prompt("Dime un número: ");
       while (isNaN(parseInt(numero)) || numero === null || numero.length%2!=0)
         numero = prompt("Introduce un número válido: ");
 
-      let viajeros = pasarArray(numero);
+      let viajeros = numero.split("");
       viajeros = viajeros.reverse();
 
       //Conmprobaciones de variables ()
