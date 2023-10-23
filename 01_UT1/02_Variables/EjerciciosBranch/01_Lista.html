@@ -3,16 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Apartado 4</title>
+    <title>Apartado 5</title>
   </head>
   <body>
     <script>
-      /*4. Modifica el programa para que el usuario pueda elegir lo que quiere hacer con la lista. Las opciones serán:
+      /*5.- Encierra todo el programa en un bucle para que al usuario se le pregunte repetidamente qué quiere hacer. 
+            El usuario puede optar por:
+
                 • Mostrar el primer contacto (primero)
                 • Mostrar el último contacto (último)
+                • Mostrar todos los contactos (todos)
                 • Añadir un nuevo contacto (nuevo)
-        Al agregar un nuevo contacto, verifica si el usuario ha ingresado todos los datos necesarios. 
-        Si falta al menos uno de los tres valores (nombre, teléfono o correo electrónico), no se agrega el contacto.
+                • Salir del programa (salir)
+
+            Después de ejecutar la acción seleccionada, el programa le dará la oportunidad de elegir nuevamente.
+            El programa debe finalizar las acciones solo después de que el usuario dé un comando específico (salir).
     */
 
 
@@ -38,9 +43,17 @@
 
       //Creamos una función para imprimir, pasandole el array y la posición que queremos que muestre
       function mostrarContacto(array, posicion) {
-        console.log(
-          `${array[posicion].nombre} / ${array[posicion].telefono} / ${array[posicion].correo}`
-        );
+        let ver=`${array[posicion].nombre} / ${array[posicion].telefono} / ${array[posicion].correo}`;
+        console.log(ver);
+        alert(ver);
+      }
+
+      function mostrarTodo(array) {
+        let ver="";
+        array.forEach(element => {
+          ver+=`${element.nombre} / ${element.telefono} / ${element.correo}\n`;
+        });
+        alert(ver);
       }
       //...FIN FUNCIONES ----------------
 
@@ -63,10 +76,12 @@
         },
       ];
 
-      //Preguntamos al usuario la opción y usamos un switch para las opciones
-      let opcion = parseInt(
-        prompt(
-          "ELIGE UNA OPCION\n1-Mostrar primer contacto\n2-Mostrar último contacto\n3-agragar nuevo contacto"
+      let opcion=30;
+
+      while (opcion!==0) {
+        
+      opcion = parseInt(
+        prompt("ELIGE UNA OPCION\n1-Mostrar primer contacto\n2-Mostrar último contacto\n3-Mostrar todos los contactos\n4-Agragar nuevo contacto\n\n 0-SALIR"
         )
       );
 
@@ -78,9 +93,21 @@
           mostrarContacto(contactos, contactos.length - 1);
           break;
         case 3:
+
+          mostrarTodo(contactos);
+          break;
+        case 4:
           agregarContacto(contactos);
           break;
+        case 0:
+          console.log("...saliendo.");
+          alert("Has salido correctamente")
+        break;
+        default:
+          alert("OPCIÓN NO VALIDA")
+        break;
       }
+    }
       //mostrarContacto(contactos, contactos.length - 1);
     </script>
   </body>
