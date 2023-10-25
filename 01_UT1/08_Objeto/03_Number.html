@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objeto Number</title>
+</head>
+<body>
+  <script>
+    // -------- CAMBIAR LA BASE ---------
+
+    miNumero=27;
+    alert(miNumero.toString(2)); // 2 - binario
+    alert(miNumero.toString(16)); // 16 - ;
+
+
+    //-------- INFINITOS -----------
+    let inf=2;
+    while(inf!=Infinity){
+      console.log(inf);
+      inf*=inf;
+    }
+
+    let div1=2,div2=0;
+    alert("Division 2/0")
+
+
+    // -------- NaN -----------
+    let variable= 100/"casa";
+    let variable2= 100/"10";
+
+    //Para saber si es numero se usa isNaN
+    console.log("Es NaN"+isNaN(variable));
+    console.log("Que tipo es NaN"+typeof(variable2));
+
+
+    //------- OBJETO ---------
+
+
+    let num=123;
+    let num2=new Number(123);
+    let num3=new Number(123);
+
+    console.log("num es: "+typeof(num));
+    console.log("num2 es: "+typeof(num2));
+
+    console.log("num == num2: "+(num==num2));
+    console.log("num === num2: "+(num===num2));
+    console.log("num2 === num3: "+(num2===num3)); //da false porque compara la referencia del objeto
+
+
+    // --------- PROPIEDADES-----------
+
+
+    let maximo=Number.MAX_VALUE;
+    console.log("Maximo: "+maximo);
+
+    let minimo=Number.MIN_VALUE;
+    console.log("Minimo: "+minimo);
+
+    let neginf=Number.NEGATIVE_INFINITY;
+    console.log("Negativo infinito: "+neginf);
+
+
+
+    //----------------- MÉTODOS ----------
+
+    let numerico=17.654;
+
+    console.log("Fixed: "+numerico.toFixed(1));
+    console.log("Precision: "+numerico.toPrecision(3));
+    console.log("Exponential: "+numerico.toExponential());
+
+
+    // --------- MATH ----------
+
+    console.log(Math.random()); //aleatorio entre 0 y 0.9
+    console.log(Math.max(12,5,78));
+    console.log(Math.min(12,5,78));
+    console.log(Math.round(12.578));
+    console.log(Math.ceil(12.578));
+    console.log(Math.floor(12.578));
+    console.log(Math.pow(2,3)); //base,exponente 2 al cubo
+    console.log(Math.sqrt(9));
+    console.log(Math.abs(-9));
+  </script>
+</body>
+</html>
