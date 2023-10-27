@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Date = new date(); -- devuelve un String
+      //mes empieza en 0 / domingo es el 0
+      //segundos de 1 dia = 86400
+
+      let fechaHoy = new Date(); //
+      let fecha1 = new Date(
+        "Wed Mar 25 2015 09:15 GMT +0100(W.Europe Standared Time)"
+      );
+      let fecha2 = new Date("October 12 2023");
+      let fecha3 = new Date("2023-05-27");
+      let fecha4 = new Date("2023");
+
+      console.log(fechaHoy);
+      console.log(fecha1);
+      console.log(fecha2);
+      console.log(fecha3);
+      console.log(fecha4);
+
+      //-------FECHA CON NUMEROS --------------
+      let fechaLargo = new Date(2015, 11, 10, 14, 30, 25);
+      console.log("sin nada: " + fechaLargo);
+      console.log("toString: " + fechaLargo.toString());
+      console.log("toUTCString : " + fechaLargo.toUTCString());
+      console.log("toDateString : " + fechaLargo.toDateString());
+
+
+
+      //----------GET Y SET ---------
+
+      getDay(); //dia de la semana -- el 0 es el domingo
+      getDate();//dia del mes
+      getFullYear(); //da el año
+      getHours(); //da las horas
+      getTime(); //desde 1970
+    </script>
+  </body>
+</html>

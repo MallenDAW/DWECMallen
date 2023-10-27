@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Dias, minutos, segundos que han pasado entre hoy y el 7 Mayo 1950
+         en un array 
+         [año,mes,dia]
+         [hora,min,seg]-->
+    <script>
+      let fecha = new Date();
+      let mayo = new Date("1990-05-07");
+
+      console.log((fecha.getTime() - mayo.getTime())/1000/60/60/24); 
+ 
+      let milisegundos=(fecha.getTime() - mayo.getTime());
+      let redondear=(numero) => Math.floor(numero);
+
+     
+      /*dividimos entre 
+        -1000 para los segundos, 
+        -60 para min 
+        -60 horas 
+        -24 dias
+        -30 para meses
+        -12 para años
+      */
+
+    let segundos=redondear(milisegundos/1000);
+    let minutos=redondear(milisegundos/1000/60);
+    let horas=redondear(milisegundos/1000/60/60);
+    let dias=redondear(milisegundos/1000/60/60/24);
+    let meses=redondear(milisegundos/1000/60/60/24/30);
+    let anios=redondear(milisegundos/1000/60/60/24/30/12);
+    
+    
+    
+    let fechas=[[anios,meses,dias],[horas,minutos,segundos]];
+    console.log(fechas);
+
+    </script>
+  </body>
+</html>
