@@ -13,34 +13,33 @@
     <script>
       let fecha = new Date();
       let mayo = new Date("1990-05-07");
+      
 
-      console.log((fecha.getTime() - mayo.getTime())/1000/60/60/24); 
- 
-      let milisegundos=(fecha.getTime() - mayo.getTime());
-      let redondear=(numero) => Math.floor(numero);
+      //console.log((fecha.getTime()-mayo.getTime()) / 1000 / 60 / 60 / 24);
 
-     
-      /*dividimos entre 
-        -1000 para los segundos, 
-        -60 para min 
-        -60 horas 
-        -24 dias
-        -30 para meses
-        -12 para años
+      let milisegundos = fecha.getTime()-mayo.getTime(); //cogemos los milisegiundos que hay entre las 2 fechas
+
+      /*
+        1ms  1000s
+        1min 60s
+        1hor 60min
+        1dia 24h
+        1mes 30dias
+        1año 365dias 
       */
-
-    let segundos=redondear(milisegundos/1000);
-    let minutos=redondear(milisegundos/1000/60);
-    let horas=redondear(milisegundos/1000/60/60);
-    let dias=redondear(milisegundos/1000/60/60/24);
-    let meses=redondear(milisegundos/1000/60/60/24/30);
-    let anios=redondear(milisegundos/1000/60/60/24/30/12);
+      let anios=(milisegundos / (365 * 24 * 60 * 60 * 1000)); //años
+      let meses=((anios % 1)*12); //12 para los meses
+      let dias= ((meses % 1)*30); //30 para los dias
+      let horas= ((dias % 1)*24); //24 para las horas
+      let minutos= ((horas % 1)*60); //60 para los minutos
+      let segundos= ((minutos % 1)*60); //60 para los segundos
     
-    
-    
-    let fechas=[[anios,meses,dias],[horas,minutos,segundos]];
-    console.log(fechas);
-
+      let fechas = [
+        [Math.floor(anios),Math.floor(meses),Math.floor(dias)],
+        [Math.floor(horas), Math.floor(minutos), Math.floor(segundos)],
+      ];
+      
+      console.log(fechas);
     </script>
   </body>
 </html>
