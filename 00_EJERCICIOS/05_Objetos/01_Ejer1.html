@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 1</title>
+</head>
+<body>
+  <script>
+    //1.Definir y crear un objeto objeto simple utilizando un literal
+    let persona1={
+      nombre:'Juan',
+      apellido:'García',
+      ano:1815,
+    }
+    //2.Definir y crear un objeto objeto simple utilizando new
+
+    let persona2 = new Object();
+    persona2.nombre='Pedro';
+    persona2.apellido='Perez';
+    persona2.edad=1890;
+
+    //3.Definir un constructor de un objeto y crear los anteriores objetos con el
+
+    function Persona(nombre,apellido,edad){
+      this.nombre=nombre;
+      this.apellido=apellido;
+      this.edad=edad;
+    }//constructor
+
+    let juan= new Persona('Juan','García',1815);
+    let pedro= new Persona('Pedro','Perez',1891);
+
+    for (const propiedades in juan) {
+      console.log(propiedades+": "+juan[propiedades]);
+    }//recorremos juan para imprimir
+
+  </script>
+</body>
+</html>

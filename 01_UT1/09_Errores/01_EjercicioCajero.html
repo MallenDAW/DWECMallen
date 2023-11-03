@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio cajero</title>
+</head>
+<body>
+  <script>
+
+    //------ SIN TRY CATCH ------
+    let saldo=340;
+    let cantidad=300;
+    function retirar(saldo,cantidad){
+      if(saldo<cantidad) return false;
+      return saldo-cantidad;
+    }
+
+    let resultado=retirar(saldo,cantidad);
+    (resultado ===false)?alert('No hay panoja'):alert(saldo=resultado);
+
+
+    //------ CON TRY CATCH ------
+    function retirar2(saldo,cantidad){
+      if(saldo<cantidad) throw 'Saldo insuficiente';
+      return saldo-cantidad;
+    }
+
+    try {
+      let saldo=5444;
+      let importe=parseInt(prompt('Importe a retirar'));
+      saldo=retirar(saldo,importe);
+      alert('Operacion con exito. Saldo: '+saldo);
+    } catch (error) {
+      alert(error);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Declaración de Objetos</title>
+</head>
+<body>
+  <script>
+    const coche={
+      marca:"ford",
+      ruedas:5,
+      motor:'Diesel'
+    };
+
+    let persona1 = new Object();
+    persona.nombre='Pedro';
+    persona.apellido='Perez';
+    persona.edad=15;
+
+    //Constructor
+    function Persona(nom,ape1,ed){
+      this.nombre=nom;
+      this.apellido=ape1;
+      this.edad=ed;
+    }
+
+    let pesona2= new Persona('Pepe','Pol',30);
+
+    persona2.nombre == persona2[nombre];
+
+
+    //Para recorrer
+
+    for (const Persona in persona2) {
+      console.log(Persona);
+    }
+
+
+  </script>
+</body>
+</html>
