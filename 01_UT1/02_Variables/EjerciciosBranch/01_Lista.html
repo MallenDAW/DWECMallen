@@ -7,15 +7,9 @@
   </head>
   <body>
     <script>
-      /*6.- Trata de organizar el código de tu programa (¿quitando switch?) usando funciones.
-            Define y llama a tres funciones en los lugares apropiados:
-
-              • showContact: la función debe tomar dos argumentos; el primero es la lista de contactos y el segundo es el número de índice del contacto a mostrar; 
-                             dentro de la función, verifica si se pasan los argumentos correctos, es decir, si los contactos son un array (utiliza la construcción instanceofArray para esto).
-              • showAllContacts: la función debe tomar un argumento, la lista de contactos; dentro de la función, verifica si el argumento dado es un array.
-              • addNewContact: la función debe tomar cuatro argumentos, una lista de contactos y los datos del nuevo contacto, 
-                               es decir: nombre, teléfono y número; antes de agregar un nuevo contacto, verifica si el argumento pasado es un array y si los datos del nuevo contacto tienen algún valor.
-    */
+      /*7.- Da al usuario la opción de seleccionar una acción sort de la lista. 
+            Cuando se selecciona esta opción, el usuario debería poder especificar si desea ordenar los contactos por nombre, teléfono o correo electrónico.
+      */
 
       //INICIO FUNCIONES---------
       //Creamos una función para crear contactos nuevos
@@ -34,40 +28,71 @@
             telefono: telefono,
             correo: correo,
           });
-          alert('Contacto nuevo agregado.');
+          alert("Contacto nuevo agregado.");
         }
       }
 
       //Creamos una función para imprimir, pasandole el array y la posición que queremos que muestre
       function showContact(array, posicion) {
-        let ver=`${array[posicion].nombre} / ${array[posicion].telefono} / ${array[posicion].correo}`;
+        let ver = `${array[posicion].nombre} / ${array[posicion].telefono} / ${array[posicion].correo}`;
         console.log(ver);
         return ver;
       }
 
       //Funcion que itera el array para mostrar todo
       function showAllContacts(array) {
-        let ver="";
-        let index=1; //Agregamos visualmente el indice de cada contacto.
-        array.forEach(element => {
-          ver+=`${index}- ${element.nombre} / ${element.telefono} / ${element.correo}\n`;
+        let ver = "";
+        let index = 1; //Agregamos visualmente el indice de cada contacto.
+        array.forEach((element) => {
+          ver += `${index}- ${element.nombre} / ${element.telefono} / ${element.correo}\n`;
           index++;
         });
         return ver;
       }
 
       //Funcion para elegir un contacto específico
-      function chooseOption(array){
-        
-        let mensaje=showAllContacts(array)+'\nSelecciona uno: ';
-       do{
-          opc=parseInt(prompt(mensaje));
-        } while(opc<0||opc>array.length);
-        return opc-1;
+      function chooseOption(array) {
+        let mensaje = showAllContacts(array) + "\nSelecciona uno: ";
+        do {
+          opc = parseInt(prompt(mensaje));
+        } while (opc < 0 || opc > array.length);
+        return opc - 1;
       }
+
+      //Funcion para ordenar la lista
+      function listaOrdenada(array) {
+        let opc;
+        //Opciones para ordenar
+        do {
+          opc = parseInt(
+            prompt(
+              "Tipo de orden:\n\n" +
+                "1-Por nombre\n" +
+                "2-Por teléfono\n" +
+                "3-Por correo\n"
+            )
+          );
+        } while (opc < 1 || opc > 3 );
+
+        //Tipos de orden
+        switch (opc) {
+          case 1:
+            let nom = array.sort((uno, dos) => uno.nombre.localeCompare(dos.nombre)); //comparamos por nombre para ordenar
+            alert(showAllContacts(nom));
+            break;
+          case 2:
+          let tel = array.sort((uno, dos) => uno.telefono.localeCompare(dos.telefono)); //comparamos por telefono para ordenar
+            alert(showAllContacts(tel));
+            break;
+          case 3:
+          let mail = array.sort((uno, dos) => uno.correo.localeCompare(dos.correo)); //comparamos por correo para ordenar
+            alert(showAllContacts(mail));
+            break;
+        }
+      }
+
       //...FIN FUNCIONES ----------------
 
-      
       //Definimos el array con la lista de contactos (estos serán objetos)
       let contactos = [
         {
@@ -88,37 +113,43 @@
       ];
 
       //Declaramos la variable opcion inicianizándola a cualquier numero EXCEPTO 0
-      let opcion=30;
+      let opcion = 30;
 
-      //Mientras no le de a 0-SALIR seguirá en bucle 
-      while (opcion!==0) {
-        
-      opcion = parseInt(prompt("ELIGE UNA OPCION\n"+
-                                "1-Mostrar un contacto\n"+
-                                "2-Mostrar todos los contactos\n"+
-                                "3-Agragar nuevo contacto\n\n"+
-                                "0-SALIR"));
+      //Mientras no le de a 0-SALIR seguirá en bucle
+      while (opcion !== 0) {
+        opcion = parseInt(
+          prompt(
+            "ELIGE UNA OPCION\n" +
+              "1-Mostrar un contacto\n" +
+              "2-Mostrar todos los contactos\n" +
+              "3-Agragar nuevo contacto\n" +
+              "4-Lista ordenada\n\n" +
+              "0-SALIR"
+          )
+        );
 
-      switch (opcion) {
-        case 1:
-          // showContact(contactos, chooseOption(contactos));
-          alert(showContact(contactos,chooseOption(contactos)));
-          break;
-        case 2:
-          alert(showAllContacts(contactos));
-          break;
-        case 3:
-          addNewContact(contactos);
-          break;
-        case 0:
-          console.log("...saliendo.");
-          alert("Has salido correctamente")
-        break;
-        default:
-          alert("OPCIÓN NO VALIDA")
-        break;
+        switch (opcion) {
+          case 1:
+            alert(showContact(contactos, chooseOption(contactos)));
+            break;
+          case 2:
+            alert(showAllContacts(contactos));
+            break;
+          case 3:
+            addNewContact(contactos);
+            break;
+          case 4:
+            listaOrdenada(contactos);
+            break;
+          case 0:
+            console.log("...saliendo.");
+            alert("Has salido correctamente");
+            break;
+          default:
+            alert("OPCIÓN NO VALIDA");
+            break;
+        }
       }
-    }
     </script>
   </body>
 </html>
