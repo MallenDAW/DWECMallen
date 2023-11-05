@@ -19,7 +19,7 @@
 
       //INICIO FUNCIONES---------
       //Creamos una función para crear contactos nuevos
-      function agregarContacto(array) {
+      function addNewContact(array) {
         let nombre = prompt("Nombre:");
         let telefono = prompt("Telefono:");
         let correo = prompt("Correo:");
@@ -34,23 +34,36 @@
             telefono: telefono,
             correo: correo,
           });
+          alert('Contacto nuevo agregado.');
         }
       }
 
       //Creamos una función para imprimir, pasandole el array y la posición que queremos que muestre
-      function mostrarContacto(array, posicion) {
+      function showContact(array, posicion) {
         let ver=`${array[posicion].nombre} / ${array[posicion].telefono} / ${array[posicion].correo}`;
         console.log(ver);
-        alert(ver);
+        return ver;
       }
 
       //Funcion que itera el array para mostrar todo
-      function mostrarTodo(array) {
+      function showAllContacts(array) {
         let ver="";
+        let index=1; //Agregamos visualmente el indice de cada contacto.
         array.forEach(element => {
-          ver+=`${element.nombre} / ${element.telefono} / ${element.correo}\n`;
+          ver+=`${index}- ${element.nombre} / ${element.telefono} / ${element.correo}\n`;
+          index++;
         });
-        alert(ver);
+        return ver;
+      }
+
+      //Funcion para elegir un contacto específico
+      function chooseOption(array){
+        
+        let mensaje=showAllContacts(array)+'\nSelecciona uno: ';
+       do{
+          opc=parseInt(prompt(mensaje));
+        } while(opc<0||opc>array.length);
+        return opc-1;
       }
       //...FIN FUNCIONES ----------------
 
@@ -81,24 +94,21 @@
       while (opcion!==0) {
         
       opcion = parseInt(prompt("ELIGE UNA OPCION\n"+
-                                "1-Mostrar primer contacto\n"+
-                                "2-Mostrar último contacto\n"+
-                                "3-Mostrar todos los contactos\n"+
-                                "4-Agragar nuevo contacto\n\n"+
+                                "1-Mostrar un contacto\n"+
+                                "2-Mostrar todos los contactos\n"+
+                                "3-Agragar nuevo contacto\n\n"+
                                 "0-SALIR"));
 
       switch (opcion) {
         case 1:
-          mostrarContacto(contactos, 0);
+          // showContact(contactos, chooseOption(contactos));
+          alert(showContact(contactos,chooseOption(contactos)));
           break;
         case 2:
-          mostrarContacto(contactos, contactos.length - 1);
+          alert(showAllContacts(contactos));
           break;
         case 3:
-          mostrarTodo(contactos);
-          break;
-        case 4:
-          agregarContacto(contactos);
+          addNewContact(contactos);
           break;
         case 0:
           console.log("...saliendo.");
