@@ -13,29 +13,41 @@
       motor:'Diesel'
     };
 
-    let persona1 = new Object();
-    persona.nombre='Pedro';
-    persona.apellido='Perez';
-    persona.edad=15;
+    let persona1 = new Object(); //Literal
+    persona1.nombre='Pedro';
+    persona1.apellido='Perez';
+    persona1.edad=15;
 
-    //Constructor
+    //con Constructor
     function Persona(nom,ape1,ed){
       this.nombre=nom;
       this.apellido=ape1;
       this.edad=ed;
+      this.nombreCompleto=function(){
+        return this.nombre+" "+this.apellido
+      }
     }
 
-    let pesona2= new Persona('Pepe','Pol',30);
+    let paco = new Persona('Paco','Martínez',27)
 
-    persona2.nombre == persona2[nombre];
+    paco.nacionalidad='Inglesa'; //Para añadir atributos
+
+    console.log(paco.nacionalidad);
+
+    let pepe= new Persona('Pepe','Pol',30);
+    pepe.nombre = 'Ricardo'; //Para modificar atributos
 
 
-    //Para recorrer
-
-    for (const Persona in persona2) {
-      console.log(Persona);
+    //Para recorrer un objeto se usa el for ...in
+    for (const key in pepe) {
+      alert(pepe[key]);
     }
 
+    //Para agregar atribuos al constructor
+    Persona.prototype.fecha='1980';
+    console.log(paco.fecha);
+
+    //Prototype - 
 
   </script>
 </body>

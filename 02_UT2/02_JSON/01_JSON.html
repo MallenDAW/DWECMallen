@@ -11,10 +11,15 @@
   JSON no permite almacenar : [function() Date ,regexp , comentarios]
 
   METODOS:
-    -JSON.parse(str)
-    -JSON.stringify(obj)
-  <scritp>
+    -JSON.parse(str) = convierte el texto string de un JSON a un objeto
+    -JSON.stringify(obj) = convierte un objeto a su representación JSON (pone comillas)
+  <script>
+    const user={
+      name:'Manuel',
+      life:45,
+    };
 
-  </scritp>
+    JSON.stringify(user);
+  </script>
 </body>
 </html>

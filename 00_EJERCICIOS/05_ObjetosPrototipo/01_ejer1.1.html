@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- 
+  
+    Act 3.1 Crea un objeto llamado tvSamsung con las propiedades:
+       -nombre (TV Samsung 42”)
+       -categoría (Televisores)
+       -unidades (4)
+       -precio (345.95) 
+    y con un método llamado importe que devuelve el valor total de las unidades (nº de unidades * precio)
+
+    Act 3.2 Crea un objeto Productos con las propiedades y métodos del ejercicio anterior. 
+    Además tendrá un método getInfo que devolverá: ‘Nombre (categoría): unidades uds x precio € = importe €’. 
+    Crea 3 productos diferentes.
+
+    Act 3.2 Crea un Objeto Televisores que hereda de Productos y que tiene una nueva propiedad llamada tamaño. 
+    El método getInfo mostrará el tamaño junto al nombre.
+
+ -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 2</title>
+</head>
+<body>
+  <script>
+
+    //-------- 3.1 ---------
+
+    //Definimos el constructor
+    function Televisores(nombre,categoria,unidades,precio){
+      this.nombre=nombre;
+      this.categoria=categoria;
+      this.unidades=unidades;
+      this.precio=precio;
+      this.importe=function(){
+        return 'Total de unidades: '+ this.unidades*this.precio ;
+      }
+    }//constructor
+
+    let tvSamsung= new Televisores('TV Samsung 42”','Televisores',4,345.95); //Instanciamos el objeto tvSamsung
+    alert(tvSamsung.importe()); //Llamamos al método
+
+
+    //-------- 3.2 ---------
+
+    function Productos(nombre,categoria,unidades,precio){
+      this.nombre=nombre;
+      this.categoria=categoria;
+      this.unidades=unidades;
+      this.precio=precio;
+      this.importe=function(){
+        return this.unidades*this.precio ;
+      }
+    }//constructor
+   
+    Productos.prototype.getInfo=function(){ //agregamos a Productos el método getInfo
+      return `${this.nombre} (${this.categoria}): ${this.unidades} X ${this.precio} = ${this.importe()}€` //‘Nombre (categoría): unidades uds x precio € = importe €’.
+    }
+
+    //Instanciamos los 3 objetos
+    let freidoraCosori= new Productos('Cosori 5L','Freidora de aire',6,195.75);
+    let arroceraKia= new Productos('Kia 4pax','Arrocera',15,27.99);
+    let consolaNintendo= new Productos('Nintendo Switch Oled','Consola',0,395.99);
+
+    alert(freidoraCosori.getInfo());
+    alert(arroceraKia.getInfo());
+    alert(consolaNintendo.getInfo());
+
+    //-------- 3.3 ---------
+
+
+
+
+  </script>
+</body>
+</html>

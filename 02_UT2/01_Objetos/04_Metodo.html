@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Métodos</title>
+</head>
+<body>
+  <script>
+     function Persona(nom,ape1,ed){
+      this.nombre=nom;
+      this.apellido=ape1;
+      this.edad=ed;
+      this.nombreCompleto=function(){
+        return this.nombre+" "+this.apellido
+      }
+    }
+    let jose=new Persona('Jose','Garcia',45);
+
+    Persona.prototype.saludo=function(){ //con prototype se pueden agregar métodos comunes a un mismo objeto, en este caso a Persona
+      return "Hola "+this.nombre+", buensa tardes!";
+    }
+
+    console.log(jose.saludo());
+  </script>
+</body>
+</html>
