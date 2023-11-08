@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- 
+  2.1)
+   Act 4.1 Modifica los Objetos Productos y Televisores, para que contenga la función ”toString”. 
+           Esta función debe devolver una cadena de texto (La que consideres oportuna).
+
+  2.2)
+    Act 4.2 Modifica los Objetos Productos y Televisores, para que contenga la función ”valueOf”. 
+            Esta función debe devolver un valor numérico(El que consideres oportuno).
+
+    Act 4.4 Crea 5 productos y guárdalos en un array. 
+            Crea las siguientes funciones (todas reciben ese array como parámetro):
+              • prodOrdenPorNombre() Devuelve un array con los productos ordenados alfabéticamente 
+              • prodOrdenPorPrecio() devuelve un array con los productos ordenados por importe 
+              • prodPrecioTotal() Devuelve el importe total del los productos del array, con 2 decimales 
+              • prodConMenosUnidades() Además del array recibe como segundo parámetro un número y devuelve un array con todos los productos que tienen menos unidades que las indicadas 
+              • prodLista() Devuelve una cadena que dice ‘Listado de productos:’ y en cada línea un guión y la información de un producto del array
+  
+
+ -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 2.2</title>
+  </head>
+  <body>
+    <script>
+      //CONSTRUCTORES
+      function Productos(nombre, categoria, unidades, precio) {
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.unidades = unidades;
+        this.precio = precio;
+        this.importe = function () {
+          return this.unidades * this.precio;
+        }
+        this.getInfo = function () {
+          return `${this.nombre} (${this.categoria}): ${this.unidades} X ${this.precio} = ${this.importe()}€`;
+        }
+        //Creamos el método toString (que lo hereda también televisores)
+        this.toString = function () {
+        return `Descripción: ${this.nombre} ${this.categoria}`;
+        }
+        //Creamos el método valueOf() 
+        this.valueOf=function(){
+          return this.unidades;
+        }
+
+      }
+
+      function Televisores(nombre, categoria, unidades, precio, tamano) {
+        Productos.call(this, nombre, categoria, unidades, precio);
+        this.tamano = tamano;
+        this.getInfo = function () {
+          return `${this.nombre} (${this.categoria}) / Tamaño ${this.tamano}: ${this.unidades} X ${this.precio} = ${this.importe()}€`;
+        }
+      } //FIN CONSTRUCTORES
+
+
+      //Instanciamos 5 objetos
+      let tvSony = new Productos("Sony Bravia","Televisor",4,999.99);
+      let tvLG = new Productos("LG 89","Televisor",7,799.79);
+      let tvBenQ = new Productos("BenQ XT45","Televisor",10,285.79);
+      let tvXiaomi = new Productos("Xiaomi T4","Televisor",2,374.25);
+      let tvPanasonic = new Productos("Panasonic V21Q","Televisor",100,1074.25);
+
+      //Guardamos todos los objetos en un array
+      let stock = [tvSony,tvBenQ,tvLG,tvXiaomi,tvPanasonic];
+      // console.log(stock);
+
+
+      function prodOrdenPorNombre(array){
+        return array.sort();
+      }
+      alert(prodOrdenPorNombre(stock));
+
+
+    </script>
+  </body>
+</html>
