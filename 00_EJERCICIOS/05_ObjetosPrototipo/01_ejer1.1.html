@@ -25,7 +25,7 @@
 <body>
   <script>
 
-    //-------- 3.1 ---------
+    //-------- 3.1 -----------------------
 
     //Definimos el constructor
     function Televisores(nombre,categoria,unidades,precio){
@@ -34,7 +34,7 @@
       this.unidades=unidades;
       this.precio=precio;
       this.importe=function(){
-        return 'Total de unidades: '+ this.unidades*this.precio ;
+        return this.unidades*this.precio ;
       }
     }//constructor
 
@@ -42,7 +42,7 @@
     alert(tvSamsung.importe()); //Llamamos al método
 
 
-    //-------- 3.2 ---------
+    //-------- 3.2 -----------------------
 
     function Productos(nombre,categoria,unidades,precio){
       this.nombre=nombre;
@@ -63,14 +63,28 @@
     let arroceraKia= new Productos('Kia 4pax','Arrocera',15,27.99);
     let consolaNintendo= new Productos('Nintendo Switch Oled','Consola',0,395.99);
 
+    //Llamamos al método getInfo() de cada objeto
     alert(freidoraCosori.getInfo());
     alert(arroceraKia.getInfo());
     alert(consolaNintendo.getInfo());
 
-    //-------- 3.3 ---------
 
+    //-------- 3.3 -----------------------
 
+    //Constructor usando call para recuperar los atributos de Productos
+    function Televisores2(nombre,categoria,unidades,precio,tamano){
+      Productos.call(this,nombre,categoria,unidades,precio); 
+      this.tamano=tamano;
+    }
 
+    Televisores2.prototype.getInfo=function(){ //agregamos a Televisores2 el método getInfo
+      return `${this.nombre} (${this.categoria}) / Tamaño ${this.tamano}: ${this.unidades} X ${this.precio} = ${this.importe()}€` //‘Nombre (categoría): unidades uds x precio € = importe €’.
+    }
+    // const Televisores3=Productos;
+    let tvSony = new Televisores2("Sony","Televisor",4,999.99,"grandisimisimo");
+    alert(tvSony.nombre);
+    alert(tvSony.tamano);
+    alert(tvSony.getInfo());
 
   </script>
 </body>
