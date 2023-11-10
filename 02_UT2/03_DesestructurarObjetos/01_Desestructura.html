@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const user={
+      name:"A",
+      role:"B",
+      life:0,
+    }
+
+    //desestructuración
+    const {name,role,life}=user; //Pasamos user a una variable name y una variable rol
+    console.log(name);
+    console.log(role,life);
+
+    //reestructuración - SOLO PARA MOSTRAR
+    console.log({name,role,life}); //Lo muestra como un objeto a la hora de enseñarlo
+
+
+    let a="pito";
+    let b="gorgorito";
+    console.log({a,b});
+
+
+    //HERENCIA QUE NO ES HERENCIA
+    const fullUser={
+      ...user,  //recuperamos los atributos de user 
+      power:25,
+      life:50 //si algún atributo se repite se sobreescribe
+    }
+    console.log(fullUser);
+
+
+    
+  </script>
+
+</body>
+</html>

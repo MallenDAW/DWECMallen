@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    const user={  
+      name:"A",
+      role:"B",
+      life:0,
+      features:["learn","code","paint"]
+    }
+
+    const fullUser={
+      ...structuredClone(user),  //recuperamos los atributos de user haciendo una copia 
+      power:25,
+      life:50, // Como es una copia no se sobreescribe life en el objeto user
+    }
+
+    fullUser.features[0]="program"; //no se sobreescribe porque es una copia
+    console.log(user.features);     // como fullUser es una copia, feature[0] sigue siendo learn
+    console.log(fullUser.features); // reescribe la `posicion features[0] por program
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referencia</title>
+</head>
+<body>
+  <script>
+
+    const user={
+      name:"A",
+      role:"B",
+      life:0,
+      features:["learn","code","paint"]
+    }
+
+    const fullUser={
+      ...user,  //recuperamos los atributos de user 
+      power:25,
+      life:50, //si algún atributo se repite se sobreescribe
+       //Sobreescribe todas las feautres
+    }
+
+    fullUser.features[0]="program"; //se sobreescribe en los 2 porque es por referencia
+    console.log(user.features);
+    console.log(fullUser.features);
+
+
+  </script>
+</body>
+</html>

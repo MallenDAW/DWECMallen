@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object Create</title>
+</head>
+<body>
+  <script>
+    var animal={
+      tipo:"Invertebrado",
+      verTipo:function(){
+        console.log(this.tipo);
+      }
+    }
+
+    var animal1= Object.create(animal);
+    animal1.verTipo();
+
+    var pez= Object.create(animal);
+    pez.tipo="Peces";
+    pez.verTipo();
+    
+  </script>
+</body>
+</html>

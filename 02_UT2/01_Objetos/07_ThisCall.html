@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This y Call y Apply</title>
+  </head>
+  <body>
+    <script>
+
+
+    // ------------------ CALL --------------------------------------------
+      let persona1 = {
+        nombre: "Pepe",
+        apellido: "Perez",
+        completo: function () {
+          return this.nombre + " " + this.apellido;
+        },
+      };
+      let persona2 = { nombre: "Belén", apellido: "García" };
+
+      console.log(persona1.completo());
+      console.log(persona1.completo.call(persona2)); 
+      //Llamamos a completo() con call() desde la persona1
+      //Y nos da su función
+
+
+      // ------------------ APPLY --------------------------------------------
+      let persona3 = {
+        nombre: "Pepe",
+        apellido: "Perez",
+        completo: function (ciudad, pais) {
+          return this.nombre + " " + ciudad + " " + pais;
+        },
+      };
+      let persona4 = { nombre: "Belén", apellido: "García" };
+
+      console.log(persona3.completo.apply(persona4, ["Madrid", "España"])); //Los parámetros de la funcion se pasan como un array [x,y]
+
+
+      // ------------------ BIND --------------------------------------------
+      let persona5 = {
+        nombre: "Pepe",
+        apellido: "Perez",
+        completo: function () {
+          return this.nombre + " " + this.apellido;
+        },
+      };
+      let persona6 = { nombre: "Belén", apellido: "García" };
+
+      console.log(persona5.completo());
+      console.log(persona5.completo.bind(persona6)); //Llamamos a completo() con bind() desde la persona5 y da la función
+    </script>
+  </body>
+</html>
