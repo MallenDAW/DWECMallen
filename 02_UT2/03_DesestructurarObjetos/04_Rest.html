@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rest</title>
+</head>
+<body>
+  <script>
+    
+    const user={  
+      name:"A",
+      role:"B",
+      life:0,
+      features:["learn","code","paint"]
+    }
+
+    const {name,...rest}=user;
+
+    console.log(name);
+    console.log(rest);
+  </script>
+</body>
+</html>

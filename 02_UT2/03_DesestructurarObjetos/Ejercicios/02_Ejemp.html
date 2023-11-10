@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const claves=["name","life","power","talk"]; //array de claves
+    const valores=["Otto",99,10,function(){return "Hola"}]; //array de valores
+
+
+    const array=[];
+    for (const i of Object.keys(claves)) {
+      const clave=claves[i]; //Guardamos en clave cada clave
+      const valor=valores[i];//Guardamos en valor cada valor
+      array.push([clave,valor]); //Metemos en el array como clave valor la variable clave y el valor 
+    }
+
+    console.log(array);
+    const user=Object.fromEntries(array);
+    console.log(user);
+
+  </script>
+</body>
+</html>

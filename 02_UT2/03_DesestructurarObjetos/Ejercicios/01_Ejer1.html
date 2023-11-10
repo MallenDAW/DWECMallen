@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- Crear un array de animales y aplicar los métodos de Object - 
+      -keys
+      -values
+      -entries
+ -->
+  <script>
+    const animales=["Perro","Gato","Loro","Mamut"];
+
+    console.log(Object.keys(animales));  //devuelve las keys
+    console.log(Object.values(animales));//devuelve los values
+    console.log(Object.entries(animales)); // devuelve pares key => value
+
+    console.log(Object.fromEntries(Object.entries(animales))); // crea un objeto pasandole los pares clave => valor
+
+  </script>
+</body>
+</html>

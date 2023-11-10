@@ -67,15 +67,37 @@
 
       //Guardamos todos los objetos en un array
       let stock = [tvSony,tvBenQ,tvLG,tvXiaomi,tvPanasonic];
-      // console.log(stock);
-
+      
 
       function prodOrdenPorNombre(array){
+        return array.sort(function(a, b){return a.nombre.localeCompare(b.nombre)});
+      }//orden por nombre
+
+      function prodOrdenPorPrecio(array){
+        return array.sort(function(a, b){return a.precio - b.precio});
+      }//orden por precio
+
+      function prodPrecioTotal(array){
+        return array.sort(function(a, b){return a.importe() - b.importe()});
+      }//orden por precio total
+
+      function prodConMenosUnidades(){
         return array.sort();
       }
+
+      function prodLista(){
+        alert();
+      }//
+
       alert(prodOrdenPorNombre(stock));
+      alert(prodOrdenPorPrecio(stock));
+      console.log(prodOrdenPorNombre(stock));
+      console.log( prodOrdenPorPrecio(stock));
+      console.log(prodPrecioTotal(stock));
+      
 
-
+      // alert("ORDEN POR NOMBRE"+prodOrdenPorNombre(stock));
+      
     </script>
   </body>
 </html>
