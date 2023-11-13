@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log(cifradoPe("Autenticacion"));
+      console.log(cifradoPe2("AutenticaciOn"));
+
+
+      //----------- Variable 1 -------------
+      function cifradoPe(palabra) {
+        const VOCALES = ["a", "e", "i", "o", "u"];
+        // let temp=palabra;
+        let palCodificada = "pe";
+
+        for (let i = 0; i < palabra.length; i++) {
+      
+          palCodificada += palabra[i];
+          if (VOCALES.includes(palabra[i])) {
+           
+            if(VOCALES.includes(palabra[i+1])){
+              
+            }else{
+              palCodificada += "pe";
+            }
+          }
+        }
+
+        if (VOCALES.includes(palabra[palabra.length - 1]))
+          palCodificada += "pe";
+        return palCodificada;
+      }
+
+
+
+      //--------- Variable 2 ---------------
+      function cifradoPe2(palabra) {
+        const VOCALES = ["a", "e", "i", "o", "u"]; //Definimos un array de vocales para comparar
+        let palCodificada = "pe"; //Simpre empieza por "pe"
+
+        for (let i = 0; i < palabra.length; i++) {
+          palCodificada += palabra[i]; //
+          if (VOCALES.includes(palabra[i].toLowerCase()) && !VOCALES.includes(palabra[i+1].toLowerCase())) {
+              palCodificada += "pe";
+            }
+          } 
+        return palCodificada;
+      }
+    </script>
+  </body>
+</html>
+
+<!-- 
+    Escribe una funcion que acepte una única palabra (sin espacios  ni tildes) 
+    y la devuewlva codificada según las siguientes reglas:
+    
+      -La palabra codificada debe comenzar por "pe"
+      -La "pe" va detrás de una vocal
+      -Si hay varias vocales juntas, la "pe" va sólo después de la última vocal
+      -Cuando la palabra termina con una vocal no se agregará "pe" al final
+      -La cadena de palabras solo se compone de mayusculas y minusculas 
+
+  probar la función con la palabra Autenticacion
+
+    -->
