@@ -7,33 +7,44 @@
   </head>
   <body>
     <script>
-      // ------------ función por expresión (la funcion se guarda en una variable)
-      let saludo = function hola() {
-        console.log("Hola");
-      };
-      saludo();
 
-      // ------------ funcion anónima (igual que la de expresión pero no contiene un nombre)
-      let producto = function (a, b) {
-        return a + b;
-      };
+     
+      let hola = (name) => (name=="Pepe")?"Hola "+name:"Tu quien ereh?";
 
-      let suma = producto(5, 5);
-      console.log(suma);
+      console.log(hola("Pepe"));
+      console.log(hola(""));
 
-      // ------------ funcion flecha
-      function diHola2(name) {
-        return "cosassss";
+
+
+      function hola(name) { //funcion declarativa
+        return name;
       }
+      hola("Pepe");
 
-      var diHola = (name) => `¡Hola ${name}!`;
 
-      var diAdios = (name) => {
-        return `¡Adiós ${name}!`;
-      };
+      
+      let saludo= function hola2(name){ //por expresión
+        return name;
+      }
+      saludo("Pepe");
 
-      console.log(diHola("Pepe"));
-      console.log(diAdios("Pepe"));
+
+
+      let saludo2=function(name){ //anónima
+        console.log(name);
+      }
+      saludo2("Pepe");
+
+
+    const funcion2=function(){ 
+      return 10-6;
+    }
+    const function1=function(callback){ //callback
+      console.log(callback()+3);
+    }
+    console.log(function1(funcion2));
+
+
     </script>
   </body>
 </html>
