@@ -13,7 +13,7 @@
 
       //----------- Variable 1 -------------
       function cifradoPe(palabra) {
-        const VOCALES = ["a", "e", "i", "o", "u"];
+        const VOCALES = ["a", "e", "i", "o", "u","A","E","I","O","U"];
         // let temp=palabra;
         let palCodificada = "pe";
 
@@ -39,12 +39,12 @@
 
       //--------- Variable 2 ---------------
       function cifradoPe2(palabra) {
-        const VOCALES = ["a", "e", "i", "o", "u"]; //Definimos un array de vocales para comparar
+        const VOCALES = ["a", "e", "i", "o", "u","A","E","I","O","U"]; //Definimos un array de vocales para comparar
         let palCodificada = "pe"; //Simpre empieza por "pe"
 
         for (let i = 0; i < palabra.length; i++) {
           palCodificada += palabra[i]; //
-          if (VOCALES.includes(palabra[i].toLowerCase()) && !VOCALES.includes(palabra[i+1].toLowerCase())) {
+          if (VOCALES.includes(palabra[i]) && !VOCALES.includes(palabra[i+1])) {
               palCodificada += "pe";
             }
           } 

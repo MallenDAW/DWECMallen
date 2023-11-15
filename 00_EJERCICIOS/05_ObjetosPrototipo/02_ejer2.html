@@ -40,7 +40,7 @@
         }
         //Creamos el método toString (que lo hereda también televisores)
         this.toString = function () {
-        return `Descripción: ${this.nombre} ${this.categoria}`;
+        return `${this.nombre} / ${this.precio}€ --- TOTAL ${this.importe()}€\n`;
         }
         //Creamos el método valueOf() 
         this.valueOf=function(){
@@ -62,42 +62,60 @@
       let tvSony = new Productos("Sony Bravia","Televisor",4,999.99);
       let tvLG = new Productos("LG 89","Televisor",7,799.79);
       let tvBenQ = new Productos("BenQ XT45","Televisor",10,285.79);
-      let tvXiaomi = new Productos("Xiaomi T4","Televisor",2,374.25);
+      let tvXiaomi = new Productos("Xiaomi T4","Televisor",2,374.255);
       let tvPanasonic = new Productos("Panasonic V21Q","Televisor",100,1074.25);
 
       //Guardamos todos los objetos en un array
-      let stock = [tvSony,tvBenQ,tvLG,tvXiaomi,tvPanasonic];
+      let stock = [tvSony, tvBenQ, tvLG, tvXiaomi, tvPanasonic];
       
 
       function prodOrdenPorNombre(array){
         return array.sort(function(a, b){return a.nombre.localeCompare(b.nombre)});
       }//orden por nombre
 
+
       function prodOrdenPorPrecio(array){
         return array.sort(function(a, b){return a.precio - b.precio});
       }//orden por precio
 
+
       function prodPrecioTotal(array){
-        return array.sort(function(a, b){return a.importe() - b.importe()});
-      }//orden por precio total
+        let total=0;
 
-      function prodConMenosUnidades(){
-        return array.sort();
-      }
+        array.forEach(element => {
+            total+=element.importe(); //acumulamos el total de todos los productos
+        }
+        );
 
-      function prodLista(){
-        alert();
-      }//
+        return `Total: ${total.toFixed(2)}€`;
+      }//precio total con 2 decimales
 
-      alert(prodOrdenPorNombre(stock));
-      alert(prodOrdenPorPrecio(stock));
-      console.log(prodOrdenPorNombre(stock));
-      console.log( prodOrdenPorPrecio(stock));
-      console.log(prodPrecioTotal(stock));
+
+      function prodConMenosUnidades(array,cantidad){
+        let temporal=[];
+        array.forEach(element => {
+          if(element.unidades < cantidad){ temporal.push(element)};
+        });
+        return temporal;
+      }//productos con menos unidades que las solicitadas
       
 
-      // alert("ORDEN POR NOMBRE"+prodOrdenPorNombre(stock));
+      function prodLista(array){
+        let lista="";
+        array.forEach(element => {
+          lista+=`- ${element}`;
+        });
+
+        return lista;
+      }//listado de productos
+   
       
+      alert("-- NOMBRE -- \n\n"+prodOrdenPorNombre(stock));
+      alert("-- PRECIO -- \n\n"+prodOrdenPorPrecio(stock));
+      alert("-- IMPORTE -- \n\n"+prodPrecioTotal(stock));
+      alert("-- MENOS UNIDADES -- \n\n"+prodConMenosUnidades(stock,6));
+      alert("-- LISTADO DE PRODUCTOS -- \n\n"+prodLista(stock));
+            
     </script>
   </body>
 </html>
