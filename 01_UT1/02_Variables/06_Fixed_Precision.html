@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    //console.log(a.toString);
+
+    /*---------PARA REDONDEAR CON DECIMALES --------*/
+    let a = 3.89;
+    console.log(a.toFixed(0)) //redondea a 4
+    console.log(a.toFixed(1)) //redondea a 3.9 - agrega un decimal y lo redondea
+    console.log(a.toFixed(2)) //redondea a 3.89 - agrega 2 decimales y los redondea
+    console.log(a.toFixed(3)) //redondea a 3.890 - agrega 0 si no existen mas decimales
+
+
+
+    /*------ PARA PRECISIONES CON DECIMALES --------*/
+    let b =9.8999;
+    console.log(b.toPrecision());  //Nivel 0 da ERROR - el rango va de 1 a 100 // Vacio lo da tal cual está el numero
+    console.log(b.toPrecision(1)); //Nivel 1 de precision devuelve 10 en formato 1e+1
+    console.log(b.toPrecision(2)); //Nivel 2 de precision devuelve 9.9 porque el 1º decimal lo redondea hacia arriba 
+    console.log(b.toPrecision(3)); //Nivel 2 de precision devuelve 9.90 - redondea y da 2 decimales 
+    console.log(b.toPrecision(4)); //Nivel 3 de precision devuelve 9.900 - redondea y da 3 decimales 
+    console.log(b.toPrecision(5)); //Nivel 4 de precision devuelve 9.8999 - si coinciden los decimales lo devuelve igual (sin redondear)
+    console.log(b.toPrecision(6)); //Nivel 4 de precision devuelve 9.89990 - si no hay tantos decimales NO REDONDEA y agrega 0 
+
+
+  </script>
+</body>
+</html>

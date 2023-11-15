@@ -41,23 +41,23 @@
     console.log("Suma de \"5\" + 9: "+suma+"\n");
 
 
-    console.log("1 == \"1\": " +(1 =="1"));
-    console.log("1 == \"one\": "+(1 =="one"));
-    console.log("true == 1: "+(true ==1));
-    console.log("false ==\"cero\": "+(false =="cero"));
-    console.log("\"test\" =={x:\"test\"}: "+("test" =={x:"test"}));
+    console.log("1 == \"1\": " +(1 =="1")); //true
+    console.log("1 == \"one\": "+(1 =="one")); //false
+    console.log("true == 1: "+(true ==1)); //true
+    console.log("false ==\"cero\": "+(false =="cero")); //false
+    console.log("\"test\" =={x:\"test\"}: "+("test" =={x:"test"})); //false
 
-    console.log("1+1: "+(1+1));
-    console.log("1+\"1\": "+(1+"1"));
-    console.log("\"Hello\"+\" World\": "+("Hello"+" World"));
-    console.log("\"It\´s\"+true: "+("It\´s"+true));
-    console.log("\"Pizza\"+{cheese:\"extra\"}: "+("Pizza"+{cheese:"extra"}));
+    console.log("1+1: "+(1+1)); //2
+    console.log("1+\"1\": "+(1+"1")); //11
+    console.log("\"Hello\"+\" World\": "+("Hello"+" World")); //Hellow world
+    console.log("\"It\´s\"+true: "+("It\´s"+true)); //It´s true
+    console.log("\"Pizza\"+{cheese:\"extra\"}: "+("Pizza"+{cheese:"extra"})); //Pizza [object object]
 
-    console.log("3-2: "+(3-2));
-    console.log("\"3\"-2: "+("3"-2));
-    console.log("3-true: "+(3-true));
-    console.log("1-{x:3}: "+(1-{x:3}));
-    console.log("\"fun\"-2: "+("fun"-2));
+    console.log("3-2: "+(3-2)); //1
+    console.log("\"3\"-2: "+("3"-2)); //1
+    console.log("3-true: "+(3-true)); //2
+    console.log("1-{x:3}: "+(1-{x:3})); //NaN
+    console.log("\"fun\"-2: "+("fun"-2)); //NaN
 
 
   </script>

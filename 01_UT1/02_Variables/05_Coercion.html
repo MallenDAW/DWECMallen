@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    if("3"+2==5){
+      console.log("Pizza");
+    }else{
+      console.log("Queso");
+    }
+
+    if([]) console.log("Pizza"); //Un array vacio es true
+
+    if(4+"1"==5)console.log("Pizza"); //Cuando suma una cadena se convierte todo a cadena (+ de concatenar)
+
+    if(6-"1"==5)console.log("Pizza"); //Cuando resta cadenas se convierte todo a numero
+
+    if(0)console.log("Pizza");
+
+    if(5+true==6)console.log("Pizza"); //Un boolean se convierte a numero, imprimirá Pizza
+
+    if(5+true===6)console.log("aaaaaaaaaaaaaaaaaaaaaa"); //Como se convierte a numero, imprimirá aaaaaaaaaaa
+
+    if(undefined==null)console.log("undefined");  //Esto da true
+
+    if(Infinity==null)console.log("papappapapapap");  //Esto da true
+
+    if(!undefined)console.log("Pizza"); //Undefined es 0 y el defined es 1
+
+    if({}=={})console.log("Pizza"); //aunque son iguales, es FALSE porque se compara la memoria donde están guardados
+
+    if({}==={})console.log("objetooooooooooooooooorkl"); //Siempre será FALSE porque se compara por referencia, no por valor
+
+  </script>
+</body>
+</html>
