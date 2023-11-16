@@ -1,25 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maps</title>
-</head>
-<body>
-  <script>
-    //Para organizar clave:valor. Mezcla el set y el array.
-    //Se recorre con un for of y se usa la conversion con spread '...'
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maps</title>
+  </head>
+  <body>
+    <script>
+      //Para organizar clave:valor. Mezcla el set y el array.
+      //Se recorre con un for of y se usa la conversion con spread '...'
 
-    const fruta= new Map([
-      ["manzana",500], //La clave es manzana y el valor 500
-      ["platano",300],
-      ["mandarina",200],
-    ]);
+      const fruta = new Map([
+        ["manzana", 500], //La clave es manzana y el valor 500
+        ["platano", 300],
+        ["mandarina", 200],
+      ]);
 
-    fruta.set("naranja",100); //con el .set(key,value) añadimos un elemento más al mapa
+      fruta.set("naranja", 100); //con el .set(key,value) añadimos un elemento más al mapa
+      console.log(fruta);
 
-    console.log(fruta);
-    //Métodos de Map: SET,KEY,VALUE,GET,DELETE,HAS
-  </script>
-</body>
+
+
+      // ----- MÉTODOS ------>   SET,KEY,VALUE,GET,DELETE,HAS
+
+      const map1 = new Map();
+
+      map1.set("a", 1);
+      map1.set("b", 2);
+      map1.set("c", 3);
+
+      console.log(map1.get("a")); // dará el valor de "a" => 1
+      map1.set("a", 97); //sobreescribimos el valor de "a"
+
+      console.log(map1.get("a")); // dará el valor de "a" => 97
+      console.log(map1.size); //valor del tamaño
+      // map1.delete("b"); delete borra el par clave-valor dada la clave
+
+      console.log(map1.has("a")); //devuelve true/false si encuentra o no la clave dada
+      
+      for (const iterator of map1) {
+        console.log(iterator);
+      }
+
+
+      //-------- Metodos keys , values y entries ---------
+
+      const myMap = new Map();
+      myMap.set(0, "zero");
+      myMap.set(1, "one");
+
+      for (const [key, value] of myMap) {
+        console.log(`${key} = ${value}`);
+      }
+      // 0 = zero
+      // 1 = one
+
+      for (const key of myMap.keys()) {
+        console.log(key);
+      }
+      // 0
+      // 1
+
+      for (const value of myMap.values()) {
+        console.log(value);
+      }
+      // zero
+      // one
+
+      for (const [key, value] of myMap.entries()) {
+        console.log(`${key} = ${value}`);
+      }
+      // 0 = zero
+      // 1 = one
+
+
+    </script>
+  </body>
 </html>

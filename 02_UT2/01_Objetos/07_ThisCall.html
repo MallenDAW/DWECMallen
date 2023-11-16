@@ -17,6 +17,8 @@
           return this.nombre + " " + this.apellido;
         },
       };
+
+
       let persona2 = { nombre: "Belén", apellido: "García" };
 
       console.log(persona1.completo());
@@ -33,6 +35,7 @@
           return this.nombre + " " + ciudad + " " + pais;
         },
       };
+      
       let persona4 = { nombre: "Belén", apellido: "García" };
 
       console.log(persona3.completo.apply(persona4, ["Madrid", "España"])); //Los parámetros de la funcion se pasan como un array [x,y]

@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-    let a=[1,45,67,"rrrrrr",345,null,"234",undefined];
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let a=[1,45,67,"rrrrrr","1",345,null,"234",undefined];
+      let cadena = ["23", "bbbb", "ddddd", "ceeee", "aaaa"];
+      let numeros = [54, 300, 9, 14, 5.9, -500];
 
-    console.log("pop(): "+a.pop()); //quita el ultimo elemento
-    console.log("shift(): "+a.shift()); //quita el primer elemento
-    console.log("delete(): "+delete a[1]); //quita el elemento indicado y deja undefined (no recomendable)
-    console.log("push(): "+a.push("Pepe")); //añade elemento al final
-    console.log("unshift(): "+a.unshift("Maria")); //añade elemento al principio
-    console.log("slice(): "+a.slice(1,3)); //muestra las posiciones desde 1 hasta 3 (el 3 no lo incluye)
-    console.log("splice(): "+a.splice(2,3,"Pacoooooooo","francisco")); //desde la posicion 2, se borran 3 elementos y se insertan "Paco" y "Francisco"
+      console.log("pop(): "+a.pop()); //quita el ultimo elemento
+      console.log("shift(): "+a.shift()); //quita el primer elemento
+      console.log("delete(): "+delete a[1]); //quita el elemento indicado y deja undefined (no recomendable)
+      console.log("push(): "+a.push("Pepe")); //añade elemento al final
+      console.log("unshift(): "+a.unshift("Maria")); //añade elemento al principio
+      console.log("slice(): "+a.slice(1,3)); //muestra las posiciones desde 1 hasta 3 (el 3 no lo incluye)
+      console.log("splice(): "+a.splice(2,3,"Pacoooooooo","francisco")); //desde la posicion 2, se borran 3 elementos y se insertan "Paco" y "Francisco"
 
-    let b=["b","c","d"];
-    console.log(a.concat(b)); //Concatena un array con mas elementos (puede ser un array)
+      let b=["b","c","d"];
+      console.log(a.concat(b)); //Concatena un array con mas elementos (puede ser un array)
 
-    console.log(a.copyWithin(1,3));
-    console.log(a.fill(6,2,5)); //rellena con 6 desde la posicion 2 hasta la 5
-    console.log(a.join("-")); //da una cadena separando el array con el elemento dado
-   
-   
+      console.log(a.copyWithin(1,3));
+      console.log(a.fill(6,2,5)); //rellena con 6 desde la posicion 2 hasta la 5
+      console.log(a.join("-")); //da una cadena separando el array con el elemento dado
 
-  </script>
-</body>
+      console.log(a.indexOf(NaN)); //devuelve el índice del valor indicado  -- si no exsiste da -1 y si hjay repetidos da el primero que encuentre
+      console.log(a.lastIndexOf(234)); //devuelve el último ínidice que encuentre dado el valor -- si hay repetidos da el último
+      console.log(a.reverse("Paco")); //da la vuelta a un array
+
+
+
+      
+      // ----- ORDENACIÓN ----------
+
+      console.log(a.sort()); //dice la documentacion que "ordena"
+    
+      console.log(cadena.sort((a, b) => a.localeCompare(b)));  //Para ordenar cadenas
+      console.log(cadena.sort());
+
+
+      console.log(numeros.sort((a, b) => a - b));
+      console.log(numeros.sort());
+
+
+
+    </script>
+  </body>
 </html>

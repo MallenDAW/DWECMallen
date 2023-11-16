@@ -8,6 +8,7 @@
 <body>
   <script>
 		//INSTANCIACIÓN:
+
 		//Varias formas de instanciar
 		var daw = "Desarrollo de aplicaciones web";
 		var dam = 'Desarrollo de aplicaciones multiplataforma';
@@ -32,6 +33,8 @@
     //Indexof - donde aparece por primera vez
     //Last indexof - donde aparece por ultima vez
     alert("La primera W aparece en: "+ciclos.indexOf("W"));
+    alert("La primera 'Grado' aparece en: "+ciclos.indexOf("Grado"));
+    alert("La úiltima 'Grado' aparece en: "+ciclos.lastIndexOf("Grado"));
 
     //Search() para buscar cadenas o expresiones regulares
     //match() para buscar expresiones regulares
@@ -46,9 +49,11 @@
     //slice(posicion inicial, posicion final) - si solo hay 1 parametro es hasta el final
     alert(ciclos.slice(10));
 
-    //substring
+    
+    //substring(pos ini, pos fin) - NO admite numeros negativos
+   console.log(daw.substring(1, 20)); //devuelve desde la posicion 1 hasta la 20 de la cadena daw
+   //Si solo lleva un parámetro devuelve hasta el final de la cadena
 
-    //substr
 
     const miTexto="Mano";
     alert("caracter de la posicion 0: "+miTexto[0]); //La posicion de una cadena se puede tratar como un array

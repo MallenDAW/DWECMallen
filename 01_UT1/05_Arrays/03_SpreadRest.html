@@ -8,6 +8,8 @@
   <body>
     <script>
       //SPREAD--------------
+
+
       //si ponemos los 3 puntos '...' estamos recogiendo todos los elementos que pasen
       //sin necesidad de poner cada elemento individualmente
       const debug = (param) => console.log(...param); //al ponerlo en el log salen elementos individuales (desagrupa)
@@ -15,14 +17,38 @@
       const matriz = [1, 2, 3, 4, 5];
 
       debug(matriz);
-      debug2(matriz);
+      debug2(3, 1, 2, 3, 4, 5);
+
+      const A = [9, 5, 6, 7, 8];
+      const [uno, dos, ...pepe] = A;
+      console.log(pepe); //devuelve un array con el resto
+      console.log(...pepe); //devuelve el resto en numeros individuales
+
+
+
 
       //REST--------------
+
+
       const elements = [5, 4, 3, 2];
       const [first, ...rest] = elements; //cogemos el 5 en first y en rest con '...' guardamos un array con [4,3,2]
 
       console.log(first);
       console.log(rest);
+
+
+
+      // ----- JUNTAR ARRAYS ------
+
+      const pareja = [3, 4];
+
+      const array = [1, 2, ...pareja, 5, 6]; //desestructura y crea un único array - [1,2, 3,4 ,5,6]
+      console.log(array);
+
+      const array2 = [1, 2, pareja, 5, 6]; //crea un array dentro del otro array - [1,2, [3,4] ,5,6]
+      console.log(array2);
+
+
     </script>
   </body>
 </html>

@@ -1,28 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Set</title>
-</head>
-<body>
-  <script>
-    // new Set(xxxx) donde xxx es un iterable(array,map,string)
-    const miSet= new Set("pamplinas"); //el set no admite elementos rpetidos
-    console.log(miSet);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set</title>
+  </head>
+  <body>
+    <script>
+      // new Set(xxxx) donde xxx es un iterable(array,map,string)
+      const miSet = new Set("pamplinas"); //el set no admite elementos rpetidos
+      console.log(miSet);
+
+      const miarray = [...miSet]; //Pasamos el set a un array
+      console.log(miarray);
+
+      //Los set se recorren con un for of
+      let conjunto = new Set([2, 3, 4, 3, 2, 7]);
+      for (let element of conjunto) {
+        console.log(element);
+      }
 
 
-    //Los set se recorren con un for of
-    let conjunto = new Set([2,3,4,3,2,7])
-    for (let element of conjunto) {
-      console.log(element);
-    }
-
-    //Métodos a usar : ADD, DELETE , CLEAR, SIZE, HAS
 
 
-    const miarray=[...miSet];
-    console.log(miarray);
-  </script>
-</body>
+      //-----MÉTODOS -----> ADD, DELETE , CLEAR, SIZE, HAS
+
+      const mySet1 = new Set();
+
+      mySet1.add(1); // Set [ 1 ]
+      mySet1.add(5); // Set [ 1, 5 ]
+      mySet1.add(5); // Set [ 1, 5 ]
+      mySet1.add("algún texto"); // Set [ 1, 5, 'algún texto' ]
+      const o = { a: 1, b: 2 };
+      mySet1.add(o);
+
+      mySet1.add({ a: 1, b: 2 }); // o está haciendo referencia a un objeto diferente,
+      // por lo que está bien
+
+      mySet1.has(1); // true
+      mySet1.has(3); // false, ya que 3 no se ha agregado al conjunto
+      mySet1.has(5); // true
+      mySet1.has(Math.sqrt(25)); // true
+      mySet1.has("Algún Texto".toLowerCase()); // true
+      mySet1.has(o); // true
+
+      console.log(mySet1.size); // 5 - da el tamaño
+      mySet1.delete(5); // elimina 5 del conjunto
+
+      mySet1.has(5); // false, 5 ha sido eliminado
+
+      mySet1.size; // 4, ya que acabamos de eliminar un valor
+
+      console.log(mySet1);
+      // imprime en consola Set(4) [ 1, "algún texto", {…}, {…} ] en Firefox
+      // imprime en consola Set(4) { 1, "algún texto", {…}, {…} } en Chrome
+    </script>
+  </body>
 </html>
