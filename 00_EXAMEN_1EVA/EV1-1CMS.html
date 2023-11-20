@@ -31,7 +31,7 @@
         //Llenamos el array de direcciones aleatorias
       }
 
-      let cadena="";
+      let cadena=[];
 
       //Hacemos una funcion recursiva para comprobar valores de 2 en 2
       //El resto lo guardamos en un array
@@ -59,19 +59,16 @@
             segundo="e";
             
           }
-          cadena+=primero+segundo;
+
+          cadena.push(primero,segundo);
           comprobarDirecciones(resto,cadena);
         }
         return cadena;
          
-        
       }
       console.log(minutosArray);
       console.log("Paseo : "+comprobarDirecciones(minutosArray,cadena));
 
-      // console.log(minutosArray);
-      // console.log(minutosArray[100]);
-      // console.log("Direcciones del paseo: " + minutosArray.join(""));
     </script>
   </body>
 </html>
