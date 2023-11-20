@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 1</title>
+  </head>
+  <body>
+    <script>
+      // 0 - n
+      // 1 - s
+      // 2 - e
+      // 3 - o
+
+      const DIRECCIONES = ["n", "s", "e", "o"];
+
+      do {
+        var minutos = parseInt(prompt("Cuantos minutos tienes libres?")); //Pasamos el numero que introduzca el usuario a number
+      } while ( //Condiciones donde volverá a pedir el número de minutos
+        minutos < 6 ||
+        minutos > 16 ||
+        isNaN(minutos) ||
+        minutos === null ||
+        minutos % 2 != 0
+      );
+
+      //Creamos un array vacio y le damos la longitud de los minutos que introduzca el usuario
+      let minutosArray = [];
+      for (let indice = 0; indice < minutos; indice++) {
+        minutosArray[indice] = DIRECCIONES[Math.ceil(Math.random() * 4 - 1)];
+        //Llenamos el array de direcciones aleatorias
+      }
+
+      let cadena="";
+
+      //Hacemos una funcion recursiva para comprobar valores de 2 en 2
+      //El resto lo guardamos en un array
+      //Volvemos a llamar a la funcion con el array almacenado en resto
+      function comprobarDirecciones(array,cadena) {
+
+        //CONDICIÓN DE PARADA - mientras el array no esté vacío sigue quitando los 2 primeros digitos
+        if (array.length !== 0) {
+          const [uno, dos, ...resto] = array;
+          let primero=uno;
+          let segundo=dos;
+
+          //desectructuramos el array y recogemos los valores de 2 en 2 (nos guardamos el resto para iterar)
+          //por cada direccion tendrá que haber una opuesta -- ejemplo: si es N la siguiente será S
+          if (primero == "n") {
+            segundo = "s";
+            
+          }else if (primero == "s") {
+            dsegundo = "n";
+            
+          }else if(primero=="e"){
+            segundo="o";
+            
+          }else if(primero=="o"){
+            segundo="e";
+            
+          }
+          cadena+=primero+segundo;
+          comprobarDirecciones(resto,cadena);
+        }
+        return cadena;
+         
+        
+      }
+      console.log(minutosArray);
+      console.log("Paseo : "+comprobarDirecciones(minutosArray,cadena));
+
+      // console.log(minutosArray);
+      // console.log(minutosArray[100]);
+      // console.log("Direcciones del paseo: " + minutosArray.join(""));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 2</title>
+  </head>
+  <body>
+    <!-- Creamos un contenedor para guardar la piramide -->
+    <div id="contenedor"></div>
+    <script>
+      do {
+        var numeroFilas = parseInt(prompt("Cuantas filas?")); //Pasamos el numero que introduzca el usuario a number
+      } while (    //Condiciones donde volverá a pedir el número
+        numeroFilas <= 0 || 
+        numeroFilas >= 50 ||
+        isNaN(numeroFilas) ||
+        numeroFilas === null
+      );
+
+      //Para la piramide tumbada usaremos for decrementales
+      for (let i = numeroFilas; i > 0; i--) {
+        for (let j = numeroFilas - i; j > 0; j--) {
+          //Espacio que lleva delante cada fila (solo uno)
+            document.getElementById("contenedor").innerHTML += "&nbsp";
+     }
+        for (let z = 0; z < i; z++) {
+          //Imprime la linea con el mismo numero de fila, es decir, el valor de i
+          document.getElementById("contenedor").innerHTML += i;
+        }
+        //Hace un salto de línea
+        document.getElementById("contenedor").innerHTML += "<br>";
+      }
+    </script>
+  </body>
+</html>
