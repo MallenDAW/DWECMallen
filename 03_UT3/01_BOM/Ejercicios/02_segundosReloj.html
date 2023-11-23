@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reloj</title>
+  <style>
+    button{
+      padding: 10px;
+      margin: 10px;
+      background-color: cornflowerblue;
+      color: antiquewhite;
+      font-weight: 900;
+    }
+    p{
+      margin: 10px;
+      padding: 10px;
+      border: 3px dotted #000;
+      border-radius: 10px 20px;
+      width: 120px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hacer los segundos de un rteloj -->
+  <button onclick="infinito=setInterval(pintarSegundos,1000)">SEGUNDOS</button>  
+  <button onclick="clearInterval(infinito)">PARAR</button><br>  
+  <p id="show"></p>
+  <script>
+
+    function pintarSegundos(){
+      document.getElementById("show").innerHTML="Segundos - "+new Date().getSeconds();
+    }
+
+  </script>
+</body>
+</html>

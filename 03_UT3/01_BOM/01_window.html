@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WINDOW BOM</title>
+</head>
+<body>
+  <p id="ventana"></p>
+  <script>
+
+    window.name="mi ventana";
+    let texto="";
+    texto+="<br/>Nombre: "+window.name;
+    texto+="<br/>Ancho externo: "+window.outerWidth;
+    texto+="<br/>Alto externo: "+window.outerHeight;
+    texto+="<br/>Ancho interno: "+window.innerWidth;
+    texto+="<br/>Alto interno: "+window.innerHeight;
+    texto+="<br/>pageXOffset-"+window.pageXOffset+" pageYOffset-"+window.pageYOffset;
+    texto+="<br/>screenX-"+window.screenX+" screenY-"+window.screenY;
+
+
+    document.getElementById("ventana").innerHTML=texto;
+    
+  </script>
+</body>
+</html>

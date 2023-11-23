@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 1</title>
+  <style>
+    button{
+      padding: 10px;
+      margin: 10px;
+      background-color: rgb(42, 42, 189);
+      color: #fff;
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+  <p id="ventana"></p>
+  <script>
+
+   window.name="mi ventana";
+    let texto="";
+    document.getElementById("ventana").innerHTML=texto;
+    
+    function crearVentana(){
+      miVentana=window.open("http://www.google.es");
+    }
+    function crearVentana2(){
+      miVentana=window.open("","",width=500,height=500);//ventana vacia / sin  nombre/ ancho / alto
+      miVentana.document.write("<h1>Mi ventana</h1>")
+    }
+
+    function cerrarVentana(){
+      miVentana.close();
+    }
+
+    function redimensionarVentana(){
+      enfocar();
+      miVentana.resizeBy(10,10);
+    }
+
+    function tamanoVentana(){
+      enfocar();
+      miVentana.resizeTo(10,10);
+    }
+
+    function enfocar(){
+      miVentana.focus();
+    }
+
+    function imprimir(){
+      enfocar();
+      miVentana.print();
+    }
+
+    function moverVentana(){
+      enfocar();
+      miVentana.moveBy(10,10);
+    }
+
+    function posicionVentana(){
+      enfocar();
+      miVentana.moveTo(10,10);
+    }
+
+  </script>
+  <button onclick="crearVentana()">Google</button><br><br>
+  <button onclick="crearVentana2()">OPEN</button><br><br>
+  <button onclick="cerrarVentana()">CLOSE</button><br><br>
+  <button onclick="ebfocar()">FOCUS</button><br><br>
+  <button onclick="redimensionarVentana()">RESIZE BY</button>
+  <button onclick="tamanoVentana()">RESIZE TO</button><br><br>
+  <button onclick="imprimir()">PRINT</button><br><br>
+  <button onclick="moverVentana()">MOVE BY</button>
+  <button onclick="posicionVentana()">MOVE TO</button><br><br>
+</body>
+</html>
