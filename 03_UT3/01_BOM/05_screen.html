@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="uno"></p>
+  <script>
+    let texto="<br>width: "+ screen.width;
+    texto+="<br>height: "+ screen.height;
+    texto+="<br>availWidth: "+ screen.availWidth;
+    texto+="<br>availHeight: "+ screen.availHeight;
+    texto+="<br>colorDepth: "+ screen.colorDepth;
+    texto+="<br>pixeldepth: "+ screen.pixelDepth;
+
+    document.getElementById("uno").innerHTML+=texto;
+  </script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 // ---- LÓGICA -------
 
 
+
 function elegirNivel(){
   let filas,columnas,dificultad;
   dificultad=document.getElementById("nivel").value; 
@@ -8,10 +9,10 @@ function elegirNivel(){
 
   switch (dificultad) {
     case "FÁCIL":
-      filas=columnas=9;
-      document.getElementById("tablero").insertAdjacentHTML=dibujarTableroHTML(filas,columnas);
+      filas=columnas=9
+      document.getElementById("tablero").innerHTML=dibujarTableroHTML(filas,columnas);
       break;
-  
+
     case "MEDIO":
       filas=columnas=13;
       document.write(dibujarTableroHTML(filas,columnas));
@@ -21,13 +22,8 @@ function elegirNivel(){
       filas=columnas=19;
       document.write(dibujarTableroHTML(filas,columnas));
       break;
-  }
-  
+  } 
 }
-
-
-
-
 // ---- FUNCIONES -------
 
 function dibujarTableroHTML(filas,columnas){
@@ -42,7 +38,7 @@ for (let indiceFila = 0; indiceFila < filas; indiceFila++) {
    tablero+="\n</tr>";
 }
 tablero+="\n</table>";
-
+console.log(tablero);
 return tablero;
 
 }//dibujarTableroHTML
@@ -51,11 +47,32 @@ function generarTableroJS(){
 
 }//generarTableroJS
 
+
+
 function calcularNumMinas(x,y){
+
+  let dificultad;
+  dificultad=document.getElementById("nivel").value; 
+  switch (dificultad) {
+    case "FÁCIL":
+        
+      break;
+  
+    case "MEDIO":
+      
+      break;
+  
+    case "DIFÍCIL":
+      
+      break;
+  }
 
 }//calcularNumMinas
 
-function numeroAleatorio(){
+function numeroAleatorio(array,numeroMinas){
+
+
+  Math.floor(Math.random());
 
 }//numeroAleatorio
 

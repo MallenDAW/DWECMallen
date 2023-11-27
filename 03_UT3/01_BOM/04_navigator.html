@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="uno"></div>
+  <script>
+
+document.getElementById("uno").innerHTML+="<br>codeName: "+navigator.appCodeName;
+document.getElementById("uno").innerHTML+="<br>appVersion: "+navigator.appVersion;
+document.getElementById("uno").innerHTML+="<br>appName: "+navigator.appName;
+document.getElementById("uno").innerHTML+="<br>product: "+navigator.product;
+document.getElementById("uno").innerHTML+="<br>platform: "+navigator.platform;
+document.getElementById("uno").innerHTML+="<br>online: "+navigator.onLine+"\n";
+document.getElementById("uno").innerHTML+="<br>lenguaje: "+navigator.language+"\n";
+document.getElementById("uno").innerHTML+="<br>cookieenabled: "+navigator.cookieEnabled+"\n";
+document.getElementById("uno").innerHTML+="<br>userAgent: "+navigator.userAgent+"\n";
+document.getElementById("uno").innerHTML+="<br>geolocation: "+navigator.geolocation+"\n";
+document.getElementById("uno").innerHTML+="<br>javaEnabled(): "+navigator.javaEnabled()+"\n";
+
+console.log(navigator);
+  </script>
+</body>
+</html>
