@@ -8,7 +8,7 @@
         -numeroAleatorio(){....}
         -colocarBombasTableroJS(){....}
 
-    c) Implementar funcionalidad para eventos
+   c) Implementar funcionalidad para eventos
 
         -Click Izquierdo -> investigar celda
         -En caso de existir mina, finalizar la partida. 
@@ -20,10 +20,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <script src="iniciarBuscaminas.js"/></script>
   <title>Buscaminas</title>
 </head>
 <body>
-  
+  <form method="post">
+    <!-- <input id="filas" type="text" placeholder="Filas"/>
+    <input id="columnas" type="text" placeholder="Columnas"/> -->
+    <select id="nivel">
+      <option name="facil">FÁCIL</option>
+      <option name="medio">MEDIO</option>
+      <option name="dificil">DIFÍCIL</option>
+    </select>
+    <input id="ok" type="submit" value="GENERAR" onclick=elegirNivel() />
+  </form>
+  <div id="tablero"></div>
 </body>
 </html>
