@@ -9,7 +9,7 @@ function elegirNivel(){
   switch (dificultad) {
     case "FÁCIL":
       filas=columnas=9;
-      document.write(dibujarTableroHTML(filas,columnas));
+      document.getElementById("tablero").insertAdjacentHTML=dibujarTableroHTML(filas,columnas);
       break;
   
     case "MEDIO":
