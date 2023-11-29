@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- a) Pagina que tiene un boton  'PULSAME':
+
+            -si pulsado la página cambia de color (aleatorio)
+            -si se pulsa en cualquier otra parte de la página vuelve a color blanco
+
+       b) Mediante eventos muestre la posición del ratón (x=20,y=34)
+  -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio</title>
+    <style>
+      input{
+        padding: 10px;
+        background-color: antiquewhite;
+        color: black;
+        font-weight: 900;
+      }
+
+      #raton{
+        padding: 10px;
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: antiquewhite;
+        width: 70px;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="ok" type="button" value="PULSAME" />
+    <h3 id="raton"></h3>
+    <script>
+      const HEXADECIMAL_MAX = 16777215; //equivale al color - #ffffff
+
+      //Escuchamos el botón para cambiar el color del body
+      document.getElementById("ok").addEventListener("click", function () {
+        document.body.style.background =
+          "#" + Math.floor(Math.random() * HEXADECIMAL_MAX).toString(16); 
+          //damos un valor aleatorio entre 0 y #ffffff
+      },false);
+
+
+      //Escucha la totalidad del documento
+      document.addEventListener("click", function () {
+        //Si se pulsa cualquier cosa que no sea el boton cambia el color del body a blanco
+        if (event.target !== document.getElementById("ok")) {
+          document.body.style.background = "white";
+        }
+      },false);
+
+      //Coordenadas del ratón (el listener escucha TODO el documento para saber donde esta la X / Y)
+      document.addEventListener("mousemove", function (elemento) {
+        document.getElementById("raton").innerHTML =
+          "\n\nX: " + elemento.x + 
+          "\n<br> Y: " + elemento.y;
+      },false);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>W3C</title>
+</head>
+<body>
+
+  <!-- USAR EL MODELO W3C -->
+  <h1 id="W3C">HOLA BUENSA TARDES</h1>
+
+   <script>
+    
+    document.getElementById("W3C").addEventListener("click",color,false);
+    document.getElementById("W3C").addEventListener("click",fondo,false);
+
+    
+    function color(){
+      document.getElementById("W3C").style.color='red';
+    }
+    function fondo(){
+      document.getElementById("W3C").style.background='#000';
+    }
+
+
+    // Se pueden poner funciones anónimas
+    document.getElementById("W3C").addEventListener("click",function(){
+      this.style.padding="100px";
+    },false);
+    
+  </script>
+</body>
+</html>

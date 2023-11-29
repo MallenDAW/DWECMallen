@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button type="submit" onclick="paAtras()">ATRÁS</button>
+  <button type="submit" onclick="paAlante()">ALANTE</button>
+  <p id="uno"></p>
+  <p id="dos"></p>
+  <script>
+
+    // SCREEN
+    let texto="<br>width: "+ screen.width;
+    texto+="<br>height: "+ screen.height;
+    texto+="<br>availWidth: "+ screen.availWidth;
+    texto+="<br>availHeight: "+ screen.availHeight;
+    texto+="<br>colorDepth: "+ screen.colorDepth;
+    texto+="<br>pixeldepth: "+ screen.pixelDepth;
+
+    document.getElementById("uno").innerHTML+=texto;
+
+
+    // HISTORY
+    alert("URL´s visitadas: "+history.length);
+
+    function paAtras(){
+      history.back();
+    }
+
+    function paAlante(){
+      history.forward();
+    }
+
+    function irA(){
+      history.go("www.google.com")
+    }
+
+
+
+    // LOCATION
+    let loca;
+
+    loca+="\n<br>Href: "+location.href;
+    loca+="\n<br>Host name: "+location.hostname;
+    loca+="\n<br>Path name: "+location.pathname;
+    loca+="\n<br>Protocol: "+location.protocol;
+    loca+="\n<br>Hash: "+location.hash;
+    loca+="\n<br>Host: "+location.host;
+    loca+="\n<br>Origin: "+location.origin;
+    loca+="\n<br>Search: "+location.search;
+
+    document.getElementById("dos").innerHTML=loca;
+    console.log(loca);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- CON EL EVENTO EN EL HTML (NO RECOMENDABLE) -->
+  <h1 id="uno"  onclick="this.innerHTML='ya no hay buensas tardes'" 
+                onmouseover="this.style.background='blue'"
+                onmouseout="this.style.background='white'" 
+                ondblclick="this.innerHTML='HOLA BUENSA TARDES'">
+                HOLA BUENSA TARDES
+  </h1>
+
+  <!-- CON UNA FUNCIÓN INTERNA CON EL PARÁMETRO THIS -->
+  <h1 id="dos"  onclick="cambiar(this)" >HOLA BUENSA NOCHES</h1>
+
+  <script>
+    function cambiar(elemento){
+      document.getElementById("dos").innerHTML='ya no hay buensas noches';
+    }
+  </script>
+</body>
+</html>
