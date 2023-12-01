@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- 
+  1) Ejercicio sobre eventos y listener (querySelector)
+
+Modifica los tamaños de los selectores de clase siguientes para que , junto con la imagen que se  proporciona y el código javascript que escribas en un fichero .js independiente, 
+al abrir el archivo HTML con un navegador aparezca la imagen y al pinchar con el ratón en ella, desaparezca y aparezca un alert con “ la papelera se ha vaciado”
+
+Puedes mejorar el programa referenciando a dos imágenes que encuentres en alguna url, una de la papelera llena y otra vacía, para que al pinchar sobre la llena aparezca la vacía y el alert anterior.
+
+CORS
+
+2) Hacer que no funcione el menú contextual (click derecho)
+
+ -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papelera de Reciclaje</title>
+  <style>
+    .bin {
+      width: 150px;
+      height: 200px;
+      background-color: #7F8C8D;
+      border-radius: 15px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lid {
+      width: 140px;
+      height: 20px;
+      background-color: #2C3E50;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .trash {
+      width: 120px;
+      height: 120px;
+      background-image: url('llena.png');
+      background-size: cover;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="bin">
+    <div class="lid"></div>
+    <div class="trash"></div>
+  </div>
+
+  <script src="papelera.js"></script>
+</body>
+</html>
