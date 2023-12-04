@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- 
+
+  Hacer una página con un párrafo y un boton
+  que ceunte cuantas veces se ha pulsado.
+
+ -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input{
+      padding: 5px;
+      margin: 2px;
+      background-color: bisque;
+      font-weight: bold;
+      font-family: 'monospace';
+    }
+    h3{
+      text-decoration: underline;
+    }
+    p{
+      padding: 10px;
+      margin-left: 10px;
+      border: 2px dotted white;
+      color: white;
+      background-color: orangered;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <input id="sum" type="button" value="SUMA">
+  <input id="rest" type="button" value="RESTA">
+  <input id="raton" type="button" value="UNICO">
+  <h3>CONTADOR</h3>
+  <p id="cont">0</p>
+  <script>
+
+  let i=0;
+
+  document.getElementById("sum").addEventListener("click",operar ,false);
+  document.getElementById("rest").addEventListener("click",operar ,false);
+
+  document.getElementById("raton").addEventListener('click',operar,false)
+  document.getElementById("raton").addEventListener('contextmenu',operar,false)
+
+ function operar(e){
+  if(e.target.id=="sum") i++;
+  else if(e.target.id=="rest") i--;
+
+  switch (e.type) {
+    case "click":
+    i++;
+      break;
+  
+    case "contextmanu":
+    i--;
+      break;
+  }
+
+  document.getElementById("cont").innerHTML=i;
+
+ }
+
+
+
+  </script>
+</body>
+</html>

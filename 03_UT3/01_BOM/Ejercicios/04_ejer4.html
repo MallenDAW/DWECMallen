@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1,h2 {
+      padding: 10px;
+      border: 2px solid #000;
+      width: 300px;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="titulo">TÍTULO</h1>
+  <h2 id="p1">Párrafo 1</h2>
+  <h2 id="p2">Párrafo 2</h2>
+  <script>
+
+
+    //Titulo
+    document.getElementById("titulo").addEventListener("mouseover", manejador);
+    document.getElementById("titulo").addEventListener("mouseout", manejador);
+
+    //P1
+    document.getElementById("p1").addEventListener("click", saludo);
+    document.getElementById("p2").addEventListener("click", saludo);
+
+    // //P2
+    // document.getElementById("p2").addEventListener("mouseover", manejador);
+    // document.getElementById("p2").addEventListener("mouseout", manejador);
+
+    function manejador(e) {
+      switch (e.type) {
+        case "mouseover":
+          this.style.color = "red";
+          break;
+        case "mouseout":
+          this.style.color = "#084";
+          break;
+      }
+    }//manejador
+
+    function saludo(e){
+      if(e.target.id=="p1")alert("Hola Párrafo 1");
+      else if(e.target.id=="p2")alert("Hola Párrafo 2");
+
+      alert("El e.target.id es - "+e.target.id); //Identificador 
+    }//saludo
+  </script>
+</body>
+
+</html>
