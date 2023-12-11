@@ -50,15 +50,15 @@
   document.getElementById("raton").addEventListener('contextmenu',operar,false)
 
  function operar(e){
-  if(e.target.id=="sum") i++;
-  else if(e.target.id=="rest") i--;
+  // if(e.target.id==="sum") i++;
+  // else if(e.target.id==="rest") i--;
 
   switch (e.type) {
     case "click":
     i++;
       break;
   
-    case "contextmanu":
+    case "contextmenu":
     i--;
       break;
   }
