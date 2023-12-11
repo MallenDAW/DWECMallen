@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let arrayNotas=[5.2,3.9,6,9.75,7.5,3];
+
+    //FILTER
+    let arrayAprobados= arrayNotas.filter((nota)=> nota >= 5);
+    
+    //FIND
+    let primerAprobado= arrayNotas.find((nota)=> nota >= 5);
+    
+    //FINDINDEX
+    let posicionAprobado= arrayNotas.findIndex((nota)=> nota = 6);
+
+    //EVERY
+    let rangoNotas= arrayNotas.every((nota)=> nota>=5);
+
+    //SOME
+    let rangoNotas2= arrayNotas.some((nota)=> nota>=5);
+    
+    //REDUCE
+    let notaMax= arrayNotas.reduce((max,nota)=> nota > max ? nota : max);
+    
+    
+    console.log("filter: "+arrayAprobados);      //devuelve un array
+    console.log("find: "+primerAprobado);        //devuelve el primero
+    console.log("findIndex: "+posicionAprobado); //devuelve una posicion o un -1 si no existe 
+    console.log("every: "+rangoNotas);           //devuelve true si todos son true 
+    console.log("some: "+rangoNotas2);           //devuelve true con que uno sea true  
+    console.log("reduce: "+notaMax);   
+    
+    
+    
+    //EJERCICIOS: hacer una media de las notas usando reduce
+    let notaMedia= (arrayNotas.reduce((total,nota)=> total+=nota)/arrayNotas.length).toFixed(2);
+    console.log("Nota media: "+notaMedia);
+
+  </script>
+</body>
+</html>
