@@ -34,12 +34,23 @@ Se requiere:
 
 
       // Apartado 1
-      let mayor25= usuarios.filter((usuarios)=> usuarios.edad > 25);
+      let mayor25= usuarios.filter((usuarios)=> usuarios.edad >= 25);
       console.log("\tMAYORES DE 25");
       mayor25.forEach(element => {
         console.log(element); 
       });
 
+      //Apartado 2
+      let duplicaEdad= mayor25.map((mayor25)=>{ return {id:mayor25.id,nombre:mayor25.nombre,edad:mayor25.edad*2}});
+      console.log("\tEDAD DUPLICADA");
+      duplicaEdad.forEach(element => {
+        console.log(element); 
+      });
+
+      //Apartado3
+      let sumaEdad= duplicaEdad.reduce((suma,duplicaEdad)=> suma+=duplicaEdad.edad,0);
+      console.log("\tSUMA EDAD");
+      console.log(sumaEdad);
 
     </script>
   </body>
