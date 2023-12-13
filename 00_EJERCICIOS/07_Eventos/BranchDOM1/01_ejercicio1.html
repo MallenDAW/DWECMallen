@@ -34,8 +34,11 @@ Se requiere:
 
 
       // Apartado 1
-      let mayor25= usuarios.filter(([edad])=> edad > 25);
-      console.log("Mayores de 25: "+mayor25); 
+      let mayor25= usuarios.filter((usuarios)=> usuarios.edad > 25);
+      console.log("\tMAYORES DE 25");
+      mayor25.forEach(element => {
+        console.log(element); 
+      });
 
 
     </script>
