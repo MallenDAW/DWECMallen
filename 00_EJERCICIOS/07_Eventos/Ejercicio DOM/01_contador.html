@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input id="raton" type="button" value="BOTON">
+  <h3>CONTADOR: <span id="cont">0</span></h3>
+  <script>
+
+  let i=0;
+
+  document.getElementById("raton").addEventListener('click',operar,false)
+  document.getElementById("raton").addEventListener('contextmenu',operar,false)
+
+ function operar(e){
+ 
+  switch (e.type) {
+    case "click":
+    i++;
+      break;
+    case "contextmenu":
+    e.preventDefault();
+    i--;
+      break;
+  }
+
+  document.getElementById("cont").innerHTML=i;
+}
+
+  </script>
+</body>
+</html>
