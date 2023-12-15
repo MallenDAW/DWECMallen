@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>201CMS</title>
+</head>
+<body>
+  Pulsa el botón para copiar el siguiente texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit."  
+  <br><input id="boton" type="button" value="COPIAR" />
+ <script> 
+ 
+    //1.- Obtener la fecha y hora actual
+    let fechaActual = new Date();
+    console.log(fechaActual);
+
+
+    //2.- Mezclar dos Arrays
+    let arrayUno=[1,4,7,91,34];
+    let arrayDos=[3,5,67,12,0];
+
+    //Se puede hacer con desestructuración (spread) o con concat 
+    let mezclarArraysSpread=[...arrayUno,...arrayDos]
+    let mezclaArraysConcat=arrayUno.concat(arrayDos);
+
+    console.log(mezclarArraysSpread);
+    console.log(mezclaArraysConcat);
+   
+
+    //3.- Borrar elementos repetidos en un array
+    let codigos=[1,1,7,[2,2],91,4,7,91,34];
+    let sinDuplicados= new Set(codigos);
+    console.log(sinDuplicados);
+
+
+    //4.- Generar un número aleatorio entre dos valores dados
+    let max,min;
+    max=30;
+    min=10;
+    let numeroAleatorio=Math.floor(Math.random()*(max-min)+min);
+    console.log(numeroAleatorio);
+
+
+    //5.- Generar una cadena alfanumérica aleatoria
+    //Con charAt y una cadena con letras y numeros
+    let caracteres="abcdefghijklmnñopqrstuvWxyz0123456789,.-!¡¿? ";
+    let cadenaAleatoria="";
+    for (let indice = 0; indice < caracteres.length; indice++) {
+      cadenaAleatoria+=caracteres.charAt(Math.floor(Math.random()*caracteres.length));
+    }
+    console.log(cadenaAleatoria);
+
+    //Con toString(36) 26 letras + 10 numeros / usamos slice para quitar el 0, del random()
+    console.log((Math.random().toString(36)).slice(2));
+    
+
+    //6.- Convertir un objeto en un array
+    let alumno={nombre:"Pedro",edad:23,DNI:"5555555A"};
+    let arrayAlumno=Object.values(alumno);
+    console.log(arrayAlumno);
+
+
+    // 7.-  Copiar texto al portapapeles
+    document.getElementById("boton").addEventListener("click",function(){
+      navigator.clipboard.writeText("Lorem ipsum dolor sit amet consectetur adipisicing elit.")
+    },false);
+
+
+    // 8.- Comprobar si una propiedad existe IN un objeto
+    let coche={color:"rojo",marca:"seat",matricula:"5224ASD"};
+    //Se puede usar el IN o el hasOwnProperty()
+    console.log("marca" in coche);
+    console.log(coche.hasOwnProperty("marca"));
+
+
+    // 9.- Ordenar un Array en orden ascendente
+    let arrayDesordenado=["Mandarina","Albaricoque","Manzana","Banana","Piña","mandarina"];
+    console.log(arrayDesordenado.sort((a, b) => a.localeCompare(b)));
+
+
+    // 10.-  Obtener la longitud de un objeto
+    let libro={ISBN:"298756725A",autor:"Ramoncín",titulo:"El sentido de la vida",editorial:"Anaya"};
+    console.log(Object.keys(libro).length);
+
+  </script>
+</body>
+</html>

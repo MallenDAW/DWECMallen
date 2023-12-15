@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego ovehero</title>
+</head>
+<body>
+  <script>
+    let cadena="Nadie salió a (emridepsed) cuando me (iuf) de la estancia, (etnemalos) el ovejero...";
+    // arrayCadena=raplaceAll(","," ");
+    let arrayCadena=cadena.split(" ");
+
+    for (let indice = 0; indice < arrayCadena.length; indice++) {
+      if(arrayCadena[indice].startsWith("(")){
+        temporal=arrayCadena[indice].split("");
+        temporal.reverse();
+        temporal.shift();
+        temporal.pop();
+        arrayCadena[indice]=temporal.join("");
+      }
+    }
+
+    let cadenaFinal=arrayCadena.join(" ");
+    console.log(cadenaFinal);
+
+  </script>
+</body>
+</html>
