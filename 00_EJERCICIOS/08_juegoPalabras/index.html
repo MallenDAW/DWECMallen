@@ -8,19 +8,27 @@
 <body>
   <script>
     let cadena="Nadie salió a (emridepsed) cuando me (iuf) de la estancia, (etnemalos) el ovejero...";
-    // arrayCadena=raplaceAll(","," ");
+
+    //Pasamos la cadena a un array
     let arrayCadena=cadena.split(" ");
 
     for (let indice = 0; indice < arrayCadena.length; indice++) {
+
+      //Buscamos palabras que empiecen por "("
       if(arrayCadena[indice].startsWith("(")){
+
+        //Pasamos la palabra a un array para darle la vuelta y quitarle los paréntesis
         temporal=arrayCadena[indice].split("");
         temporal.reverse();
         temporal.shift();
         temporal.pop();
+
+        //Reasignamos la palabra al array original
         arrayCadena[indice]=temporal.join("");
       }
     }
 
+    //Revertimos el array a cadena
     let cadenaFinal=arrayCadena.join(" ");
     console.log(cadenaFinal);
 
