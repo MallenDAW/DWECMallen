@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio DOM</title>
+  <style>
+    .miClase{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="main">
+    <p id="parrafo1">Este es el primer párrafo</p>
+    <p id="parrafo2">Este es el segundo párrafo</p>
+    <p id="parrafo3" class="miClase">Este es el tercer párrafo</p>
+  </div>
+  <br>
+  <button id="cambiarTextos">Cambiar texto de párrafos</button>
+  <button id="cambiarClases">Cambiar clases de párrafos</button>
+  <button id="quitarClases">Quitar clases de todos los párrafos</button>
+<script>
+
+// 1 ------------
+//Hasta que no se carge el DOM no se ejecuta el script.Hay 2 maneras
+
+  // Primera - windows.onload=inicio;
+  //Segunda - la que usaremos:
+  window.addEventListener("load",inicio); //Segunda - la que usaremos
+
+// 2 ------------
+//Creamos la función inicio, donde asignamos una función a cada botón
+  function inicio(){
+    document.getElementById("cambiarTextos").addEventListener("click",cambiarTextos,false);
+    document.getElementById("cambiarClases").addEventListener("click",cambiarClases,false);
+    document.getElementById("quitarClases").addEventListener("click",quitarClases,false);
+  }
+
+  // 3 ------------
+
+  function cambiarTextos(){
+
+    //Seleccionamos por id
+    document.getElementById("parrafo1").innerHTML="Primer párrafo cambiado";
+    
+
+    /*
+    Seleccionamos por la etiqueta p (las etiquetas y clases viene en un array)
+        p[0]=Este es el primer párrafo
+        p[1]=Este es el segundo párrafo
+        p[2]=Este es el tercer párrafo
+    */
+    document.getElementsByTagName("p")[1].innerHTML="Segundo párrafo cambiado";
+    
+    
+    
+    //Seleccionamos por clase
+    document.getElementsByClassName("miClase")[0].innerHTML="Tercer párrafo cambiado";
+
+  }
+  
+  // 4 ------------
+
+  function cambiarClases(){
+    //Al párrafo1 le aplicamos la clase .miClase /// Hay 2 formas:
+
+    document.getElementById("parrafo1").setAttribute("class","miClase");
+    document.getElementById("parrafo2").className="miClase";
+    
+  }
+  
+  //5 ---------------
+  
+  function AAAAAquitarClases(){
+    
+    //Para eliminar una clase se pone vacía
+    document.getElementById("parrafo3").setAttribute("class","");
+    document.getElementById("parrafo1").className="";
+}
+
+//6 ---------
+//Para quitar TODAS las clase de la etiqueta <p>
+function quitarClases(){
+  for (let i = 0; i < document.getElementsByTagName("p").length; i++) {
+    document.getElementsByTagName("p")[i].className="";
+    
+  }
+}
+</script>
+</body>
+</html>

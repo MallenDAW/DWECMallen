@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- 
+
+Permitir cambiar los estilos del título de la página. Crear 2 botones para las acciones a implementar:
+    • Cambiar color de manera aleatoria
+    • Cambiar tamaño fuente aleatoria entre 8 y 24
+
+ -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 4.3</title>
+</head>
+<body>
+  <h1>Este es un título dinámico</h1>
+  <button id="cambiarColor">Cambiar color</button>
+  <button id="cambiarFuente">Cambiar tamaño de fuente</button>
+
+  <script>
+    //Constantes ---------
+    const HEXADECIMAL_MAX = 16777215;
+    const MAX = 24;
+    const MIN = 8;
+
+    //Al cargar la página
+    window.addEventListener("load", inicio);
+
+    function inicio() {
+      document.getElementById("cambiarColor").addEventListener("click", cambiarColor, false);
+      document.getElementById("cambiarFuente").addEventListener("click", cambiarFuente, false);
+    }//inicio
+
+
+    //Funciones --------
+    function cambiarColor() {
+      document.getElementsByTagName("h1")[0].style.color =
+        "#" + Math.floor(Math.random() * HEXADECIMAL_MAX).toString(16);
+    }//cambiarColor
+
+    function cambiarFuente() {
+      document.getElementsByTagName("h1")[0].style.fontSize = Math.floor(Math.random()*(MAX-MIN)+MIN)+"px";
+    }//cambiarFuente
+
+  </script>
+</body>
+
+</html>
