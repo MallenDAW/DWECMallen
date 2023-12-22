@@ -50,7 +50,7 @@ const usuarios = [
 
 
       //Apartado3
-      let joven= mayorEdad.reduce((joven,mayorEdad)=> joven < mayorEdad ? joven : mayorEdad);
+      let joven= mayorEdad.reduce(((joven,mayorEdad)=> joven.edad < mayorEdad.edad ? joven : mayorEdad),mayorEdad[0]);
       console.log("\tUSUARIO MAS JOVEN");
       console.log(joven);
 
