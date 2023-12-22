@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>appendChild()</title>
+</head>
+<body>
+  <div id="miDiv"></div>
+  <script>
+
+    var miDiv=document.getElementById("miDiv");
+
+    var nuevoParrafo= document.createElement('p');
+
+    var texto=document.createTextNode('Este es el nuevo parrafo añadido con appendChild');
+    
+    nuevoParrafo.appendChild(texto);
+    miDiv.appendChild(nuevoParrafo);
+  </script>
+</body>
+</html>
