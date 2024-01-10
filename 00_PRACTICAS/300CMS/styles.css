@@ -9,13 +9,15 @@ input, select{
 }
 
 button{
+  width: 50px;
+  height: 50px;
   padding: 5px ;
+  background-color: rgb(107, 107, 107);
+  border: 6px rgb(152, 152, 152) outset;
+  cursor: pointer;
 }
 
-table{
-  background-color: grey;
-}
-
-tr{
-  border: 2px teal solid;
+button:active{
+  background-color: rgb(150, 150, 150);
+  border: 6px rgb(152, 152, 152) inset;
 }
