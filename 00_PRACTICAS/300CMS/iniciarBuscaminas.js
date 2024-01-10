@@ -1,16 +1,23 @@
 // ---- LÓGICA -------
 
+window.addEventListener("load",inicio);
+
+function inicio(){
+  document.getElementById("ok").onclick(elegirNivel);
+}
 
 
 function elegirNivel(){
   let filas,columnas,dificultad;
-  dificultad=document.getElementById("nivel").value; 
+  dificultad=document.getElementById("nivel").value;
+  
+
   //según la dificultad seleccionada 
 
   switch (dificultad) {
     case "FÁCIL":
       filas=columnas=9
-      document.getElementById("tablero").innerHTML=dibujarTableroHTML(filas,columnas);
+      dibujarTableroHTML(filas,columnas);
       break;
 
     case "MEDIO":
@@ -28,18 +35,23 @@ function elegirNivel(){
 
 function dibujarTableroHTML(filas,columnas){
 
-let tablero="<table border=1>"
+let tablero=document.getElementById("tablero"); //etiqueta donde guardar el tablero
+let boton,intro;
 
 for (let indiceFila = 0; indiceFila < filas; indiceFila++) {
-   tablero+="\n<tr>"
   for (let inidiceColumna = 0; inidiceColumna < columnas; inidiceColumna++) {
-    tablero+="\n<td>"+indiceFila+"-"+inidiceColumna+"</td>";
+    boton=document.createElement("button");
+    boton.id=indiceFila+inidiceColumna;
+    tablero.appendChild(boton);
+    // boton+="<button id=\""+indiceFila+inidiceColumna+"\"> X </button>";
    }
-   tablero+="\n</tr>";
+   intro=document.createElement("br");
+   tablero.appendChild(intro);
+  //  boton+="\n</br>";
 }
-tablero+="\n</table>";
-console.log(tablero);
-return tablero;
+
+
+// return a;
 
 }//dibujarTableroHTML
 

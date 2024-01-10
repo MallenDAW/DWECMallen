@@ -3,6 +3,15 @@
   padding: 0px;
 }
 
+input, select{
+  padding: 5px;
+  margin: 2px;
+}
+
+button{
+  padding: 5px ;
+}
+
 table{
   background-color: grey;
 }

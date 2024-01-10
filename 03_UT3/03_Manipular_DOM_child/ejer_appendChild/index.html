@@ -1,116 +1,129 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Document Object Model</title>
-    <style>
-      .miClase {
-        color: red;
+
+<head>
+  <meta charset="utf-8" />
+  <title>Document Object Model</title>
+  <style>
+    html{
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .miClase {
+      color: darkred;
+      font-size: larger;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    window.addEventListener("load", inicio);
+
+    function inicio() {
+      document.getElementById("crearParrafo").addEventListener("click", crearParrafo);
+      document.getElementById("crearImagen").addEventListener("click", crearImagen);
+      document.getElementById("borrarUltimo").addEventListener("click", borrarUltimo);
+      document.getElementById("borrarPrimero").addEventListener("click", borrarPrimero);
+      document.getElementById("sustituirPrimVacio").addEventListener("click", sustituirPrimero);
+      document.getElementById("punto").addEventListener("click", puntear);
+    }//inicio
+
+    function crearParrafo() {
+      let parrafo = document.createElement("p");
+      let texto = document.createTextNode(document.getElementById("texto").value);
+
+      //Añadimos el contenido al párrafo nuevo
+      parrafo.appendChild(texto);
+      //Agregamos el estilo (2 opciones)
+      // parrafo.setAttribute("class","miClase");
+      parrafo.className = "miClase";
+      let contenido = document.getElementById("div1");
+
+      //Introducimos en el div1 el párrafo
+      contenido.appendChild(parrafo);
+
+    }//crearParrafo
+
+
+
+    function crearImagen() {
+
+      let imagen = document.createElement("img");
+      //Le damos la ruta de la imagen
+      let ruta = prompt("Selecciona una ruta para la imagen:");
+      imagen.src = ruta;
+
+      let contenido = document.getElementById("div1");
+      contenido.appendChild(imagen);
+
+    }//crearImagen
+
+
+    function borrarUltimo() {
+
+      let borrar = document.getElementById("div1");
+
+      //Seleccionamos el ultimo 
+      let hijo = borrar.lastChild;
+      //Eliminamos el hijo
+      borrar.removeChild(hijo);
+    }//borrarUltimo
+
+
+    function borrarPrimero() {
+
+      let borrar = document.getElementById("div1");
+      //Seleccionamos el primero 
+      let hijo = borrar.firstChild;
+      //Eliminamos el hijo
+      borrar.removeChild(hijo);
+
+    }//borrarPrimero
+
+
+    function sustituirPrimero() {
+
+      let borrar = document.getElementById("div1");
+      //Seleccionamos el primero 
+      let hijo = borrar.firstChild;
+      let nuevo = document.createElement("p");
+      let texto = document.createTextNode("vacio");
+      nuevo.appendChild(texto);
+      nuevo.className = "miClase";
+
+      //sustituimos el hijo - replaceChild()
+      borrar.replaceChild(nuevo, hijo);
+
+
+    }//sustituirPrimero
+
+
+    function puntear(){
+
+      let parrafo=document.getElementsByTagName("p");
+      
+      for (let i = 0; i < parrafo.length; i++) {
+        if(parrafo[i].textContent.endsWith(".")){
+          parrafo[i].textContent=parrafo[i].textContent.slice(0,-1);
+        }else{
+          parrafo[i].textContent+=".";
+        }
       }
-    </style>
-    <script>
-      window.addEventListener("load", inicio);
+    }
 
-      function inicio() {
-        document
-          .getElementById("crearParrafo")
-          .addEventListener("click", crearParrafo);
-        document
-          .getElementById("crearImagen")
-          .addEventListener("click", crearImagen);
-        document
-          .getElementById("borrarUltimo")
-          .addEventListener("click", borrarUltimo);
-        document
-          .getElementById("borrarPrimero")
-          .addEventListener("click", borrarPrimero);
-        document
-          .getElementById("sustituirPrimVacio")
-          .addEventListener("click", sustituirPrimero);
-      }//inicio
+  </script>
+</head>
 
-      function crearParrafo(){
-        let parrafo=document.createElement("p");
-        let texto=document.createTextNode(document.getElementById("texto").value);
+<body>
 
-        //Añadimos el contenido al párrafo nuevo
-        parrafo.appendChild(texto);
-        //Agregamos el estilo (2 opciones)
-        // parrafo.setAttribute("class","miClase");
-        parrafo.className="miClase";
-        let contenido=document.getElementById("div1");
+  <textarea id="texto"></textarea>
+  <br />
+  <button id="crearParrafo">Crear parrafo</button>
+  <button id="crearImagen">Crear imagen</button>
+  <button id="borrarUltimo">Borrar ultimo</button>
+  <button id="borrarPrimero">Borrar primero</button>
+  <button id="sustituirPrimVacio">Sustituir primer párrafo por vacío</button>
+  <button id="punto">Punto</button>
+  <br />
+  <div id="div1"></div>
+</body>
 
-        //Introducimos en el div1 el párrafo
-        contenido.appendChild(parrafo);
-
-      }//crearParrafo
-
-
-
-      function crearImagen(){
-
-        let imagen=document.createElement("img");
-        //Le damos la ruta de la imagen
-        let ruta=prompt("Selecciona una ruta para la imagen:");
-        imagen.src=ruta;
-
-        let contenido=document.getElementById("div1");
-        contenido.appendChild(imagen);
-
-      }//crearImagen
-
-
-      function borrarUltimo(){
-
-        let borrar=document.getElementById("div1");
-
-        //Seleccionamos el ultimo 
-        let hijo=borrar.lastChild;
-        //Eliminamos el hijo
-        borrar.removeChild(hijo);
-      }//borrarUltimo
-
-
-      function borrarPrimero(){
-
-        let borrar=document.getElementById("div1");
-        //Seleccionamos el primero 
-        let hijo=borrar.firstChild;
-        //Eliminamos el hijo
-        borrar.removeChild(hijo);
-
-      }//borrarPrimero
-
-
-      function sustituirPrimero(){
-
-        let borrar=document.getElementById("div1");
-        //Seleccionamos el primero 
-        let hijo=borrar.firstChild;
-        let nuevo=document.createElement("p");
-        let texto=document.createTextNode("vacio");
-        nuevo.appendChild(texto);
-        nuevo.className="miClase";
-
-        //sustituimos el hijo - replaceChild()
-        borrar.replaceChild(nuevo,hijo);
-
-
-      }//sustituirPrimero
-
-    </script>
-  </head>
-
-  <body>
-  
-    <textarea id="texto"></textarea>
-    <br/>
-    <button id="crearParrafo">Crear parrafo</button>
-    <button id="crearImagen">Crear imagen</button>
-    <button id="borrarUltimo">Borrar ultimo</button>
-    <button id="borrarPrimero">Borrar primero</button>
-    <button id="sustituirPrimVacio">Sustituir primer párrafo por vacío</button>
-    <br/>
-    <div id="div1"></div>
-  </body>
 </html>

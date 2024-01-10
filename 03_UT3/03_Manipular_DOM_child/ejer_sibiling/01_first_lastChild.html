@@ -6,42 +6,94 @@ Al pulsar h2 obtener el bloque en el que se imparte y los módulos que se estudi
 
  -->
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Document Object Model</title>
-  </head>
-  <body>
-    <div id="bloque3">
-      <h2>DAM</h2>
-      <ul id="lista">
-        <li>Sistemas Gestión Empresarial</li>
-        <li>Programación Multimedia y Disp. Móviles</li>
-        <li>Desarrollo de Interfaces</li>
-      </ul>
-    </div>
-    <div id="bloque10">
-      <h2>DAW</h2>
-      <ul id="lista">
-        <li>DWES</li>
-        <li>DWEC</li>
-        <li>Despliegue Web</li>
-        <li>Diseño Interfaces Web</li>
-      </ul>
-    </div>
-    <div id="texto"></div>
-  </body>
-  <script>
-       window.addEventListener("load", inicio);
 
-function inicio() {
+<head>
+  <meta charset="utf-8" />
+  <title>Document Object Model</title>
+  <style>
+    *{
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    span{
+      color: darkred;
+      font-weight: bold;
+    }
 
-  
-}
+    h2:hover{
+      cursor: pointer;
+    }
+    .verde{
+      color: rgb(0, 92, 26);
+      font-weight: bold;
+    }
+  </style>
+</head>
 
+<body>
+  <div id="bloque3">
+    <h2>DAM</h2>
+    <ul id="lista">
+      <li>Sistemas Gestión Empresarial</li>
+      <li>Programación Multimedia y Disp. Móviles</li>
+      <li>Desarrollo de Interfaces</li>
+    </ul>
+  </div>
+  <div id="bloque10">
+    <h2>DAW</h2>
+    <ul id="lista">
+      <li>DWES</li>
+      <li>DWEC</li>
+      <li>Despliegue Web</li>
+      <li>Diseño Interfaces Web</li>
+    </ul>
+  </div>
+  <div id="texto"></div>
+</body>
+<script>
 
+  //Antes de ejecutar nada cargamos la pagina por completo
+  window.addEventListener("load", inicio);
 
+  function inicio() {
 
+    //Recorremos todas las etiquetas h2
+    for (let i = 0; i < document.getElementsByTagName("h2").length; i++) {
+      document.getElementsByTagName("h2")[i].addEventListener("click", info);
+    }
+    
+  }
 
+  function info(evento) {
 
-  </script>
+    //Guardamos en la variable quien ha pulsado
+    let h2=evento.target;
+    let padre=h2.parentElement; //elemento padre
+    let hijos=h2.nextElementSibling; //elemento hijos
+    let primerHijo=hijos.firstChild;
+    let ultimoHijo=hijos.lastChild;
+
+    texto=`Has elegido el ciclo <span>${h2.textContent}</span>`;
+    texto+=` ubicado en el <span>${padre.id}</span>.`;
+    texto+=` Contiene  <span>${hijos.children.length}</span> módulos: <br>`;
+
+    //Mientras no llegue al último hijo se añaden a texto 
+    while(primerHijo!=null){
+        texto+=`${primerHijo.textContent} <br>`;
+        primerHijo=primerHijo.nextElementSibling;
+    }
+    
+    texto+=`<br><span class=verde> Lista en orden inverso: </span><br>`;
+    
+    while(ultimoHijo!=null){
+        texto+=` ${ultimoHijo.textContent} <br>`;
+        ultimoHijo=ultimoHijo.previousElementSibling;
+    }
+
+    //Pintamos el contenido de texto en nuestro div
+    document.getElementById("texto").innerHTML=texto;
+
+  }
+
+</script>
+
 </html>
