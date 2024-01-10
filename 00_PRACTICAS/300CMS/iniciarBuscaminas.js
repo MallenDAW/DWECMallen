@@ -7,7 +7,7 @@ function inicio() {
 } //inicio
 
 function elegirNivel(evento) {
-  evento.preventDefault();
+  evento.preventDefault(); //evitamos que al enviar el formulario se refresque la página
   let filas, columnas, dificultad;
   dificultad = document.getElementById("nivel").value;
   //según la dificultad seleccionada
@@ -33,8 +33,13 @@ function elegirNivel(evento) {
 // ---- FUNCIONES -------
 
 function dibujarTableroHTML(filas, columnas) {
-  let tablero = document.getElementById("tablero"); //etiqueta Main donde guardar el tablero
+  
   let boton, intro;
+  let tablero = document.getElementById("tablero"); //recogemos la etiqueta main donde guardar el tablero
+  tablero.remove(); //eliminamos el contenido por si ya hubiera un tablero
+  tablero=document.createElement("main"); //creamos la etiqueta main
+  tablero.id="tablero"; //asignamos a main el id=tablero
+  document.body.appendChild(tablero); //agregamos la etiqueta al body
 
   for (let indiceFila = 0; indiceFila < filas; indiceFila++) {
     for (let inidiceColumna = 0; inidiceColumna < columnas; inidiceColumna++) {

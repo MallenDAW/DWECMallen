@@ -3,6 +3,18 @@
   padding: 0px;
 }
 
+form,h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main{
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
 input, select{
   padding: 5px;
   margin: 2px;
