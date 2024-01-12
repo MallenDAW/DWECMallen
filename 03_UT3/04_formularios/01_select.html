@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <form action="" method="post">
+    <select id="aprobar">
+      <option value="10">Saco 10 en DWEC</option>
+      <option value="9">Saco 9 en DWEC</option>
+      <option value="8">Saco 8 en DWEC</option>
+      <option value="crear">Nuevo...</option>
+    </select>
+  </form>
+  <script>
+
+    window.addEventListener("load",inicio);
+
+function inicio(){
+
+  // var elemento = document.getElementById("aprobar");
+  // for (i = 0; i < elemento.options.length; i++) {
+  //   alert("Valor de la opcion " + elemento.options[i].value);
+  // }
+  // var sel = elemento.selectedIndex;
+  // alert("El valor de la opcion seleccionada es " + elemento.options[sel].value + " y el texto asociado es" + elemento.options[sel].text);
+  
+  // // Para cambiar  el índice seleccionado:
+  // elemento.selectedIndex = 0;
+
+  let select = document.getElementById("aprobar");
+
+  select.addEventListener("change",function(){
+
+    if(select.value==="crear"){
+      let nuevo=prompt("Inserta el elemento nuevo");
+      let opcion=document.createElement("option");
+      opcion.textContent=nuevo;
+      select.insertBefore(opcion,select.lastElementChild); //(elemento a insertar,posicion a insertar)
+    }
+  })
+}
+  </script>
+</html>

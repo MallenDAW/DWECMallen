@@ -7,20 +7,20 @@
   <style>
     input{
       padding: 5px;
-      margin-bottom: 2px;
+      margin: 2px;
     }
   </style>
 </head>
 <body>
   <form action="" method="post">
 
-    Nombre: <input type="text" name="nombre"><br>
-    Apellidos: <input type="text" name="apellido"><br>
-    DNI: <input type="text" name="dni"><br>
+    Nombre: <input type="text" name="nombre" size="30"><br>
+    Apellidos: <input type="text" name="apellido"size="30"><br>
+    DNI: <input type="text" name="dni" size="10"><br>
     Sexo:<br> <input type="radio" name="sexo" checked>Hombre
     <br> <input type="radio" name="sexo" >Mujer<br>
-    Inlcuir mi Foto: <input type="text" name="img"><input type="button" name="img_ok" value="Examinar..."><br>
-    <input type="checkbox" name="publi" checked>Enviar publicidad
+    Inlcuir mi Foto: <input type="file" name="img"><br>
+    <input type="checkbox" name="publi" checked>Enviar publicidad<br>
     <input type="submit" value="Guardar Cambios" name="enviar">
     <input type="reset" value="Borrar los datos introducidos" name="cancel">
 
