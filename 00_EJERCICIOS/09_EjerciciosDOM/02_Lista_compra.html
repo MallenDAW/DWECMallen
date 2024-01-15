@@ -57,7 +57,7 @@
 
         //Transforma los children a un array y se comparan con un sort por orden alfabético
         let hijos=Array.from(lista.children).sort((a,b)=>{
-            a.textContent.localeCompare(b.textContent);
+           return a.textContent.localeCompare(b.textContent);
         });
 
         //Desestructuramos porque el replaceChildren quiere un array  
