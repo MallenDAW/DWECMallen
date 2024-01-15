@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- 
+
+  Implementar la funcionalidad similar a la lista de compra. 
+  Al pulsar el botón añadir, se inserta el contenido del cuadro de texto a la lista superior, de forma ordenada. 
+  Si has completado el ejercicio, prueba a realizar las siguientes funcionalidades adicionales:
+
+ -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li{
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <p>Lista de compra</p>
+    <ul id="lista">
+    </ul>
+    <input id="caja" type="text" placeholder="Nuevo..." val="">
+    <button id="add">AÑADIR</button>
+  </main>
+
+  <script>
+
+    //Cargamos la página
+    window.addEventListener("load",inicio);
+
+    function inicio(){
+
+      //Guardamos la lista
+      let lista=document.getElementById("lista");
+
+      //boton AÑADIR
+      document.getElementById("add").addEventListener("click",function(){
+      
+        //creamos el elemento <li> y le agregamos un listener para borrarlo si hacen click
+        let nuevoElemento=document.createElement("li");
+        nuevoElemento.addEventListener("click",function(){this.remove()});
+
+        //recogemos lo que hay en eol input text
+        let texto=document.createTextNode(document.getElementById("caja").value);
+
+        //agregamos el texto al <li> y y el <li> a la lista <ul>
+        nuevoElemento.appendChild(texto);
+        lista.appendChild(nuevoElemento);
+
+        //Sobreescribimos el valor para borrar su contenido
+        document.getElementById("caja").value="";
+
+        //Transforma los children a un array y se comparan con un sort por orden alfabético
+        let hijos=Array.from(lista.children).sort((a,b)=>{
+            a.textContent.localeCompare(b.textContent);
+        });
+
+        //Desestructuramos porque el replaceChildren quiere un array  
+        lista.replaceChildren(...hijos);
+
+      });
+    }
+  </script>
+</body>
+
+</html>
