@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUBMIT Y RESET</title>
+</head>
+
+<body>
+  <form action="mailto:blablabla@gmail.com" method="post">
+    Nombre: <input type="text" name="nombre" size="30"><br>
+    Apellidos: <input type="text" name="apellido" size="30"><br>
+    DNI: <input type="text" name="dni" size="10"><br>
+    Sexo:<br> <input type="radio" name="sexo" checked>Hombre
+    <br> <input type="radio" name="sexo">Mujer<br>
+    Inlcuir mi Foto: <input type="file" name="img"><br>
+    <input type="checkbox" name="publi" checked>Enviar publicidad<br>
+    <input type="submit" value="Guardar Cambios" name="enviar" id="btn_ok">
+    <input type="reset" value="Borrar los datos introducidos" name="cancel">
+  </form>
+
+  <script>
+
+    window.addEventListener('load', function () {
+
+      document.querySelector('form').addEventListener('submit', function (evento) {
+        evento.preventDefault();
+        if(confirm("¿Quiere continuar?")) this.submit();
+      });
+      
+      document.querySelector('form').addEventListener('reset', function (evento) {
+        document.querySelector('input').focus(); 
+      });
+
+
+    });
+  </script>
+</body>
+
+</html>

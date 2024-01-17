@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COMO ESTAN LOS MAQUINAS</title>
+</head>
+
+<body>
+  <p id="parrafo">MÁQUINA APAGADA</p>
+  <form id="miForm">
+    <input type="submit" value="ENCENDER" id="pulsa">
+  </form>
+  <script>
+
+    window.addEventListener('load', function () {
+
+      //recogemos el formulario y le añadimos el escuchador submit
+      document.getElementById("miForm").addEventListener("submit", function (event) {
+
+        //evitamos que actua con un submit
+        event.preventDefault();
+
+        let texto = document.getElementById('parrafo');
+        let boton = document.getElementById('pulsa');
+
+        if (boton.value == 'ENCENDER') {
+          texto.textContent = "MÁQUINA ENCENDIDA";
+          boton.value = "APAGAR";
+
+        } else {
+          texto.textContent = "MÁQUINA APAGADA";
+          boton.value = "ENCENDER";
+
+        }
+
+      });
+    });
+
+
+  </script>
+</body>
+
+</html>

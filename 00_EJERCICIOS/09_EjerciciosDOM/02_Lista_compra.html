@@ -60,8 +60,9 @@
            return a.textContent.localeCompare(b.textContent);
         });
 
-        //Desestructuramos porque el replaceChildren quiere un array  
+        //Desestructuramos porque el replaceChildren quiere un array y estamos pasandole una colección
         lista.replaceChildren(...hijos);
+
 
       });
     }

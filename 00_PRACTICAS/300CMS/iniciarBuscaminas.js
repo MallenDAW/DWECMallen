@@ -8,6 +8,10 @@ function inicio() {
 
 function elegirNivel(evento) {
   evento.preventDefault(); //evitamos que al enviar el formulario se refresque la página
+
+  if(confirm('¿Elegir esta dificultad?')){
+  
+  document.querySelector('input').value="RESETEAR";
   let filas, columnas, dificultad;
   dificultad = document.getElementById("nivel").value;
   //según la dificultad seleccionada
@@ -15,19 +19,20 @@ function elegirNivel(evento) {
   switch (dificultad) {
     case "FÁCIL":
       filas = columnas = 9;
-      dibujarTableroHTML(filas, columnas);
       break;
+      
+      case "MEDIO":
+        filas = columnas = 13;
+        break;
+        
+      case "DIFÍCIL":
+        filas = columnas = 19;
+        break;
+        }
+    
+    dibujarTableroHTML(filas, columnas);
+}
 
-    case "MEDIO":
-      filas = columnas = 13;
-      dibujarTableroHTML(filas, columnas);
-      break;
-
-    case "DIFÍCIL":
-      filas = columnas = 19;
-      dibujarTableroHTML(filas, columnas);
-      break;
-  }
 }//elegirNivel
 
 // ---- FUNCIONES -------
@@ -69,7 +74,7 @@ function calcularNumMinas(x, y) {
   }
 } //calcularNumMinas
 
-function numeroAleatorio(array, numeroMinas) {
+function numeroAleatorio(numeroMinas) {
   Math.floor(Math.random());
 } //numeroAleatorio
 

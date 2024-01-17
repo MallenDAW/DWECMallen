@@ -37,5 +37,5 @@ button{
 
 button:active{
   background-color: rgb(150, 150, 150);
-  border: 6px rgb(152, 152, 152) inset;
+  border: 6px rgb(89, 89, 89) solid;
 }
