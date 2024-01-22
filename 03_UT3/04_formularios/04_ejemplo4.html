@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    window.addEventListener('load', iniciar, false);
+
+    function iniciar() {
+      document.getElementById('enviar').addEventListener('click', validar);
+    }//iniciar
+
+
+    function validar(event) {
+
+      if (validarNombre() && validarTelefono() && confirm('Estas seguro para enviar el formulario')) {
+        return true;
+      } else {
+        event.preventDefault();
+        return false;
+      }
+    }//validar
+
+    function validarNombre() {
+      let elemento = document.getElementById('nombre');
+
+      if (elemento.value == "") {
+        alert("No se admiten campos vacios");
+        return false;
+      }
+      return true;
+    }//validarNombre
+
+    function validarTelefono() {
+
+      let elemento = document.getElementById('telefono');
+
+      if (isNaN(elemento.value)) {
+        alert('Solo se admiten numeros en el campo telefono');
+        return false;
+      }
+      return true;
+
+    }//validarTelefono
+
+
+  </script>
+</body>
+
+</html>
