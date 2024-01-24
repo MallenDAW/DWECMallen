@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validacion en html 5</title>
+</head>
+<body>
+  <h1>Formulario</h1>
+  <form action="procesar.php" method="post" id="miFormulario">
+      <table>
+          <tr>
+              <td>Nombre*: </td>
+              <td>
+                  <input type="text" name="nombre" id="nombre" maxlength="15" pattern="[A-za-z]{2,15}" title="De 2 a 15 caracteres PREMOH!" required/>
+              </td>
+          </tr>
+          <tr>
+              <td>Edad*: </td>
+              <td>
+                  <input type="number" name="edad" id="edad" min="18" max="120" title="Entre 18 y 120" required/>
+              </td>
+          </tr>
+          <tr>
+              <td>Telefono*: </td>
+              <td>
+                  <input type="text" name="telefono" id="telefono" pattern="[0-9]{9}" title="Intruduce 9 digitos" required/>
+              </td>
+          </tr>
+      </table>
+      <p>
+          <input type="submit" value="Enviar" id="enviar" />
+          <input type="reset" value="Borrar" id="borrar" />
+      </p>
+  </form>
+  <script>
+
+  </script>
+</body>
+</html>

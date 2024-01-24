@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Validación API</title>
+  <style>
+    .error {
+      border: 4px solid red;
+    }
+
+    .msg {
+      color: darkred;
+      font-weight: bold;
+      font-size: x-large;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Formulario</h1>
+  <form action="procesar.php" method="post" id="miFormulario">
+    <table>
+      <tr>
+        <td>Nombre*:</td>
+        <td>
+          <input type="text" name="nombre" id="nombre" maxlength="15" pattern="[A-za-z]{2,15}"
+            title="De 2 a 15 caracteres PREMOH!" required />
+        </td>
+      </tr>
+      <tr>
+        <td>Edad*:</td>
+        <td>
+          <input type="number" name="edad" id="edad" min="18" max="120" title="Entre 18 y 120" required />
+        </td>
+      </tr>
+      <tr>
+        <td>Telefono*:</td>
+        <td>
+          <input type="text" name="telefono" id="telefono" pattern="[0-9]{9}" title="Intruduce 9 digitos" required />
+        </td>
+      </tr>
+    </table>
+    <p id="mensajeError" class="msg"></p>
+    <p>
+      <input type="submit" value="Enviar" id="enviar" />
+      <input type="reset" value="Borrar" id="borrar" />
+    </p>
+  </form>
+
+  <script>
+    window.addEventListener("load", iniciar);
+
+    function iniciar() {
+      document
+        .getElementById("enviar")
+        .addEventListener("click", validar, false);
+    } //iniciar()
+
+    function validarNombre() {
+      let elemento = document.getElementById("nombre");
+      if (!elemento.checkValidity()) {
+        // error(elemento);
+        if (elemento.validity.valueMissing) {
+          error2(elemento, 'No puede dejar el campo nombre vacio');
+        }
+        if (elemento.validity.patternMismatch) {
+          error2(elemento, 'Debe tener entre 2 y 15 caracteres');
+        }
+        return false;
+      }
+      return true;
+    } //validarNombre()
+
+    function validarEdad() {
+      let elemento = document.getElementById("edad");
+      if (!elemento.checkValidity()) {
+        // error(elemento);
+        if (elemento.validity.valueMissing) {
+          error2(elemento, 'No puede dejar el campo edad vacio');
+        }
+        if (elemento.validity.rangeOverflow) {
+          error2(elemento, 'Si tienes más de 120 años estas muertisimo, mentiroso');
+        }
+        if (elemento.validity.rangeUnderflow) {
+          error2(elemento, 'Tienes que ser mayor de 17');
+        }
+        return false;
+      }
+      return true;
+    } //validarEdad()
+
+    function validarTelefono() {
+      let elemento = document.getElementById("telefono");
+      if (!elemento.checkValidity()) {
+        // error(elemento);
+        if (elemento.validity.valueMissing) {
+          error2(elemento, 'No puede dejar el campo telefono vacio');
+        }
+        if (elemento.validity.patternMismatch) {
+          error2(elemento, 'Aqui solo queremos telefonos con 9 digitos');
+        }
+        return false;
+      }
+      return true;
+    } //validarTelefono()
+
+    function validar(evento) {
+      limpiarError();
+      evento.preventDefault();
+
+      //Incluimos un setTimeout() para que 
+      setTimeout(()=> {
+
+        if (
+          validarNombre() &&
+          validarEdad() &&
+          validarTelefono() &&
+          confirm("Quieres enviar estos datos pixa?")
+        ) {
+          document.getElementById('miFormulario').submit();
+        } 
+
+
+      }, 10);
+
+    } //validar()
+
+    function error(elemento) {
+      document.getElementById("mensajeError").innerHTML = elemento.validationMessage;
+      elemento.className = "error";
+      elemento.focus();
+    } //limpiarError()
+
+
+    function error2(elemento, mensaje) {
+      document.getElementById('mensajeError').innerHTML = mensaje;
+      elemento.className = "error";
+      elemento.focus();
+    }//error2()
+
+    function limpiarError() {
+      console.log('aaaaaaaaa');
+      let formulario = document.forms[0];
+      for (let i = 0; i < formulario.elements.length; i++) {
+        formulario.elements[i].className = "";
+      }
+      document.getElementById('mensajeError').innerHTML = "";
+    } //limpiarError()
+  </script>
+</body>
+
+</html>
