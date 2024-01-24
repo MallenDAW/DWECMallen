@@ -1,17 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PRÁCTICA 202</title>
   <script src="202CMS.js"></script>
+  <style>
+
+/* centrado */
+    form,fieldset,div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 1rem;
+    }
+
+    /* padding y margin */
+    input,textarea{
+      padding: 5px;
+      margin: 2px;
+    }
+    textarea{
+      margin-inline: 30px;
+    }
+
+  </style>
 </head>
+
 <body>
-  <form action="">
+  <form id="formulario">
     <fieldset>
       <legend>Datos personales</legend>
-        <p>Introduce tu nombre<input type="text" id="nombre"></p>
+      <label>Introduce tu nombre: <input type="text" id="nombre" required></label>
+      <label>Inserta tu NIF: <input type="text" id="nif" pattern="\d{7,8}-?[A-z][^\d|A-z]" title="Inserta un NIF válido" required></label>
+      <label>Fecha de matriculación: <input type="date" id="fecha" title="Inserta una fecha de matriculación" required></label>
+      <p>Mensaje</p>
+      <textarea name="" id="textArea" cols="57" rows="7" title="Hasta un máximo de 500 caracteres" required></textarea>
     </fieldset>
+    <div>
+      Elige un color:
+      <label>Rojo<input type="radio" name="color" id="rojo" required></label>
+      <label>Verde<input type="radio" name="color" id="verde"required></label>
+      <label>Azul<input type="radio" name="color" id="azul" required></label>
+      <label>Oscuro<input type="radio" name="color" id="oscuro" required checked></label>
+    </div>
+    <p>Selecciona una asignatura
+      <select name="asignatura" id="asignatura" required>
+        <option value="DWES">DWES</option>
+        <option value="DWEC">DWEC</option>
+        <option value="DIW">DIW</option>
+        <option value="Ingles">Ingles</option>
+        <option value="Empresa">Empresa</option>
+      </select>
+    </p>
+    <div>
+    Selecciona los dias con disponibilidad:
+    <label><input type="checkbox" name="dispo" id="all">Todos</label>
+    <label><input type="checkbox" name="dispo" id="lunes">Lunes</label>
+    <label><input type="checkbox" name="dispo" id="martes">Martes</label>
+    <label><input type="checkbox" name="dispo" id="miercoles">Miércoles</label>
+    <label><input type="checkbox" name="dispo" id="jueves">Jueves</label>
+    <label><input type="checkbox" name="dispo" id="viernes">Viernes</label>
+  </div>
+
+  <div>
+    <p>Selecciona el dia preferente:
+    <select name="" id="dia" >
+      <option value="lunes" selected>Lunes</option>
+      <option value="martes">Martes</option>
+      <option value="miercoles">Miércoles</option>
+      <option value="jueves">Jueves</option>
+      <option value="viernes">Viernes</option>
+    </select>
+  </p>
+  </div>
+  <p>
+    <input type="submit" name="" id="enviar" value="Haz click para enviar información">
+    <input type="reset" name="" id="reset" value="Comenzar a rellenar de nuevo">
+    <a href="http://google.es"><input type="button" value=" Haz click sobre mi"></a>
+  </p>
   </form>
 </body>
+
 </html>
