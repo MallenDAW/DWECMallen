@@ -93,7 +93,7 @@ function checkTodos(){
           element.checked=false;
       });
     }
-  }else if(checkbox.some((value)=>{value==false})){
+  }else if(!checkbox.some((value)=>{value==false})){
     document.getElementById('all').checked=false;
   }
 }//checkTodos()
