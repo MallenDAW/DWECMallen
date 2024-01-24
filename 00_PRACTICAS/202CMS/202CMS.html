@@ -1,5 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- 
+PRACTICA 202CMS
+
+Crear un formulario lo más parecido al de la imagen proporcionada:
+
+    1.Añadir un input con el NIF
+    2.Añadir un input con la fecha de matriculación (día, mes, año)
+    3.Añadir un Select con cursos académicos (desde 20-21 a 23-24 con posibilidad de que el usuario añada nuevos cursos académicos.
+    4.Al menos 5 “asignaturas” del DAW
+    5.Se debe añadir un checkbox para seleccionar/deseleccionar todos los días con disponibilidad.
+    6.Añadir un contador para el campo Mensaje que indique al usuario los caracteres que le quedan antes de llegar al máximo.
+
+Realizar una validación (débil, en el lado del cliente) utilizando indistintamente los métodos vistos en clase 
+(los tres deben estar representados) con las siguientes restricciones:
+
+    Ningún elemento vacío
+    NIF correcto ( comprobar letra)
+    Mensaje: de entre 2 y 500 caracteres
+    Color por defecto: azul
+    Días: seleccionar al menos dos
+    Preferente: por defecto marcado el lunes
+    Botón de “Haz click sobre mí”: ir a Google.com
+
+
+ -->
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -25,28 +50,40 @@
       margin-inline: 30px;
     }
 
+    /* Clases para resaltar errores */
+    .error {
+      border: 4px solid red;
+    }
+
+    .msg {
+      color: darkred;
+      font-weight: bold;
+      font-size: x-large;
+    }
+
   </style>
 </head>
 
 <body>
-  <form id="formulario">
+  <div id="mensajeError" class="msg"></div>
+  <form id="miFormulario">
     <fieldset>
       <legend>Datos personales</legend>
-      <label>Introduce tu nombre: <input type="text" id="nombre" required></label>
-      <label>Inserta tu NIF: <input type="text" id="nif" pattern="\d{7,8}-?[A-z][^\d|A-z]" title="Inserta un NIF válido" required></label>
-      <label>Fecha de matriculación: <input type="date" id="fecha" title="Inserta una fecha de matriculación" required></label>
+      <label>Introduce tu nombre: <input type="text" id="nombre" title="Introduce un nombre" ></label>
+      <label>Inserta tu NIF: <input type="text" id="nif" title="Inserta un NIF válido" required></label>
+      <label>Fecha de matriculación: <input type="date" max="04-02-2024" min="04-02-2023" id="matriculacion" title="Inserta una fecha de matriculación" ></label>
       <p>Mensaje</p>
-      <textarea name="" id="textArea" cols="57" rows="7" title="Hasta un máximo de 500 caracteres" required></textarea>
+      <textarea name="mensaje" id="textArea" minlength="2" maxlength="500" cols="57" rows="7" title="Entre 2 y 500 caracteres" required></textarea>
     </fieldset>
     <div>
       Elige un color:
-      <label>Rojo<input type="radio" name="color" id="rojo" required></label>
-      <label>Verde<input type="radio" name="color" id="verde"required></label>
-      <label>Azul<input type="radio" name="color" id="azul" required></label>
-      <label>Oscuro<input type="radio" name="color" id="oscuro" required checked></label>
+      <label>Rojo<input type="radio" name="color" id="rojo" ></label>
+      <label>Verde<input type="radio" name="color" id="verde"></label>
+      <label>Azul<input type="radio" name="color" id="azul"  checked></label>
+      <label>Oscuro<input type="radio" name="color" id="oscuro" ></label>
     </div>
     <p>Selecciona una asignatura
-      <select name="asignatura" id="asignatura" required>
+      <select name="asignatura" id="asignatura" >
         <option value="DWES">DWES</option>
         <option value="DWEC">DWEC</option>
         <option value="DIW">DIW</option>
@@ -76,8 +113,8 @@
   </p>
   </div>
   <p>
-    <input type="submit" name="" id="enviar" value="Haz click para enviar información">
-    <input type="reset" name="" id="reset" value="Comenzar a rellenar de nuevo">
+    <input type="submit" name="enviar" id="enviar" value="Haz click para enviar información">
+    <input type="reset" name="reset" id="reset" value="Comenzar a rellenar de nuevo">
     <a href="http://google.es"><input type="button" value=" Haz click sobre mi"></a>
   </p>
   </form>
