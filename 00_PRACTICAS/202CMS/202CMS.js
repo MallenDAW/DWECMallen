@@ -4,8 +4,9 @@ window.addEventListener("load", iniciar, false);
 function iniciar() {
 
   document.getElementById("enviar").addEventListener('click', validar);
-  document.getElementById("all").addEventListener('click', checkTodos);
-  document.getElementById("lunes").addEventListener('click', checkTodos);
+  document.getElementById("dias").addEventListener('click', checkTodos);
+  document.getElementById("textArea").addEventListener('keydown', contadorCaracteres);
+
 } //iniciar()
 
 
@@ -76,27 +77,63 @@ function validarFecha() {
 }//validarFecha()
 
 
+function validarCheck() {
+  let elemento = document;
+}//validaCheck()
 
-function checkTodos(){
 
-  let checkbox=Array.from(document.forms[0].dispo);
 
-  if(this.id=='all'){
-    if(this.checked==true){
-        
+function checkTodos(evento) {
+
+  //Guardamos en un array todos los elementos con nombre dispo para poder iterar 
+  let checkbox = Array.from(document.forms[0].dispo);
+
+  //Si pulsa sobre todos
+  if (evento.target.id == 'all') {
+
+    //Seleccionar todos
+    if (evento.target.checked == true) {
+
       checkbox.forEach(element => {
-          element.checked=true;
+        element.checked = true;
       });
-      
-      }else{
-        checkbox.forEach(element => {
-          element.checked=false;
+
+      //Deseleccionar todos
+    } else {
+      checkbox.forEach(element => {
+        element.checked = false;
       });
     }
-  }else if(!checkbox.some((value)=>{value==false})){
-    document.getElementById('all').checked=false;
+
+    //En cuanto algun elemento deja de estar checked se deselecciona la opcion todos   
+  } else if (evento.target.id != 'all') {
+    document.getElementById('all').checked = false;
   }
 }//checkTodos()
+
+
+function contadorCaracteres() {
+  let numero = document.getElementById('textArea').value.length+1;
+  let elemento = document.getElementById('contCaracteres');
+
+console.log(numero);
+
+  switch (true) {
+    case numero > 250 && numero < 449:
+      elemento.style.color='orange';
+      break;
+    case numero > 450:
+      elemento.style.color='red';
+      break;
+    default:
+      elemento.style.color='green';
+      break;
+  }
+
+  document.getElementById('contCaracteres').innerHTML = 500 - numero;
+}//contadorCaracteres()
+
+
 
 
 // ---------- Validación por API checkValidity()
