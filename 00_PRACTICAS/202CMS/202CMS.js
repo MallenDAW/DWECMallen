@@ -5,7 +5,7 @@ function iniciar() {
 
   document.getElementById("enviar").addEventListener('click', validar);
   document.getElementById("dias").addEventListener('click', checkTodos);
-  document.getElementById("textArea").addEventListener('keydown', contadorCaracteres);
+  document.getElementById("textArea").addEventListener('keyup', contadorCaracteres);
 
 } //iniciar()
 
@@ -21,6 +21,7 @@ function validar(evento) {
       validarNIF() &&
       validarFecha() &&
       validarMensaje() &&
+      validarCheck() &&
       confirm("¿Quieres enviar estos datos?")
     ) {
       document.getElementById('miFormulario').submit();
@@ -77,8 +78,22 @@ function validarFecha() {
 }//validarFecha()
 
 
-function validarCheck() {
-  let elemento = document;
+function validarCheck(evento) {
+  let arrayDias = Array.from(document.forms[0].dispo);
+  let contador=0;
+
+  arrayDias.forEach(element => {
+    if(element.checked==true) contador++;
+  });
+
+  if(contador >= 2){
+
+    return true;
+  } else{
+    error(document.getElementById('dias'), 'Hay que marcar 2 como mínimo');
+   return false; 
+  }
+
 }//validaCheck()
 
 
@@ -113,13 +128,11 @@ function checkTodos(evento) {
 
 
 function contadorCaracteres() {
-  let numero = document.getElementById('textArea').value.length+1;
+  let numero = document.getElementById('textArea').value.length;
   let elemento = document.getElementById('contCaracteres');
 
-console.log(numero);
-
   switch (true) {
-    case numero > 250 && numero < 449:
+    case numero > 250 && numero <= 450:
       elemento.style.color='orange';
       break;
     case numero > 450:
