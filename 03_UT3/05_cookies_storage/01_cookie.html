@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<h1>COOKIES</h1>
+  <script>
+
+    //creamos una cookie
+    document.cookie="usuario=Juan García;";
+    document.cookie="sexo=hombre;";
+
+    //leer una cookie
+    let miCookie=document.cookie;
+    alert(miCookie);
+    
+    //modificar una cookie
+    document.cookie="usuario=Juan Jose García";
+    alert(document.cookie);
+    
+    //borrar una cookie
+    document.cookie="usuario= ; expires=Thu , 01 Jan 1970 00:00:01 GMT;";
+    alert(document.cookie);
+
+
+  </script>
+</body>
+</html>

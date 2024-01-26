@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    if(typeof(Storage)!=='undefined'){
+      
+      console.log('El navegador soporta web storage');
+      localStorage.setItem("nombre","Juan");
+      alert(localStorage.getItem('nombre'));
+
+    }else{
+      console.log('El navegador no soporta web storage');
+    }
+  </script>
+</body>
+</html>

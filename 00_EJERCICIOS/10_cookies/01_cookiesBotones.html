@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button type="button" id="verTodas">Ver todas las cookies</button>
+  <button type="button" id="crearCookie1">Crear cookie 1</button>
+  <button type="button" id="crearCookie2">Crear cookie 2</button>
+  <button type="button" id="borrarCookie1">Borrar cookie 1</button>
+  <button type="button" id="borrarCookie2">Borrar cookie 2</button>
+  <script>
+
+    window.addEventListener('load',iniciar);
+
+    function iniciar(){
+
+      document.getElementById('verTodas').addEventListener('click',verTodas);
+      document.getElementById('crearCookie1').addEventListener('click',crearCookie);
+      document.getElementById('crearCookie2').addEventListener('click',crearCookie);
+      document.getElementById('borrarCookie1').addEventListener('click',borrarCookie);
+      document.getElementById('borrarCookie2').addEventListener('click',borrarCookie);
+
+    }//iniciar()
+
+
+    function verTodas(){alert(document.cookie)}//verTodas()
+
+    
+    function crearCookie(evento){
+      if(evento.target.id=="crearCookie1"){
+        document.cookie='cookie1 = Manolito;';
+      }else{
+        document.cookie='cookie2 = Pepito;';
+      }
+    }//crearCookie()
+    
+
+    function borrarCookie(evento){
+
+      if(evento.target.id=='borrarCookie1'){
+        document.cookie='cookie1=; expires=Thu, 01 Jan 1970 00:00:01 UTC;';
+      }else{
+        document.cookie='cookie2=; expires=Thu, 01 Jan 1970 00:00:01 UTC;';
+      }
+    }//borrarCookie()
+    </script>
+</body>
+</html>
