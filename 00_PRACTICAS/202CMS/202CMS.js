@@ -1,25 +1,58 @@
-//Load
+
+//Creamos un listener de Load para que todo el html este cargado antes de 
 window.addEventListener("load", iniciar, false);
+
+
+
+
+// --------------  [  LISTENER  ] -------------- //
 
 function iniciar() {
 
   document.getElementById("enviar").addEventListener('click', validar);
-  document.getElementById("dias").addEventListener('click', checkTodos);
   document.getElementById("textArea").addEventListener('keyup', contadorCaracteres);
+  document.getElementById("cursos").addEventListener('change', cursoAcademico);
+
+
+  //Usamos la DELEGACIÓN DE EVENTOS a nuestro favor, utilizando la PROPAGACIÓN
+  //El listener escucha un elemento contenedor, podemos capturar que elemento lo ha disparado.
+  document.getElementById("dias").addEventListener('click', checkTodos);
+  /*
+
+      PROPAGACIÓN (bubble) funciona de la siguiente manera:
+
+        -Un elemento dispara un evento
+        -El evento sube a su elemento padre
+        -Esto se repite hasta que llega al elemento html
+  
+
+      DELEGACIÓN DE EVENTOS
+
+        Para ahorrarnos tener que poner manualmente un listener para cada elemento,
+        podemos poner un listener a su elemento padre.
+        Para saber quien dispara el evento tendremos que utilizar event.target       
+  
+  */
 
 } //iniciar()
 
 
+
+
+// --------------  [  VALIDACIONES ] -------------- //
+
+
 function validar(evento) {
+
+  //Limpiamos los campos de error que puedan exsistir
   limpiarError();
   evento.preventDefault();
 
   //Incluimos un setTimeout() para que el confirm() no salte antes de limpiarError()
   setTimeout(() => {
     if (
-      validarNombre() &&
+      validarNombre() &&  
       validarNIF() &&
-      validarFecha() &&
       validarMensaje() &&
       validarCheck() &&
       confirm("¿Quieres enviar estos datos?")
@@ -31,7 +64,6 @@ function validar(evento) {
 } //validar()
 
 
-// ---------- Validación por html y codigo sencillo
 function validarNombre() {
   let elemento = document.getElementById("nombre");
 
@@ -52,7 +84,7 @@ function validarNIF() {
   let numeroDNI = parseInt(nif.slice(0, 8), 10);
   let letraDNI = nif.charAt(8);
 
-  //Letras validas del DNI
+  //Letras validas para un DNI
   let letrasDNI = "TRWAGMYFPDXBNJZSQVHLCKE";
 
   //Sacamos la letra según el número del NIF
@@ -64,21 +96,27 @@ function validarNIF() {
   //Comprobamos que la letra calculada coincida con la del NIF a validar
   if (letraCalculada.toUpperCase() === letraDNI.toUpperCase()) {
     return true;
-  } else {
-    error(document.getElementById('nif'), 'El NIF introducido es incorrecto');
+
+  }else if(nif===""){
+    error(document.getElementById('nif'), 'El NIF es un campo obligatorio');
+    return false;
+  }else if(nif.length>9 ){
+    error(document.getElementById('nif'), 'El NIF tiene que tener un máximo de 9 caracteres');
+    return false;
+  }else if(nif.length<7 ){
+    error(document.getElementById('nif'), 'El NIF tiene que tener un mínimo de 7 caracteres');
+    return false;
+  }else {
+    error(document.getElementById('nif'), `El NIF '${nif}' es incorrecto`);
     return false;
   }
-} //validarDNI()
+} //validarNIF()
 
-
-function validarFecha() {
-  let elemento = document.getElementById('matriculacion');
-  return true
-
-}//validarFecha()
 
 
 function validarCheck(evento) {
+
+  //propagacion
   let arrayDias = Array.from(document.forms[0].dispo);
   let contador=0;
 
@@ -96,6 +134,44 @@ function validarCheck(evento) {
 
 }//validaCheck()
 
+
+// ---------- Validación por API checkValidity()
+function validarMensaje() {
+  let elemento = document.getElementById('textArea');
+  if (!elemento.checkValidity()) {
+    // error(elemento);
+    if (elemento.validity.valueMissing) {
+      error(elemento, 'No puede dejar el mensaje vacío');
+    }
+    if (elemento.validity.tooLong) {
+      error(elemento, 'Máximo de 500 caracteres en el mensaje');
+    }
+    return false;
+  }
+  return true;
+}//validarMensaje()
+
+
+
+
+
+// --------------  [  FUNCIONALIDADES ] -------------- //
+
+
+function cursoAcademico(){
+
+  //Si pulsan en añadir
+  if(this.value==="crear"){
+    let nuevo=prompt("Inserta el campo nuevo"); //Nuevo elemento a añadir
+
+    //Creamos un option y agregamos 
+    let opcion=document.createElement("option"); 
+    opcion.textContent=nuevo;
+
+    //Insertamos el option al final antes de la opcion "Añadir..."
+    this.insertBefore(opcion,this.lastElementChild); //(elemento a insertar,posicion a insertar)
+  }
+}//cursoAcademico()
 
 
 function checkTodos(evento) {
@@ -149,33 +225,16 @@ function contadorCaracteres() {
 
 
 
-// ---------- Validación por API checkValidity()
-function validarMensaje() {
-  let elemento = document.getElementById('textArea');
-  if (!elemento.checkValidity()) {
-    // error(elemento);
-    if (elemento.validity.valueMissing) {
-      error(elemento, 'No puede dejar el mensaje vacío');
-    }
-    if (elemento.validity.tooLong) {
-      error(elemento, 'Máximo de 500 caracteres en el mensaje');
-    }
-    return false;
-  }
-  return true;
-}//validarMensaje()
+// --------------  [  GESTIÓN ERRORES ] -------------- //
 
-
-
-
-
-// ----------- FUNCIONES DE ERROR
 
 function error(elemento, mensaje) {
   document.getElementById("mensajeError").innerHTML = mensaje;
   elemento.className = "error";
   elemento.focus();
 } //error()
+
+
 
 function limpiarError() {
   let formulario = document.forms[0];
