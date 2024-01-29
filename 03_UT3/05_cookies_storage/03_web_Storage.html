@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo web storage</title>
+</head>
+
+<body>
+
+  <button type="button" id="mas">Incrementar</button>
+  <button type="button" id="menos">Decrementar</button>
+  <button type="button" id="out">Log out</button>
+
+  <h1 id="saludo"></h1>
+  <p>Contador: <span id="cont"></span></p>
+  <script>
+    window.addEventListener('load', iniciar);
+
+
+    function iniciar() {
+
+
+      // ------- LISTENERS -------
+
+      document.getElementById('mas').addEventListener('click', incrementar);
+      document.getElementById('menos').addEventListener('click', decrementar);
+      document.getElementById('out').addEventListener('click', logOut);
+
+
+
+      // ------- LOGICA -------
+
+      function incrementar() {
+        sessionStorage.setItem('contador',Number(sessionStorage.getItem('contador'))+1);
+        document.getElementById('cont').innerHTML=sessionStorage.getItem('contador');
+      }
+
+      function decrementar() {
+        sessionStorage.setItem('contador',Number(sessionStorage.getItem('contador'))-1);
+        document.getElementById('cont').innerHTML=sessionStorage.getItem('contador');
+      }
+
+      function logOut(){
+        // sessionStorage.clear();
+        localStorage.clear();
+      }
+
+
+      //Comprobamos que el cliente es compatible con web storage
+      if (typeof (Storage) !== 'undefined') {
+        alert('El navegador si soporta web storage');
+
+        //Si ya existe el usuario
+        if (localStorage.getItem('user') !== null) {
+          document.getElementById('saludo').innerHTML = `Bienvenido de nuevo ${localStorage.getItem('user')}`;
+        } else {
+          localStorage.setItem('user',prompt('Tu quien eres pisha?'));
+          document.getElementById('saludo').innerHTML = `Encantado de conocerte ${localStorage.getItem('user')}, yo tenia un primo que se llamaba igual que tú, fijate que pequeño es el mundo, ha!`;
+        }
+
+
+        //Comprobamos el contador
+        if (!sessionStorage.getItem('cont')) {
+
+          //Si no exsiste ,el contador lo inicializamos a cero
+          sessionStorage.setItem('contador', '0');
+        }
+
+        document.getElementById('cont').innerHTML = sessionStorage.getItem('cont');
+
+
+        //Si no soporta web storage
+      }else{
+        alert('El navegador NO soporta web storage, ya lo siento');
+      }
+    }//iniciar()
+
+
+  </script>
+</body>
+
+</html>
