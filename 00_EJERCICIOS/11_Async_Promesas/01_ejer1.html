@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- crear una web con un div para recibir mensajes
+Un boton que cada vezque le de me genere una promesa 
+  -probarPromise
+      -cuenta las veces que se pulsa el boton 
+      -dentro y antes de ejecutar la promesa - 'empieza el cod asincrono'
+      -en el then - 'cod asincrono terminado'
+      -fuera de la promesa - cod sincrono terminado 
+    
+
+  Usar Math.random()*4000+1000
+  element.insertadjacentHTML('beforeend',`mensaje`)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="botone">PROMESITA</button>
+  <div id="mensaje"></div>
+  <script>
+    window.addEventListener('load',iniciar);
+
+    let contBoton=1;
+    function iniciar(){
+      document.getElementById('botone').addEventListener('click',probarPromise);
+    }//iniciar()
+
+
+    function probarPromise(){
+
+      //Campo donde van los mensajes
+      let elemento=document.getElementById('mensaje');
+      //Aumentamos el contador
+      let contador=contBoton++;
+
+      //Primer mansaje sincrono
+      elemento.insertAdjacentHTML('beforeend',contador+ ' )Empieza el código síncrono<br>');
+
+      //Promesa
+      let promesita=new Promise((resolve,reject)=>{
+
+        //Mensaje dentro de la promesa
+        elemento.insertAdjacentHTML('beforeend',contador+' )Dentro de la promesa, antes del timeout.Empieza el código asíncrono<br>');
+          
+        setTimeout(()=>{
+            resolve(contador);
+          },Math.random()*4000+1000);
+      });
+
+      promesita
+        .then(contBoton=>elemento.insertAdjacentHTML('beforeend',contador+' )Dentro de la promesa, antes del timeout.Empieza el código asíncrono<br>'))
+      
+      elemento.insertAdjacentHTML('beforeend',contador+' )Código síncrono después del .then.Código síncrono terminado<br>');
+      
+
+    }//probarPromise()
+
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const datos = [{
+      id: 1,
+      nombre: 'Juan',
+      edad: 18,
+    },
+    {
+      id: 2,
+      nombre: 'Jenny',
+      edad: 22,
+    },
+    {
+      id: 3,
+      nombre: 'Paquito',
+      edad: 45,
+    },
+    ];
+
+    //No hay asincronia
+    function getDatos() {
+      return(datos);
+    }
+
+    console.log(getDatos());
+
+
+
+    //Forzamos la asincronia con un setTimeout
+    function getDarosAsyn(){
+      setTimeout(getDatos,4500);
+    }
+    console.log(getDarosAsyn());
+
+
+
+
+    // ------------- [ PROMESA ] ----------------
+
+    //Esto devuelve una promesa, NO los datos
+    function getDatosProm(){
+      return new Promise((resolve,reject)=>{
+        setTimeout
+        resolve(datos)
+      })
+    }
+
+    console.log(getDatosProm());
+
+
+    //Si ponemos then() nos devuelve los datos
+    function getDatosProm2(){
+      return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+          resolve(datos)},8000);
+      })
+    }
+
+    //Se estrucutra de la siguiente forma
+    getDatosProm2()
+      .then((datos)=>{console.log(datos);})
+      // .catch(error)=>
+
+
+
+
+    // ------------- [ AWAIT/ASYNC ] ----------------
+
+
+    // const misDatos= await getDatosProm2(); //Como no tenemos una funcion async arroja un error
+    // console.log(misDatos);
+
+
+
+    //Para que funcione hay que poner async antes de la funcion
+    async function asyncAwait(){
+      const misDatos2= await getDatosProm2(); 
+      console.log(misDatos2);
+
+    }
+    asyncAwait();
+    
+    
+    try {
+      async function asyncAwait(){
+        const misDatos3= await getDatosProm2(); 
+        console.log(misDatos3);
+        
+      }
+    } catch (error) {
+      console.log(error);
+    };
+    
+    asyncAwait();
+
+  </script>
+</body>
+
+</html>
