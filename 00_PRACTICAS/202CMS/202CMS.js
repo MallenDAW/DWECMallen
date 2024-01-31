@@ -240,6 +240,7 @@ function limpiarError() {
   let formulario = document.forms[0];
   for (let i = 0; i < formulario.elements.length; i++) {
     formulario.elements[i].className = "";
+    console.log(formulario.elements[i]);
   }
   document.getElementById("mensajeError").innerHTML = "";
 } //limpiarError()
