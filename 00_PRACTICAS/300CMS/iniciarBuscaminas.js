@@ -6,76 +6,99 @@ function inicio() {
   document.getElementById("ok").addEventListener("submit", elegirNivel, false);
 } //inicio
 
+
+//creamos un array para guardar los atributos de cada casilla del tablero
+let arrayTablero = new Array();
+let lado;
+
 function elegirNivel(evento) {
   evento.preventDefault(); //evitamos que al enviar el formulario se refresque la página
 
-  if(confirm('¿Elegir esta dificultad?')){
-  
-  document.querySelector('input').value="RESETEAR";
-  let filas, columnas, dificultad;
-  dificultad = document.getElementById("nivel").value;
-  //según la dificultad seleccionada
+  if (confirm('¿Elegir esta dificultad?')) {
 
-  switch (dificultad) {
-    case "FÁCIL":
-      filas = columnas = 9;
-      break;
-      
+    document.querySelector('input').value = "RESETEAR";
+    let dificultad;
+    dificultad = document.getElementById("nivel").value;
+    //según la dificultad seleccionada
+
+    switch (dificultad) {
+      case "FÁCIL":
+        lado = 9;
+        break;
+
       case "MEDIO":
-        filas = columnas = 13;
+        lado = 13;
         break;
-        
+
       case "DIFÍCIL":
-        filas = columnas = 19;
+        lado = 19;
         break;
-        }
-    
-    dibujarTableroHTML(filas, columnas);
-}
+    }
+
+    //Dibujamos el tablero en html y un array
+    dibujarTableroHTML(lado);
+
+    //Colocamos aleatoriamente minas en el array
+    colocarMinas(numeroMinas());
+    console.log(arrayTablero);
+  }
 
 }//elegirNivel
 
 // ---- FUNCIONES -------
 
-function dibujarTableroHTML(filas, columnas) {
-  
+function dibujarTableroHTML(lado) {
+
+
   let boton, intro;
   let tablero = document.getElementById("tablero"); //recogemos la etiqueta main donde guardar el tablero
   tablero.remove(); //eliminamos el contenido por si ya hubiera un tablero
-  tablero=document.createElement("main"); //creamos la etiqueta main
-  tablero.id="tablero"; //asignamos a main el id=tablero
+  tablero = document.createElement("main"); //creamos la etiqueta main
+  tablero.id = "tablero"; //asignamos a main el id=tablero
   document.body.appendChild(tablero); //agregamos la etiqueta al body
 
-  for (let indiceFila = 0; indiceFila < filas; indiceFila++) {
-    for (let inidiceColumna = 0; inidiceColumna < columnas; inidiceColumna++) {
+  for (let indiceFila = 0; indiceFila < lado; indiceFila++) {
+    for (let inidiceColumna = 0; inidiceColumna < lado; inidiceColumna++) {
       boton = document.createElement("button"); //Creamos el boton
-      boton.className = parseInt(indiceFila +""+ inidiceColumna); //Le damos una clase con su coordenada y la pasamos a numero entero
+      boton.className = indiceFila + " " + inidiceColumna; //Le damos una clase con su coordenada y la pasamos a numero entero
       tablero.appendChild(boton); //Metemos el boton en el main
+
+      //A la vez que creamos el tablero, generamos un array acorde a su tamaño
+      //Metemos un objeto en el array por cada posición del tablero con identicas propiedades (salvo la posiciónX y posiciónY) 
+      arrayTablero.push({ 
+        posicionX: indiceFila, 
+        posicionY: inidiceColumna, 
+        bomba: false,
+        banderilla: false,
+        contador: 0 
+      });
+
     }
     intro = document.createElement("br"); //Creamos un salto de linea
-    tablero.appendChild(intro); //Introducimos un salto de linea
+    tablero.appendChild(intro); //Introducimos el salto de linea
   }
 }//dibujarTableroHTML
 
-function generarTableroJS() {} //generarTableroJS
+function colocarMinas(numMinas) {
 
-function calcularNumMinas(x, y) {
-  let dificultad;
-  dificultad = document.getElementById("nivel").value;
-  switch (dificultad) {
-    case "FÁCIL":
-      break;
+  for (let i = 0; i < numMinas;) {
+    let x = Math.floor(Math.random() * lado);
+    let y = Math.floor(Math.random() * lado);
 
-    case "MEDIO":
-      break;
+    //comprobamos si la posicion aleatoria ya tiene una bomba
+    let casilla = arrayTablero.find(casilla => casilla.posicionX === x && casilla.posicionY === y);
 
-    case "DIFÍCIL":
-      break;
+    if (casilla && casilla.bomba===false) {
+      i++;
+      casilla.bomba=true;
+      
+      // console.log(casilla);
+    }
   }
-} //calcularNumMinas
+} //colocarMinas
 
-function numeroAleatorio(numeroMinas) {
-  Math.floor(Math.random());
-} //numeroAleatorio
 
-function colocarBombasTableroJS() {} //colocarBombasTableroJS
+function numeroMinas() {
+  //El numero de minas será el 13% del tamaño del tablero
+  return (arrayTablero.length * 0.13).toFixed(0);
+} //numeroMinas
