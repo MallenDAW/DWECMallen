@@ -26,7 +26,7 @@ function prueba(e){
 
 //creamos un array para guardar los atributos de cada casilla del tablero
 let arrayTablero = new Array();
-let lado;
+let lado,numeroBanderas;
 
 
 
@@ -68,6 +68,11 @@ function elegirNivel(evento) {
     //Colocamos aleatoriamente minas en el array
     colocarMinas(numeroMinas());
     console.log(arrayTablero);
+
+    //calculamos y mostramos el número de banderas
+    numeroBanderas = numeroMinas();
+    document.getElementById("flag").innerHTML = numeroBanderas;
+
   }
 
 }//elegirNivel(evento)
@@ -78,7 +83,7 @@ function elegirNivel(evento) {
 
 function dibujarTableroHTML(lado) {
 
-
+  
   let boton, intro;
   let tablero = document.getElementById("tablero"); //recogemos la etiqueta main donde guardar el tablero
   
@@ -154,20 +159,24 @@ function ponerBandera(evento) {
   //evitamos que salga el menú contextual
   evento.preventDefault();
 
-  //recojemos la posición del botón que ha sido pulsado
+  //recojemos la posición del botón que ha sido pulsado en X e Y
   let boton=evento.target.id.split(" ");
 
   //buscamos el botón en el array
   let casilla=encontrarCasilla(parseInt(boton[0]), parseInt(boton[1]));
   
   //Si la casilla no tiene bandera se pone
-  if(casilla && casilla.banderilla==false){
+  if(casilla.banderilla==false){
     casilla.banderilla = true;
     evento.target.classList.toggle("bandera");
+    numeroBanderas--;
 
   //Si ya hay una bandera se quita  
   }else{
     casilla.banderilla = false;
     evento.target.classList.toggle("bandera");
+    numeroBanderas++;
   }
+
+  document.getElementById("flag").innerHTML = numeroBanderas;
 }//ponerBandera(evento)

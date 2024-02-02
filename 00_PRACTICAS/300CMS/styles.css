@@ -8,18 +8,18 @@ form,h1{
   justify-content: center;
   align-items: center;
 }
+
 body{
   display: grid;
   place-content: center;
   align-items: center;
 }
 
-/* main{
-  position: absolute;
-  transform: translateX(-50%);
-  left: 50%;
-  
-} */
+/* Para que el tablero no se deforme en pantallas o ventanas pequeñas */
+#tablero{
+  width: 950px;
+}
+
 
 input, select{
   padding: 5px;
@@ -57,4 +57,11 @@ button:active{
   background-color: rgb(0, 255, 0);
   border: 6px rgb(152, 152, 152) outset;
   cursor: pointer;
+}
+
+
+#interfaz{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
