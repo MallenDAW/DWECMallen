@@ -1,3 +1,14 @@
+/* 
+      TO DO LIST:
+
+  Hacer una funcion para contar bombas adyacentes    
+  - Cada vez que se genera una bomba en una posicion aleatoria sumar 1 a las casillas adyacentes
+  - Si existe bomba no se cuenta
+
+
+*/
+
+
 
 //Esperamos a que cargue la página para ejecutar el código
 window.addEventListener("load", inicio);
@@ -6,15 +17,16 @@ window.addEventListener("load", inicio);
 // ------------ LISTENERS ------------ \\
 
 function inicio() {
-  document.getElementById("ok").addEventListener("submit", elegirNivel);         //---> elegir nivel
-  document.getElementById("tablero").addEventListener("click", ponerBandera);    //---> PONER BANDERA
+  document.getElementById("ok").addEventListener("submit", elegirNivel);             //---> elegir nivel
+  document.getElementById("tablero").addEventListener("contextmenu", pulsarBoton);   //---> poner bandera
+  document.getElementById("tablero").addEventListener("click", pulsarBoton);         //---> pulsar boton
   //document.getElementById("tablero").addEventListener("click", descubrirCasilla);
 } //inicio
 
 
 // ------------ TEST ------------ \\
 
-function prueba(e){
+function prueba(e) {
   console.log("prueba");
   console.log(e);
   console.log(e.target);
@@ -26,7 +38,7 @@ function prueba(e){
 
 //creamos un array para guardar los atributos de cada casilla del tablero
 let arrayTablero = new Array();
-let lado,numeroBanderas;
+let lado, numeroBanderas;
 
 
 
@@ -43,10 +55,10 @@ function elegirNivel(evento) {
     document.querySelector('input').value = "RESETEAR";
     let dificultad;
     dificultad = document.getElementById("nivel").value;
-    
+
     //vaciamos el array para que no se acumulen los valores del tablero anterior
-    arrayTablero=[]; 
-    
+    arrayTablero = [];
+
     //según la dificultad seleccionada tenemos un tamaño de tablero
     switch (dificultad) {
       case "FÁCIL":
@@ -83,10 +95,10 @@ function elegirNivel(evento) {
 
 function dibujarTableroHTML(lado) {
 
-  
+
   let boton, intro;
   let tablero = document.getElementById("tablero"); //recogemos la etiqueta main donde guardar el tablero
-  
+
   while (tablero.firstChild) {
     tablero.removeChild(tablero.firstChild);
   }
@@ -99,12 +111,12 @@ function dibujarTableroHTML(lado) {
 
       //A la vez que creamos el tablero, generamos un array acorde a su tamaño
       //Metemos un objeto en el array por cada botón del tablero con las misma propiedades (salvo la posición) 
-      arrayTablero.push({ 
-        posicionX: indiceFila, 
-        posicionY: inidiceColumna, 
+      arrayTablero.push({
+        posicionX: indiceFila,
+        posicionY: inidiceColumna,
         bomba: false,
         banderilla: false,
-        contador: 0 
+        contador: 0
       });
 
     }
@@ -128,9 +140,9 @@ function colocarMinas(numMinas) {
     //comprobamos si la posición aleatoria existe y si ya tiene una bomba
     let casilla = encontrarCasilla(x, y);
 
-    if (casilla && casilla.bomba===false) {
+    if (casilla && casilla.bomba === false) {
       i++; //el FOR solo avanza cuando se ha colocado una mina en una casilla correcta
-      casilla.bomba=true;
+      casilla.bomba = true;
       document.getElementById(x + " " + y).className = "bomba";
       // console.log(casilla);
     }
@@ -154,29 +166,51 @@ function encontrarCasilla(x, y) {
 
 
 
-function ponerBandera(evento) {
-
-  //evitamos que salga el menú contextual
-  evento.preventDefault();
+function pulsarBoton(evento) {
 
   //recojemos la posición del botón que ha sido pulsado en X e Y
-  let boton=evento.target.id.split(" ");
+  let boton = evento.target.id.split(" ");
 
   //buscamos el botón en el array
-  let casilla=encontrarCasilla(parseInt(boton[0]), parseInt(boton[1]));
-  
-  //Si la casilla no tiene bandera se pone
-  if(casilla.banderilla==false){
-    casilla.banderilla = true;
-    evento.target.classList.toggle("bandera");
-    numeroBanderas--;
+  let casilla = encontrarCasilla(parseInt(boton[0]), parseInt(boton[1]));
 
-  //Si ya hay una bandera se quita  
-  }else{
-    casilla.banderilla = false;
-    evento.target.classList.toggle("bandera");
-    numeroBanderas++;
+
+  //si quiere pulsar el boton
+  if (evento.type == "click") {
+
+    if(casilla.bomba == true){
+      alert("GAME OVER");
+    }else{
+      buscarMinas(casilla);
+    }
+
+
+    //si quiere poner bandera
+  }else if (evento.type == "contextmenu") {
+    
+    //evitamos que salga el menú contextual
+    evento.preventDefault();
+
+    //Si la casilla no tiene bandera se pone
+    if (casilla.banderilla == false) {
+      casilla.banderilla = true;
+      evento.target.classList.toggle("bandera");
+      numeroBanderas--;
+
+      //Si ya hay una bandera se quita  
+    } else {
+      casilla.banderilla = false;
+      evento.target.classList.toggle("bandera");
+      numeroBanderas++;
+    }
+
+    document.getElementById("flag").innerHTML = numeroBanderas;
   }
+}//pulsarBoton(evento)
 
-  document.getElementById("flag").innerHTML = numeroBanderas;
-}//ponerBandera(evento)
+
+
+function buscarMinas(casilla) {
+
+
+}//buscarMinas(casilla)

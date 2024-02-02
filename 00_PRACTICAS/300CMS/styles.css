@@ -5,8 +5,8 @@
 
 form,h1{
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 body{
@@ -16,9 +16,9 @@ body{
 }
 
 /* Para que el tablero no se deforme en pantallas o ventanas pequeñas */
-#tablero{
-  width: 950px;
-}
+/* #tablero{
+  width: 100%;
+} */
 
 
 input, select{
