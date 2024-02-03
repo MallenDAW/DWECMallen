@@ -97,18 +97,18 @@ function dibujarTableroHTML(lado) {
   for (let indiceFila = 0; indiceFila < lado; indiceFila++) {
 
     //Creamos un div para cada fila y su indice
-    let div = document.createElement("div"); 
-    div.id=indiceFila;
+    let div = document.createElement("div");
+    div.id = indiceFila;
 
 
     for (let inidiceColumna = 0; inidiceColumna < lado; inidiceColumna++) {
-      
+
       //Creamos el boton y le ponemos como id una coordenada
-      boton = document.createElement("button"); 
+      boton = document.createElement("button");
       boton.id = indiceFila + " " + inidiceColumna;
-      
+
       //Metemos el boton en el div
-      div.appendChild(boton); 
+      div.appendChild(boton);
 
       //A la vez que creamos el tablero, generamos un array acorde a su tamaño
       //Metemos un objeto en el array por cada botón del tablero con las misma propiedades (salvo la posición) 
@@ -121,7 +121,7 @@ function dibujarTableroHTML(lado) {
       });
 
     }
-    
+
     tablero.appendChild(div); //Introducimos los div de cada fila en el tablero
   }
 }//dibujarTableroHTML(tablero)
@@ -144,7 +144,7 @@ function colocarMinas(numMinas) {
     if (casilla && casilla.bomba === false) {
       i++; //el FOR solo avanza cuando se ha colocado una mina en una casilla correcta
       casilla.bomba = true;
-      document.getElementById(x + " " + y).className = "bomba";
+      //document.getElementById(x + " " + y).className = "bomba";
       sumarAlrededorBomba(casilla);
       // console.log(casilla);
     }
@@ -174,8 +174,8 @@ function sumarAlrededorBomba(casilla) {
           casillaAdyacente.contador = -1;
           //document.getElementById(x + " " + y).textContent = "";
 
-         //si no es una bomba suma 1 al contador 
-        }else if (casillaAdyacente.bomba === false) {
+          //si no es una bomba suma 1 al contador 
+        } else if (casillaAdyacente.bomba === false) {
           casillaAdyacente.contador++;
           //document.getElementById(x + " " + y).textContent = casillaAdyacente.contador;
         }
@@ -215,8 +215,22 @@ function pulsarBoton(evento) {
   //si quiere pulsar el boton
   if (evento.type == "click") {
 
-    if (casilla.bomba == true) {
+    //si hay una bandera no se puede pulsar
+    if (casilla.banderilla == true) {
+      evento.preventDefault();
+      alert("QUITA LA BANDERA ANTES DE PULSAR");
+
+      //si la casilla tiene una bomba, GAME OVER
+    } else if (casilla.bomba == true) {
+      document.getElementById(casilla.posicionX + " " + casilla.posicionY).classList.add("bomba");
       alert("GAME OVER");
+
+      //si la casilla tiene un numero se muestra
+    } else if (casilla.contador > 0) {
+      document.getElementById(casilla.posicionX + " " + casilla.posicionY).textContent = casilla.contador;
+      document.getElementById(casilla.posicionX + " " + casilla.posicionY).classList.add("numero");
+
+      //si esta vacio se llama a buscar Minas
     } else {
       buscarMinas(casilla);
     }
@@ -246,17 +260,17 @@ function pulsarBoton(evento) {
 }//pulsarBoton(evento)
 
 
-/* Funcion recursiva estaVacio() =  mira si hay minas en el boton pulsado
+/* Funcion recursiva buscarMinas() 
     - si el contador es mayor que 0, se muestra el contador
     - Si el contador es 0, se muestra el boton y se llama a si misma para buscar minas adyacentes
 */
 
 
 function buscarMinas(casilla) {
-  console.log('Buscando minas...');
-  console.log(casilla, casilla.contador);
+  //console.log('Buscando minas...');
+  //console.log(casilla, casilla.contador);
 
-//recorremos fila
+  //recorremos fila
   for (let i = 0; i < 3; i++) {
 
     //recorremos una columna
@@ -268,24 +282,25 @@ function buscarMinas(casilla) {
       //Si esta dentro de los límites del tablero
       if ((x >= 0 && x < lado) && (y >= 0 && y < lado)) {
 
-        //si la casilla tiene una bomba nos la saltamos
+        //si la casilla tiene una bomba o ya ha sido descubierta nos la saltamos
         if (
-          casillaAdyacente.contador < 0 || 
-          casillaAdyacente.banderilla == true || 
-          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.contains("descubierto")||         
-          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.contains("numero")) {         
-        //document.getElementById(casilla.posicionX + " " + casilla.posicionY).textContent = casilla.contador;
-         //si no es una bomba suma 1 al contador 
+          casillaAdyacente.contador < 0 ||
+          casillaAdyacente.banderilla == true ||
+          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.contains("descubierto") ||
+          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.contains("numero")) {
+          continue;
+          
+          //si tiene un contador se muestra
+        } else if (casillaAdyacente.contador > 0) {
 
-
-         //si 
-        }else if(casillaAdyacente.contador > 0){
           document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).textContent = casillaAdyacente.contador;
-          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.add("numero");  
+          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.add("numero");
+
         }
-        
+
+        //si esta vacio se descubre y se vuelve a llama a si msmas
         else if (casillaAdyacente.contador == 0) {
-          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.add("descubierto");  
+          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.add("descubierto");
           buscarMinas(casillaAdyacente);
         }
       }

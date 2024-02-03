@@ -60,10 +60,6 @@ button{
   font-size: larger;
 }
 
-button:active{
-  background-color: rgb(150, 150, 150);
-  border: 6px rgb(89, 89, 89) solid;
-}
 
 
 /* -------  CLASES PARA EVENTOS  ------- */
@@ -72,8 +68,12 @@ button:active{
   width: 50px;
   height: 50px;
   padding: 5px ;
-  background-color: rgb(255, 0, 0);
-  border: 6px rgb(152, 152, 152) outset;
+  background-image: url('https://play-lh.googleusercontent.com/BTNMIvAJygIDpvyIRjzOiTSPcGZ9v9z3tFLUYCPND0VQ0U5nJkpt-959mLwCWzTi7Bs');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgb(125, 51, 51);
+  border: 1px solid rgb(84, 26, 25);
   cursor: pointer;
 }
 
