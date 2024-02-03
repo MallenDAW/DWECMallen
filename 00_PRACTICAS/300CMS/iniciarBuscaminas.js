@@ -1,13 +1,3 @@
-/* 
-      TO DO LIST:
-
-  Hacer una funcion para contar bombas adyacentes    
-  - Cada vez que se genera una bomba en una posicion aleatoria sumar 1 a las casillas adyacentes
-  - Si existe bomba no se cuenta
-
-
-*/
-
 
 
 //Esperamos a que cargue la página para ejecutar el código
@@ -99,15 +89,26 @@ function dibujarTableroHTML(lado) {
   let boton, intro;
   let tablero = document.getElementById("tablero"); //recogemos la etiqueta main donde guardar el tablero
 
+  //Vaciamos el tablero por si ya hay uno (mientras tenga un primer hijo sigue borrando)
   while (tablero.firstChild) {
     tablero.removeChild(tablero.firstChild);
   }
 
   for (let indiceFila = 0; indiceFila < lado; indiceFila++) {
+
+    //Creamos un div para cada fila y su indice
+    let div = document.createElement("div"); 
+    div.id=indiceFila;
+
+
     for (let inidiceColumna = 0; inidiceColumna < lado; inidiceColumna++) {
-      boton = document.createElement("button"); //Creamos el boton
-      boton.id = indiceFila + " " + inidiceColumna; //Le damos una id con su coordenada y la pasamos a numero entero
-      tablero.appendChild(boton); //Metemos el boton en el main
+      
+      //Creamos el boton y le ponemos como id una coordenada
+      boton = document.createElement("button"); 
+      boton.id = indiceFila + " " + inidiceColumna;
+      
+      //Metemos el boton en el div
+      div.appendChild(boton); 
 
       //A la vez que creamos el tablero, generamos un array acorde a su tamaño
       //Metemos un objeto en el array por cada botón del tablero con las misma propiedades (salvo la posición) 
@@ -120,8 +121,8 @@ function dibujarTableroHTML(lado) {
       });
 
     }
-    intro = document.createElement("br"); //Creamos un salto de linea
-    tablero.appendChild(intro); //Introducimos el salto de linea
+    
+    tablero.appendChild(div); //Introducimos los div de cada fila en el tablero
   }
 }//dibujarTableroHTML(tablero)
 
@@ -144,10 +145,46 @@ function colocarMinas(numMinas) {
       i++; //el FOR solo avanza cuando se ha colocado una mina en una casilla correcta
       casilla.bomba = true;
       document.getElementById(x + " " + y).className = "bomba";
+      sumarAlrededorBomba(casilla);
       // console.log(casilla);
     }
   }
 } //colocarMinas(numMinas)
+
+
+
+function sumarAlrededorBomba(casilla) {
+
+  //console.log(casilla);
+
+  //posicion de las filas
+  for (let i = 0; i < 3; i++) {
+
+    //recorremos una columna
+    for (let j = 0; j < 3; j++) {
+      let x = casilla.posicionX - 1 + i;
+      let y = casilla.posicionY - 1 + j;
+      let casillaAdyacente = encontrarCasilla(x, y);
+
+      //Si esta dentro de los límites del tablero
+      if ((x >= 0 && x < lado) && (y >= 0 && y < lado)) {
+
+        //si la casilla tiene una bomba el contador sera -1
+        if (casillaAdyacente.bomba === true) {
+          casillaAdyacente.contador = -1;
+          //document.getElementById(x + " " + y).textContent = "";
+
+         //si no es una bomba suma 1 al contador 
+        }else if (casillaAdyacente.bomba === false) {
+          casillaAdyacente.contador++;
+          //document.getElementById(x + " " + y).textContent = casillaAdyacente.contador;
+        }
+      }
+    }
+  }
+}//sumarAlrededorBomba(casilla)
+
+
 
 
 
@@ -178,16 +215,16 @@ function pulsarBoton(evento) {
   //si quiere pulsar el boton
   if (evento.type == "click") {
 
-    if(casilla.bomba == true){
+    if (casilla.bomba == true) {
       alert("GAME OVER");
-    }else{
+    } else {
       buscarMinas(casilla);
     }
 
 
     //si quiere poner bandera
-  }else if (evento.type == "contextmenu") {
-    
+  } else if (evento.type == "contextmenu") {
+
     //evitamos que salga el menú contextual
     evento.preventDefault();
 
@@ -209,8 +246,50 @@ function pulsarBoton(evento) {
 }//pulsarBoton(evento)
 
 
+/* Funcion recursiva estaVacio() =  mira si hay minas en el boton pulsado
+    - si el contador es mayor que 0, se muestra el contador
+    - Si el contador es 0, se muestra el boton y se llama a si misma para buscar minas adyacentes
+*/
+
 
 function buscarMinas(casilla) {
+  console.log('Buscando minas...');
+  console.log(casilla, casilla.contador);
 
+//recorremos fila
+  for (let i = 0; i < 3; i++) {
+
+    //recorremos una columna
+    for (let j = 0; j < 3; j++) {
+      let x = casilla.posicionX - 1 + i;
+      let y = casilla.posicionY - 1 + j;
+      let casillaAdyacente = encontrarCasilla(x, y);
+
+      //Si esta dentro de los límites del tablero
+      if ((x >= 0 && x < lado) && (y >= 0 && y < lado)) {
+
+        //si la casilla tiene una bomba nos la saltamos
+        if (
+          casillaAdyacente.contador < 0 || 
+          casillaAdyacente.banderilla == true || 
+          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.contains("descubierto")||         
+          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.contains("numero")) {         
+        //document.getElementById(casilla.posicionX + " " + casilla.posicionY).textContent = casilla.contador;
+         //si no es una bomba suma 1 al contador 
+
+
+         //si 
+        }else if(casillaAdyacente.contador > 0){
+          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).textContent = casillaAdyacente.contador;
+          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.add("numero");  
+        }
+        
+        else if (casillaAdyacente.contador == 0) {
+          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.add("descubierto");  
+          buscarMinas(casillaAdyacente);
+        }
+      }
+    }
+  }
 
 }//buscarMinas(casilla)

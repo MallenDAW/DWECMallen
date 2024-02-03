@@ -3,12 +3,17 @@
   padding: 0px;
 }
 
+html{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 form,h1{
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Centramos el contenido */
 body{
   display: grid;
   place-content: center;
@@ -16,9 +21,10 @@ body{
 }
 
 /* Para que el tablero no se deforme en pantallas o ventanas pequeñas */
-/* #tablero{
-  width: 100%;
-} */
+div{
+  display: flex;
+  flex-wrap: nowrap;
+}
 
 
 input, select{
@@ -26,13 +32,32 @@ input, select{
   margin: 2px;
 }
 
+
+
+#interfaz{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#tutorial{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
 button{
   width: 50px;
   height: 50px;
-  padding: 5px ;
+  padding: 5px;
   background-color: rgb(107, 107, 107);
   border: 6px rgb(152, 152, 152) outset;
   cursor: pointer;
+  color: rgb(0, 61, 61);
+  font-weight: bold;
+  font-size: larger;
 }
 
 button:active{
@@ -40,6 +65,8 @@ button:active{
   border: 6px rgb(89, 89, 89) solid;
 }
 
+
+/* -------  CLASES PARA EVENTOS  ------- */
 
 .bomba{
   width: 50px;
@@ -55,13 +82,24 @@ button:active{
   height: 50px;
   padding: 5px ;
   background-color: rgb(0, 255, 0);
-  border: 6px rgb(152, 152, 152) outset;
+  border: 6px rgb(25, 84, 50) outset;
   cursor: pointer;
 }
 
-
-#interfaz{
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+.numero{
+  background-color: seagreen;
+  border: 1px solid rgb(25, 84, 50);
+  color: whitesmoke;
+  font-size: larger;
+  font-weight: bold;
 }
+
+.descubierto{
+  width: 50px;
+  height: 50px;
+  padding: 5px ;
+  background-color: seagreen;
+  border: 1px rgb(25, 84, 50) solid;
+}
+
+
