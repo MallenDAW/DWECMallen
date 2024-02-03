@@ -81,7 +81,6 @@ img{
   color: whitesmoke;
 }
 
-
 #interfaz{
   display: flex;
   flex-wrap: nowrap;
@@ -89,6 +88,7 @@ img{
   background-color: rgb(121, 216, 123);
   border-radius: 20px;
   border: 3px solid rgb(25, 84, 50);
+  margin: 20px;
 }
 
 #tutorial{
@@ -106,11 +106,13 @@ button{
   width: 50px;
   height: 50px;
   padding: 5px;
-  background-color: rgb(215, 218, 220);
-  border: 4px rgb(139, 140, 140) outset;
+  background-color: slategrey;
+  border: 4px rgb(49, 42, 95) solid;
   cursor: pointer;
   font-weight: bold;
   font-size: larger;
+  border-radius: 10px;
+  margin: 1px;
 }
 
 

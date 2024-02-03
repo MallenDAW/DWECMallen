@@ -27,7 +27,7 @@ function prueba(e) {
 
 //creamos un array para guardar los atributos de cada casilla del tablero
 let arrayTablero = new Array();
-let lado, numeroBanderas;
+let lado, numeroBanderas,celdasRestantes;
 
 
 
@@ -36,13 +36,13 @@ let lado, numeroBanderas;
 
 
 
-function ponerClase(casilla,nombreClase){
+function ponerClase(casilla, nombreClase) {
   document.getElementById(casilla.posicionX + " " + casilla.posicionY).classList.add(nombreClase);
 }//ponerClase(casilla,nombreClase)
 
 
 
-function ponerNumero(casilla,numero){
+function ponerNumero(casilla, numero) {
   document.getElementById(casilla.posicionX + " " + casilla.posicionY).textContent = numero;
 }//ponerClase(casilla,nombreClase)
 
@@ -101,9 +101,11 @@ function elegirNivel(evento) {
     //Colocamos aleatoriamente minas en el array
     colocarMinas(numeroMinas());
     console.log(arrayTablero);
+    console.log(arrayTablero.length);
 
     //calculamos y mostramos el número de banderas
     numeroBanderas = numeroMinas();
+    celdasRestantes = arrayTablero.length - 1 - numeroBanderas;
     document.getElementById("flag").innerHTML = numeroBanderas;
 
   }
@@ -145,6 +147,7 @@ function dibujarTableroHTML(lado) {
       arrayTablero.push({
         posicionX: indiceFila,
         posicionY: inidiceColumna,
+        bloquear: false,
         bomba: false,
         banderilla: false,
         contador: 0
@@ -230,28 +233,66 @@ function pulsarBoton(evento) {
   //si quiere pulsar el boton
   if (evento.type == "click") {
 
-    //si hay una bandera no se puede pulsar
-    if (casilla.banderilla == true) {
-      evento.preventDefault();
-      alert("QUITA LA BANDERA ANTES DE PULSAR");
-
-      //si la casilla tiene una bomba, GAME OVER
-    } else if (casilla.bomba == true) {
-      ponerClase(casilla,"bomba");
+    //si no le quedan celdas has ganado
+    if(celdasRestantes == 0){
       arrayTablero.forEach(element => {
-        if(element.bomba == true){
-          ponerClase(element,"bomba");
-        }
+        element.bloquear = true;
       });
 
-      //si la casilla tiene un numero se muestra
-    } else if (casilla.contador > 0) {
-      ponerNumero(casilla,casilla.contador);
-      ponerClase(casilla,"numero");
+      /* HAS GANADOOOOOOOOOO */
+      Swal.fire({
+        title: "!VICTORIA ROYAL!",
+        text: "BUENA PARTIDA",
+        imageUrl: "img/victoria.png",
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Custom image"
+      });
+     
+      
+    }
 
-      //si esta vacio se llama a buscar Minas
-    } else {
-      buscarMinas(casilla);
+    if (casilla.bloquear == false) {
+      //si hay una bandera no se puede pulsar
+      if (casilla.banderilla == true) {
+        evento.preventDefault();
+        alert("QUITA LA BANDERA ANTES DE PULSAR");
+
+        //si la casilla tiene una bomba, GAME OVER
+      } else if (casilla.bomba == true) {
+        ponerClase(casilla, "bomba");
+        arrayTablero.forEach(element => {
+          element.bloquear = true;
+          if (element.bomba == true) {
+            ponerClase(element, "bomba");
+          }
+        });
+
+        /* HAS PERDIDO */
+      Swal.fire({
+        title: "MALA SUERTE",
+        text: "PRUEBA OTRA VEZ",
+        imageUrl: "img/derrota.jpg",
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Custom image",
+        
+      });
+
+
+
+
+        //si la casilla tiene un numero se muestra
+      } else if (casilla.contador > 0) {
+        casilla.bloquear = true;
+        celdasRestantes--;
+        ponerNumero(casilla, casilla.contador);
+        ponerClase(casilla, "numero");
+
+        //si esta vacio se llama a buscar Minas
+      } else {
+        buscarMinas(casilla);
+      }
     }
 
 
@@ -261,17 +302,21 @@ function pulsarBoton(evento) {
     //evitamos que salga el menú contextual
     evento.preventDefault();
 
-    //Si la casilla no tiene bandera se pone
-    if (casilla.banderilla == false) {
-      casilla.banderilla = true;
-      evento.target.classList.toggle("bandera");
-      numeroBanderas--;
+    //si la casilla esta descubierta se bloquea y no se puede interactuar con ella
+    if (casilla.bloquear == false) {
 
-      //Si ya hay una bandera se quita  
-    } else {
-      casilla.banderilla = false;
-      evento.target.classList.toggle("bandera");
-      numeroBanderas++;
+      //Si la casilla no tiene bandera se pone
+      if (casilla.banderilla == false) {
+        casilla.banderilla = true;
+        evento.target.classList.toggle("bandera");
+        numeroBanderas--;
+
+        //Si ya hay una bandera se quita  
+      } else {
+        casilla.banderilla = false;
+        evento.target.classList.toggle("bandera");
+        numeroBanderas++;
+      }
     }
 
     document.getElementById("flag").innerHTML = numeroBanderas;
@@ -311,15 +356,18 @@ function buscarMinas(casilla) {
 
           //si tiene un contador se muestra
         } else if (casillaAdyacente.contador > 0) {
-
-          ponerNumero(casillaAdyacente,casillaAdyacente.contador);
-          ponerClase(casillaAdyacente,"numero");
+          celdasRestantes--;
+          casillaAdyacente.bloquear = true;
+          ponerNumero(casillaAdyacente, casillaAdyacente.contador);
+          ponerClase(casillaAdyacente, "numero");
 
         }
 
         //si esta vacio se descubre y se vuelve a llama a si msmas
         else if (casillaAdyacente.contador == 0) {
-          ponerClase(casillaAdyacente,"descubierto");
+          celdasRestantes--;
+          casillaAdyacente.bloquear = true;
+          ponerClase(casillaAdyacente, "descubierto");
           buscarMinas(casillaAdyacente);
         }
       }
