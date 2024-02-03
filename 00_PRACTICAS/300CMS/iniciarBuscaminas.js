@@ -28,11 +28,30 @@ function prueba(e) {
 //creamos un array para guardar los atributos de cada casilla del tablero
 let arrayTablero = new Array();
 let lado, numeroBanderas,celdasRestantes;
-
+let minutos =segundos= 0;
 
 
 
 // ------------ UTILIDADES ------------ \\
+
+
+function tiempoTranscurrido() {
+  segundos++;
+
+  if (segundos < 10) {
+    segundos = "0" + segundos;
+  }
+
+  if (segundos == 60) {
+    segundos = 0;
+    minutos++;
+  }
+
+  let tiempoTranscurrido = minutos + ":" + segundos;
+  document.getElementById("time").innerHTML = tiempoTranscurrido;
+}//tiempoTranscurrido()
+
+setInterval(tiempoTranscurrido, 1000);
 
 
 

@@ -16,14 +16,16 @@ form,h1{
 form{
   margin: 20px;
   padding: 10px;
-  background-color: rgb(110, 179, 213);
+  background-color: rgba(42, 18, 55, 0.8);
+  border: 3px solid #fff;
   border-radius: 20px;
 }
 
 h1{
   margin: 20px;
   padding: 15px;
-  background-color: rgb(80, 135, 163);
+  background-color: rgba(42, 18, 55, 0.8);
+  border: 3px solid #fff ;
   border-radius: 20px;
   color: whitesmoke;
   
@@ -32,14 +34,18 @@ h1{
 /* Centramos el contenido */
 body{
   display: grid;
-  place-content: center;
-  align-items: center;
-  background-color: rgb(206, 236, 236);
+  place-items: center;
+  justify-content: center;
+  background-image: url('img/fondo.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
   margin: 50px;
 }
 
 /* Para que el tablero no se deforme en pantallas o ventanas pequeñas */
-div{
+main div{
   display: flex;
   flex-wrap: nowrap;
 }
@@ -47,7 +53,7 @@ div{
 p{
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 
@@ -57,14 +63,16 @@ input, select{
   border-radius: 10px;
   font-size: large;
   font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.675);
 }
 
 img{
   width: 50px;
   height: 50px;
   padding: 5px;
-  background-color: rgb(229, 232, 147);
-  border: 3px solid rgb(25, 84, 50);
+  margin: 20px;
+  background-color: rgb(89, 90, 82);
+  border: 3px solid rgb(233, 233, 233);
   border-radius: 20px;
 }
 
@@ -76,7 +84,8 @@ img{
   width: 40px;
   margin: 20px;
   padding: 10px;
-  background-color:rgb(25, 84, 50);
+  background-color: rgb(89, 90, 82);
+  border: 3px solid rgb(233, 233, 233);
   border-radius: 20px;
   color: whitesmoke;
 }
@@ -85,20 +94,10 @@ img{
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  background-color: rgb(121, 216, 123);
+  background-color: rgba(42, 18, 55, 0.8);
   border-radius: 20px;
-  border: 3px solid rgb(25, 84, 50);
+  border: 3px solid #fff;
   margin: 20px;
-}
-
-#tutorial{
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  margin: 20px;
-  padding: 10px;
-  background-color: rgb(143, 202, 232);
-  border-radius: 20px;
 }
 
 
@@ -127,7 +126,7 @@ button{
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: darkorange;
+  background-color: rgb(255, 171, 68, 0.8);
   border: 3px solid rgb(145, 80, 0);
   cursor: pointer;
 }
@@ -140,13 +139,13 @@ button{
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: rgb(32, 95, 79);
+  background-color: rgb(32, 95, 79,0.8);
   border: 3px rgb(18, 52, 43) solid;
   cursor: pointer;
 }
 
 .numero{
-  background-color: rgb(57, 161, 102);
+  background-color: rgb(74, 183, 138, 0.90);
   border: 1px solid rgb(25, 84, 50);
   color: whitesmoke;
   font-size: x-large;
@@ -157,7 +156,7 @@ button{
   width: 50px;
   height: 50px;
   padding: 5px ;
-  background-color: rgb(57, 161, 102);
+  background-color: rgb(74, 183, 138,0.90);
   border: 1px solid rgb(25, 84, 50);
 }
 
