@@ -28,33 +28,35 @@
 
  -->
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="https://play-lh.googleusercontent.com/BTNMIvAJygIDpvyIRjzOiTSPcGZ9v9z3tFLUYCPND0VQ0U5nJkpt-959mLwCWzTi7Bs" />
+  <link rel="icon" type="image/png"
+    href="https://play-lh.googleusercontent.com/BTNMIvAJygIDpvyIRjzOiTSPcGZ9v9z3tFLUYCPND0VQ0U5nJkpt-959mLwCWzTi7Bs" />
   <link rel="stylesheet" href="styles.css">
   <script src="iniciarBuscaminas.js"></script>
   <title>BUSCAMINAS BETA</title>
 </head>
+
 <body>
   <h1>BUSCAMINAS</h1>
+
   <form method="post" id="ok">
     <select id="nivel">
       <option name="facil">FÁCIL</option>
       <option name="medio">MEDIO</option>
       <option name="dificil">DIFÍCIL</option>
     </select>
-    <input type="submit" value="GENERAR" ></input>
-    <input id="test" type="button" value="AAAAAA" ></input>
+    <input type="submit" value="GENERAR"></input>
+    <!-- <input id="test" type="button" value="AAAAAA"></input> -->
   </form><br>
-  <div id="interfaz">
-    <p>Banderas restantes: <span id="flag"></span></p>
-    <p>Tiempo: <span id="time">30</span></p>
-  </div>
-  <div id="tutorial">
-    <p>Click izquierdo ->  investigar celda</p>
-    <p>Click derecho   ->  colocar bandera</p>
-  </div>
+    <div id="interfaz">
+      <p><img src="img/bomba.png" alt="Bombas"> <span id="flag"> ? </span></p>
+      <p><img src="img/time.png" alt="Tiempo"><span id="time">?</span></p>
+    </div>
   <main id="tablero"></main>
+
 </body>
+
 </html>

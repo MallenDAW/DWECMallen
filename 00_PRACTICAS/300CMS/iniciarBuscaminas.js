@@ -10,7 +10,6 @@ function inicio() {
   document.getElementById("ok").addEventListener("submit", elegirNivel);             //---> elegir nivel
   document.getElementById("tablero").addEventListener("contextmenu", pulsarBoton);   //---> poner bandera
   document.getElementById("tablero").addEventListener("click", pulsarBoton);         //---> pulsar boton
-  //document.getElementById("tablero").addEventListener("click", descubrirCasilla);
 } //inicio
 
 
@@ -33,8 +32,40 @@ let lado, numeroBanderas;
 
 
 
+// ------------ UTILIDADES ------------ \\
 
-// ------------ FUNCIONES ------------ \\
+
+
+function ponerClase(casilla,nombreClase){
+  document.getElementById(casilla.posicionX + " " + casilla.posicionY).classList.add(nombreClase);
+}//ponerClase(casilla,nombreClase)
+
+
+
+function ponerNumero(casilla,numero){
+  document.getElementById(casilla.posicionX + " " + casilla.posicionY).textContent = numero;
+}//ponerClase(casilla,nombreClase)
+
+
+
+function numeroMinas() {
+  //El numero de minas será el 13% del tamaño del tablero
+  return (arrayTablero.length * 0.13).toFixed(0);
+} //numeroMinas()
+
+
+
+function encontrarCasilla(x, y) {
+  //segun el id del boton que pulsen, buscamos esa posicion en el array
+  return arrayTablero.find(casilla => casilla.posicionX === x && casilla.posicionY === y);
+}//encontrarCasilla(x, y)
+
+
+
+
+
+
+// ------------ LÓGICA ------------ \\
 
 
 function elegirNivel(evento) {
@@ -84,7 +115,6 @@ function elegirNivel(evento) {
 
 
 function dibujarTableroHTML(lado) {
-
 
   let boton, intro;
   let tablero = document.getElementById("tablero"); //recogemos la etiqueta main donde guardar el tablero
@@ -188,21 +218,6 @@ function sumarAlrededorBomba(casilla) {
 
 
 
-
-function numeroMinas() {
-  //El numero de minas será el 13% del tamaño del tablero
-  return (arrayTablero.length * 0.13).toFixed(0);
-} //numeroMinas()
-
-
-
-function encontrarCasilla(x, y) {
-  //segun el id del boton que pulsen, buscamos esa posicion en el array
-  return arrayTablero.find(casilla => casilla.posicionX === x && casilla.posicionY === y);
-}//encontrarCasilla(x, y)
-
-
-
 function pulsarBoton(evento) {
 
   //recojemos la posición del botón que ha sido pulsado en X e Y
@@ -222,13 +237,17 @@ function pulsarBoton(evento) {
 
       //si la casilla tiene una bomba, GAME OVER
     } else if (casilla.bomba == true) {
-      document.getElementById(casilla.posicionX + " " + casilla.posicionY).classList.add("bomba");
-      alert("GAME OVER");
+      ponerClase(casilla,"bomba");
+      arrayTablero.forEach(element => {
+        if(element.bomba == true){
+          ponerClase(element,"bomba");
+        }
+      });
 
       //si la casilla tiene un numero se muestra
     } else if (casilla.contador > 0) {
-      document.getElementById(casilla.posicionX + " " + casilla.posicionY).textContent = casilla.contador;
-      document.getElementById(casilla.posicionX + " " + casilla.posicionY).classList.add("numero");
+      ponerNumero(casilla,casilla.contador);
+      ponerClase(casilla,"numero");
 
       //si esta vacio se llama a buscar Minas
     } else {
@@ -260,11 +279,11 @@ function pulsarBoton(evento) {
 }//pulsarBoton(evento)
 
 
+
 /* Funcion recursiva buscarMinas() 
     - si el contador es mayor que 0, se muestra el contador
     - Si el contador es 0, se muestra el boton y se llama a si misma para buscar minas adyacentes
 */
-
 
 function buscarMinas(casilla) {
   //console.log('Buscando minas...');
@@ -289,22 +308,21 @@ function buscarMinas(casilla) {
           document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.contains("descubierto") ||
           document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.contains("numero")) {
           continue;
-          
+
           //si tiene un contador se muestra
         } else if (casillaAdyacente.contador > 0) {
 
-          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).textContent = casillaAdyacente.contador;
-          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.add("numero");
+          ponerNumero(casillaAdyacente,casillaAdyacente.contador);
+          ponerClase(casillaAdyacente,"numero");
 
         }
 
         //si esta vacio se descubre y se vuelve a llama a si msmas
         else if (casillaAdyacente.contador == 0) {
-          document.getElementById(casillaAdyacente.posicionX + " " + casillaAdyacente.posicionY).classList.add("descubierto");
+          ponerClase(casillaAdyacente,"descubierto");
           buscarMinas(casillaAdyacente);
         }
       }
     }
   }
-
 }//buscarMinas(casilla)
