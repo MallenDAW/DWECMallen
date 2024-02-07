@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  div {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid blue;
+    width: 200px;
+  }
+</style>
+<body>
+
+  <div id="contenedor">
+    <button id="boton">Botón</button>
+  </div>
+
+  <script>
+
+    document.getElementById('contenedor').addEventListener('click', function(){
+      alert('contenedor');
+      console.log('contenedor');
+    },true); //si ponemos true, al clicar el boton se ejecutara el evento del contenedor primero
+
+
+    document.getElementById('boton').addEventListener('click', function(evento){
+      alert('boton');
+      console.log('boton');
+      evento.stopPropagation(); // Detiene la propagación del evento y no sale el log de contenedor
+    });
+  </script>
+</body>
+</html>
