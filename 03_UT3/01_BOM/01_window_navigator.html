@@ -1,48 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WINDOW BOM</title>
 </head>
+
 <body>
   <p id="ventana"></p>
   <script>
 
-    window.name="mi ventana";
-    let texto,navi;
-    texto+="<br/>Nombre: "+window.name;
-    texto+="<br/>Ancho externo: "+window.outerWidth;
-    texto+="<br/>Alto externo: "+window.outerHeight;
-    texto+="<br/>Ancho interno: "+window.innerWidth;
-    texto+="<br/>Alto interno: "+window.innerHeight;
-    texto+="<br/>pageXOffset-"+window.pageXOffset+" pageYOffset-"+window.pageYOffset;
-    texto+="<br/>screenX-"+window.screenX+" screenY-"+window.screenY;
+    window.name = "mi ventana";
+    let texto, navi;
+    texto += "<br/>Nombre: " + window.name;
+    texto += "<br/>Ancho externo: " + window.outerWidth;
+    texto += "<br/>Alto externo: " + window.outerHeight;
+    texto += "<br/>Ancho interno: " + window.innerWidth;
+    texto += "<br/>Alto interno: " + window.innerHeight;
+    texto += "<br/>pageXOffset-" + window.pageXOffset + " pageYOffset-" + window.pageYOffset;
+    texto += "<br/>screenX-" + window.screenX + " screenY-" + window.screenY;
 
 
-    document.getElementById("ventana").innerHTML=texto;
-    
+    document.getElementById("ventana").innerHTML = texto;
+
     window.open(); //https://www.w3schools.com/jsref/met_win_open.asp
     window.close(); //Cierra la ventana
 
 
 
-    
-navi+="<br>codeName: "+navigator.appCodeName;
-navi+="<br>appVersion: "+navigator.appVersion;
-navi+="<br>appName: "+navigator.appName;
-navi+="<br>product: "+navigator.product;
-navi+="<br>platform: "+navigator.platform;
-navi+="<br>online: "+navigator.onLine+"\n";
-navi+="<br>lenguaje: "+navigator.language+"\n";
-navi+="<br>cookieenabled: "+navigator.cookieEnabled+"\n";
-navi+="<br>userAgent: "+navigator.userAgent+"\n";
-navi+="<br>geolocation: "+navigator.geolocation+"\n";
-navi+="<br>javaEnabled(): "+navigator.javaEnabled()+"\n";
 
-document.getElementById("dos").innerHTM=navi;
-console.log(navi);
+    navi += "<br>codeName: " + navigator.appCodeName;
+    navi += "<br>appVersion: " + navigator.appVersion;
+    navi += "<br>appName: " + navigator.appName;
+    navi += "<br>product: " + navigator.product;
+    navi += "<br>platform: " + navigator.platform;
+    navi += "<br>online: " + navigator.onLine + "\n";
+    navi += "<br>lenguaje: " + navigator.language + "\n";
+    navi += "<br>cookieenabled: " + navigator.cookieEnabled + "\n";
+    navi += "<br>userAgent: " + navigator.userAgent + "\n";
+    navi += "<br>geolocation: " + navigator.geolocation + "\n";
+    navi += "<br>javaEnabled(): " + navigator.javaEnabled() + "\n";
+
+    document.getElementById("dos").innerHTM = navi;
+    console.log(navi);
 
   </script>
 </body>
+
 </html>

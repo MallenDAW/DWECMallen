@@ -8,7 +8,34 @@
 </head>
 
 <body>
-
+  <h1>Formulario</h1>
+  <form action="procesar.php" method="post" id="miFormulario">
+    <table>
+      <tr>
+        <td>Nombre*:</td>
+        <td>
+          <input type="text" name="nombre" id="nombre" />
+        </td>
+      </tr>
+      <tr>
+        <td>Edad*:</td>
+        <td>
+          <input type="number" name="edad" id="edad" />
+        </td>
+      </tr>
+      <tr>
+        <td>Telefono*:</td>
+        <td>
+          <input type="text" name="telefono" id="telefono" />
+        </td>
+      </tr>
+    </table>
+    <p id="mensajeError" class="msg"></p>
+    <p>
+      <input type="submit" value="Enviar" id="enviar" />
+      <input type="reset" value="Borrar" id="borrar" />
+    </p>
+  </form>
   <script>
     window.addEventListener('load', iniciar, false);
 
