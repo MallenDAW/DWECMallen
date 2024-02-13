@@ -77,6 +77,7 @@
       let elemento = document.getElementById("edad");
       if (!elemento.checkValidity()) {
         // error(elemento);
+        console.log(elemento);
         if (elemento.validity.valueMissing) {
           error2(elemento, 'No puede dejar el campo edad vacio');
         }

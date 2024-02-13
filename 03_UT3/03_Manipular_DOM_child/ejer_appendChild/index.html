@@ -4,16 +4,34 @@
 <head>
   <meta charset="utf-8" />
   <title>Document Object Model</title>
+  
   <style>
-    html{
+    html {
       font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
+
     .miClase {
       color: darkred;
       font-size: larger;
       font-weight: bold;
     }
   </style>
+</head>
+
+<body>
+
+
+  <textarea id="texto"></textarea>
+  <br />
+  <button id="crearParrafo">Crear parrafo</button>
+  <button id="crearImagen">Crear imagen</button>
+  <button id="borrarUltimo">Borrar ultimo</button>
+  <button id="borrarPrimero">Borrar primero</button>
+  <button id="sustituirPrimVacio">Sustituir primer párrafo por vacío</button>
+  <button id="punto">Punto</button>
+  <br />
+  <div id="div1"></div>
+
   <script>
     window.addEventListener("load", inicio);
 
@@ -96,34 +114,21 @@
     }//sustituirPrimero
 
 
-    function puntear(){
+    function puntear() {
 
-      let parrafo=document.getElementsByTagName("p");
-      
+      let parrafo = document.getElementsByTagName("p");
+
       for (let i = 0; i < parrafo.length; i++) {
-        if(parrafo[i].textContent.endsWith(".")){
-          parrafo[i].textContent=parrafo[i].textContent.slice(0,-1);
-        }else{
-          parrafo[i].textContent+=".";
+        if (parrafo[i].textContent.endsWith(".")) {
+          parrafo[i].textContent = parrafo[i].textContent.slice(0, -1);
+        } else {
+          parrafo[i].textContent += ".";
         }
       }
     }
 
   </script>
-</head>
 
-<body>
-
-  <textarea id="texto"></textarea>
-  <br />
-  <button id="crearParrafo">Crear parrafo</button>
-  <button id="crearImagen">Crear imagen</button>
-  <button id="borrarUltimo">Borrar ultimo</button>
-  <button id="borrarPrimero">Borrar primero</button>
-  <button id="sustituirPrimVacio">Sustituir primer párrafo por vacío</button>
-  <button id="punto">Punto</button>
-  <br />
-  <div id="div1"></div>
 </body>
 
 </html>
