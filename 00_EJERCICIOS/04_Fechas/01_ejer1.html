@@ -27,6 +27,7 @@
         1mes 30dias
         1año 365dias 
       */
+
       let anios=(milisegundos / (365 * 24 * 60 * 60 * 1000)); //años
       let meses=((anios % 1)*12); //12 para los meses
       let dias= ((meses % 1)*30); //30 para los dias
@@ -35,8 +36,8 @@
       let segundos= ((minutos % 1)*60); //60 para los segundos
     
       let fechas = [
-        [Math.floor(anios),Math.floor(meses),Math.floor(dias)],
-        [Math.floor(horas), Math.floor(minutos), Math.floor(segundos)],
+        ['Años:'+Math.floor(anios), 'Meses:'+Math.floor(meses), 'Dias:'+Math.floor(dias)],
+        ['Horas:'+Math.floor(horas), 'Minutos:'+Math.floor(minutos), 'Segundos:'+Math.floor(segundos)],
       ];
       
       console.log(fechas);
