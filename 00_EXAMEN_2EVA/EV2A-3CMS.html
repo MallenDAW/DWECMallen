@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    input,
+    button {
+      margin-bottom: 10px;
+      padding: 8px;
+    }
+
+    button {
+      background-color: #620af0;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #5445a0;
+    }
+
+    .error {
+      color: #ff0000;
+      font-size: 14px;
+    }
+  </style>
+  <title>Formulario de Registro Examen </title>
+  <author>Carlos Mallén Santos</author>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Formulario de Registro</h2>
+    <form id="formRegistro">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="telefono">Numero de teléfono:</label>
+      <input type="number" id="telefono" name="telefono" min="111111111" max='999999999' required>
+
+      <label for="pass">Contraseña:</label>
+      <input type='password' id="pass" name="pass" required>
+
+      <label for="confirmar">Confirmar contraseña:</label>
+      <input type="password" id="confirmar" name="confirmar" required>
+
+      <button type="submit" id="enviar">Registro</button>
+
+    </form>
+    <div id="messages"></div>
+  </div>
+
+
+  <script>
+
+    //esperamos a que cargue la página
+    window.addEventListener('load', inicio());
+
+    function inicio() {
+
+      document.getElementById("enviar").addEventListener('click', validar);
+
+    }//inicio()
+
+    function validar(evento) {
+      // limpiarError();
+      evento.preventDefault();//Evitamos que se envie el formulario sin validar
+     
+        if (
+          validarNombre() &&
+          validarEmail() &&
+          validarTelefono() &&
+          validarPassword() &&
+          validarConfrimarPass() &&
+          confirm("¿Quieres enviar estos datos?")
+        ) {
+          alert('Datos enviados correctamente')
+          document.getElementById('formRegistro').submit();
+        }
+    
+
+    } //validar()
+
+
+    function validarConfrimarPass() {
+      let pass = document.getElementById('pass').value;
+      let confirmar = document.getElementById('confirmar').value;
+
+      if (pass !== confirmar) {
+        document.getElementById('messages').textContent = "Las contraseñas no coinciden";
+        return false;
+      }
+      return true;
+    } //confirmarPass()
+
+
+    function validarPassword() {
+      //recojemos el elemento password
+      let password = document.getElementById('pass').value;
+      //si esta vacio
+      if (password === "") {
+        document.getElementById('messages').textContent = "La contraseña es obligatoria ";
+        return false;
+
+        //menos de 8 caracteres
+      }else if(password.length < 8){
+
+        document.getElementById('messages').textContent = "Al menos 8 caracteres";
+        return false;
+        //si no coincide el patron
+      } else if (password.length < 8 || !/[a-z]/.test(password) || !/[A-Z]/.test(password) || !/\d/.test(password)) {
+        document.getElementById('messages').textContent = "Contraseña invalida";
+        return false;
+      }
+      return true;
+    }//validarPassword()
+
+    function validarEmail() {
+      let email = document.getElementById('email').value;
+
+      //si no coincide el patron
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        document.getElementById('messages').textContent = ('Correo electrónico inválido');
+        return false;
+      }
+      return true;
+    }
+
+    function validarTelefono() {
+      //recojemos el elemento telefono
+      let telefono = document.getElementById('telefono').value;
+
+      //si esta vacio
+      if (telefono === "") {
+        document.getElementById('messages').textContent = "El telefono es obligatorio ";
+        return false;
+
+        //si no tiene 9 digitos
+      } else if (telefono.length !== 9) {
+        document.getElementById('messages').textContent = "El telefono debe tener 9 digitos";
+        return false;
+      }
+      return true;
+    } //validarTelefono()
+
+
+    function validarNombre() {
+
+      let elemento = document.getElementById('nombre');
+      let patron = /^[a-zA-Z\s]*$/;
+
+      if (!patron.test(elemento.value)) {
+        document.getElementById('messages').textContent = "El nombre solo puede contener letras sin espacios";
+        return false;
+      }
+      if (!elemento.checkValidity()) {
+        // si esta vacio
+        if (elemento.validity.valueMissing) {
+          document.getElementById('messages').innerHTML = 'No puede dejar el mensaje vacío';
+          return false;
+        }
+        return true;
+      }
+      return true;
+    } //validarNombre()
+
+
+
+    function limpiarError() {
+
+      //Eliminamos el mensaje de error del div 
+      let divError = document.getElementById('messages');
+      divError.textContent = "";
+
+    } //limpiarError()
+
+
+  </script>
+</body>
+
+</html>

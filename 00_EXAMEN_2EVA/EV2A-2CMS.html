@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 2</title>
+  <author>Carlos Mallén Santos</author>
+</head>
+<body>
+  <script>
+    //definimos la clase animal con su constructor
+    class Animal {
+
+      //constructor con propiedades nombre, edad, patas, especie y estado.
+      constructor(nombre, edad, patas, especie, estado) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.patas = patas;
+        this.especie = especie;
+        this.estado = estado;
+      }//constructor
+
+      introduce() {
+        return `Hola, mi nombre es ${this.nombre} y tengo ${this.edad} años.`;
+      }//introduce()
+    }//class Animal
+
+    //En todas las clases que heredan se usa super para llamar al constructor de la clase padre.
+
+    //clase tiburon que hereda de animal
+    class Tiburon extends Animal {
+
+      constructor(nombre, edad, estado) {
+        super(nombre, edad, estado);
+        this.especie = "Escualos";
+      }//constructor
+
+      introduce() {
+        return super.introduce();
+      }//introduce
+
+    }//class Tiburon
+
+ //clase gato que hereda de animal
+   class Gato extends Animal {
+
+      constructor(nombre, edad, estado) {
+        super(nombre, edad, estado);
+        this.especie = "Felinos";
+      }//constructor
+
+      introduce() {
+        return super.introduce() + "  ¡Miau, miau!";
+      }//introduce
+
+    }//class Gato
+
+ //clase Perro que hereda de animal
+    class Perro extends Animal {
+
+      constructor(nombre, edad, estado, dueno) {
+        super(nombre, edad, estado);
+        this.especie = "Cánidos";
+        this.dueno = dueno;
+      }//constructor
+
+      introduce() {
+        return super.introduce();
+      }//introduce
+
+      saludaDueno() {
+        return `Hola ${this.dueno}`;
+      }//saludaDueno
+
+    }//Perro
+
+   
+    //instanciamos los objetos con los atributos que se piden
+    let tiburon = new Tiburon("Chum", 5, "Hambriento");
+    let gato = new Gato("Silvestre", 3, "Juguetón");
+    let perro = new Perro("Cane", 2, "Feliz", "Pepe");
+
+
+    //imprimimos los métodos por consola
+    console.log(tiburon.introduce());
+    console.log(gato.introduce());
+    console.log(perro.introduce());
+    console.log(perro.saludaDueno());
+
+
+  </script>
+</body>
+</html>

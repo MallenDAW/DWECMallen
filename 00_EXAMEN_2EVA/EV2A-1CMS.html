@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 1</title>
+  <author>Carlos Mallén Santos</author>
+</head>
+
+<body>
+  <div id="salida"></div>
+  <script>
+
+    //definimos la función salidaEatapa
+    function salidaEtapa(dorsal) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (dorsal > 0 && dorsal <= 25) {
+            resolve(`Dorsal ${dorsal} ¡Salida!`);
+          } else {
+            //en caso de que no sea un dorsal válido
+            reject("Dorsal no válido");
+          }
+        }, 5000); //esperamos 5 segundos por ciclista
+      });
+    }//salidaEtapa()
+
+
+    //definimos la funcion iniciarSalida()
+    //ponemos async porque tenemos el await, que devuelve una promesa
+    async function iniciarSalida() {
+
+      //recogemos el div donde vamos a mostrar la salida y agregar la información
+      let mostrarSalida = document.getElementById("salida");
+
+      //recorremos los 25 ciclistas
+      for (let i = 0; i <= 25; i++) {
+
+        //si ya existe un contenedor lo eliminamos
+        if (document.getElementById("marcaSalida")) {
+          document.getElementById("marcaSalida").remove();
+        }
+
+        //creamos elementos en el DOM para mostrar la salida de los ciclistas
+        let contenedor=document.createElement("div"); 
+        contenedor.id="marcaSalida";
+
+        //lo metemos en un try para para control de errores  (sin el try es como si no tuvieramos la opcion reject)      
+        try {
+
+          //esperamos a que se resuelva la promesa
+          const res = await salidaEtapa(i);
+          setTimeout(() => {
+
+            //agregamos la información al div
+            contenedor.innerHTML=res;
+
+            //introducimos el div en el DOM dentro del div con id salida
+            mostrarSalida.appendChild(contenedor);
+
+
+            // console.log(res); log de pruebas para el desarrollador
+
+          }, 3000); //Cuenta atrás de 3 segundos
+
+          //manejo de errores
+        } catch (err) {
+          console.log(err);
+        }
+      }
+
+    }//iniciarSalida()
+
+    //llamamos a la funcion
+    iniciarSalida();
+  </script>
+</body>
+
+</html>
