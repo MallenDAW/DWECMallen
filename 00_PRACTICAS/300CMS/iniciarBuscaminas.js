@@ -119,8 +119,8 @@ function elegirNivel(evento) {
 
     //Colocamos aleatoriamente minas en el array
     colocarMinas(numeroMinas());
-    console.log(arrayTablero);
-    console.log(arrayTablero.length);
+    // console.log(arrayTablero);
+    // console.log(arrayTablero.length);
 
     //calculamos y mostramos el número de banderas
     numeroBanderas = numeroMinas();
@@ -257,14 +257,15 @@ function pulsarBoton(evento) {
       arrayTablero.forEach(element => {
         element.bloquear = true;
       });
+      
 
       /* HAS GANADOOOOOOOOOO */
       Swal.fire({
         title: "!VICTORIA ROYAL!",
         text: "BUENA PARTIDA",
         imageUrl: "img/victoria.png",
-        imageWidth: 400,
-        imageHeight: 200,
+        imageWidth: 360,
+        imageHeight: 360,
         imageAlt: "Custom image"
       });
      

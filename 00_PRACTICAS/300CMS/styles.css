@@ -76,6 +76,10 @@ img{
   border-radius: 20px;
 }
 
+.swal2-image{
+  background-color: rgba(168, 168, 168, 0.464);
+}
+
 #flag,#time{
   display: flex;
   justify-content: center;
